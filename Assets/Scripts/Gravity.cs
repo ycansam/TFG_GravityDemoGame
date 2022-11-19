@@ -16,10 +16,6 @@ public class Gravity : MonoBehaviour
     // Elementos usado en el script
     private Rigidbody rb;
     private float verticalSpeed;
-    private bool collisionWithWall;
-    private bool collisionWithMovable;
-    private Quaternion rotationOnCollision;
-    private Vector3 positionOnCollision;
 
     private void Awake()
     {
@@ -33,7 +29,7 @@ public class Gravity : MonoBehaviour
         if (!cubeController.IsRotating)
         {
             UseGravity();
-            CheckCollisionWithWall();
+            // CheckCollisionWithWall();
         }
     }
 
@@ -41,8 +37,7 @@ public class Gravity : MonoBehaviour
     {
         if (useGravity)
         {
-            if (!collisionWithWall)
-                verticalSpeed -= gravity * Time.fixedDeltaTime;
+            verticalSpeed -= gravity * Time.fixedDeltaTime;
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y + (verticalSpeed * Time.fixedDeltaTime),
@@ -52,67 +47,30 @@ public class Gravity : MonoBehaviour
         }
     }
 
-    private void CheckCollisionWithWall()
-    {
-        if (collisionWithWall)
-        {
-            verticalSpeed = 0;
-            rb.velocity = Vector3.zero;
-        }
-        if (!cubeController.IsRotating && transform.rotation != rotationOnCollision)
-        {
-            collisionWithWall = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
         OnCollisionEnterWithWall(other);
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        OnCollisionEnterWithMovableObject(other);
-    }
-
     private void OnCollisionEnterWithWall(Collision other)
     {
-        if (other.transform.tag == Tags.CUBEWALL_TAG)
+        if (other.transform.tag == Tags.CUBEWALL_TAG || other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
         {
-            if (!collisionWithWall)
+            if (other.contacts.Length > 0)
             {
-                collisionWithWall = true;
-                rotationOnCollision = transform.rotation;
-                positionOnCollision = transform.position;
+                // Compruebo que el choque esta en fuera de 85 y 95 grados para que se aplique la gravedad
+                // fuera 85 y 95 para evitar errores en caso de que hubiese, se aplica la gravedad si el contacto es de 90º
+                if (
+                    Vector3.Angle(other.contacts[0].normal, Vector3.up) < 89
+                    || Vector3.Angle(other.contacts[0].normal, Vector3.up) > 91
+                )
+                    if (other.transform.position.y < transform.position.y)
+                    {
+                        verticalSpeed = 0;
+                        rb.velocity = Vector3.zero;
+                    }
             }
         }
     }
 
-    private void OnCollisionEnterWithMovableObject(Collision other)
-    {
-        if (other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
-        {
-            if (other.transform.position.y < transform.position.y)
-            {
-                verticalSpeed = 0;
-                rb.velocity = Vector3.zero;
-            }
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        OnCollisionExitWithWall(other);
-    }
-
-    private void OnCollisionExitWithWall(Collision other)
-    {
-        if (other.transform.tag == Tags.CUBEWALL_TAG)
-        {
-            if (collisionWithWall)
-            {
-                collisionWithWall = false;
-            }
-        }
-    }
 }
