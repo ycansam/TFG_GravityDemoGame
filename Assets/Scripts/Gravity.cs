@@ -7,20 +7,23 @@ public class Gravity : MonoBehaviour
     [SerializeField]
     private CubeController cubeController;
 
-    private GameObject gravityReferencePoint;
-    private Rigidbody rb;
+    // private GameObject gravityReferencePoint;
     public bool useGravity = false;
-    public float verticalSpeed;
 
     [SerializeField]
     float gravity = 9.8f;
-    private bool collisionWithCube;
+
+    // Elementos usado en el script
+    private Rigidbody rb;
+    private float verticalSpeed;
+    private bool collisionWithWall;
+    private bool collisionWithMovable;
     private Quaternion rotationOnCollision;
     private Vector3 positionOnCollision;
 
     private void Awake()
     {
-        gravityReferencePoint = GameObject.Find("GravityReferencePoint");
+        // gravityReferencePoint = GameObject.Find("GravityReferencePoint");
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -30,7 +33,7 @@ public class Gravity : MonoBehaviour
         if (!cubeController.IsRotating)
         {
             UseGravity();
-            CheckCollision();
+            CheckCollisionWithWall();
         }
     }
 
@@ -38,7 +41,7 @@ public class Gravity : MonoBehaviour
     {
         if (useGravity)
         {
-            if (!collisionWithCube)
+            if (!collisionWithWall)
                 verticalSpeed -= gravity * Time.fixedDeltaTime;
             transform.position = new Vector3(
                 transform.position.x,
@@ -49,39 +52,66 @@ public class Gravity : MonoBehaviour
         }
     }
 
-    private void CheckCollision()
+    private void CheckCollisionWithWall()
     {
-        if (collisionWithCube)
+        if (collisionWithWall)
         {
             verticalSpeed = 0;
             rb.velocity = Vector3.zero;
         }
         if (!cubeController.IsRotating && transform.rotation != rotationOnCollision)
         {
-            collisionWithCube = false;
+            collisionWithWall = false;
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        OnCollisionEnterWithWall(other);
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        OnCollisionEnterWithMovableObject(other);
+    }
+
+    private void OnCollisionEnterWithWall(Collision other)
+    {
         if (other.transform.tag == Tags.CUBEWALL_TAG)
         {
-            if (!collisionWithCube)
+            if (!collisionWithWall)
             {
-                collisionWithCube = true;
+                collisionWithWall = true;
                 rotationOnCollision = transform.rotation;
                 positionOnCollision = transform.position;
             }
         }
     }
 
+    private void OnCollisionEnterWithMovableObject(Collision other)
+    {
+        if (other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
+        {
+            if (other.transform.position.y < transform.position.y)
+            {
+                verticalSpeed = 0;
+                rb.velocity = Vector3.zero;
+            }
+        }
+    }
+
     private void OnCollisionExit(Collision other)
+    {
+        OnCollisionExitWithWall(other);
+    }
+
+    private void OnCollisionExitWithWall(Collision other)
     {
         if (other.transform.tag == Tags.CUBEWALL_TAG)
         {
-            if (collisionWithCube)
+            if (collisionWithWall)
             {
-                collisionWithCube = false;
+                collisionWithWall = false;
             }
         }
     }
