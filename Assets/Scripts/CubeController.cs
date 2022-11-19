@@ -12,8 +12,32 @@ public class CubeController : MonoBehaviour
         private set { this.isRotating = value; }
     }
 
+    [SerializeField]
+    private float rotationSpeed = 1f;
+
     void Start() { }
 
-    // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(RotateRight());
+        }
+    }
+
+    IEnumerator RotateRight()
+    {
+        float y = 180;
+        while (transform.rotation.y < 180)
+        {
+            transform.localRotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.AngleAxis(90f, Vector3.right),
+                rotationSpeed * Time.deltaTime
+            );
+            yield return null;
+        }
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        yield return null;
+    }
 }
