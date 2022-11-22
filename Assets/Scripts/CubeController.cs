@@ -15,6 +15,8 @@ public class CubeController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 1f;
 
+    private float rotateAngleHorizontal = 90f;
+
     void Start() { }
 
     void Update()
@@ -27,17 +29,17 @@ public class CubeController : MonoBehaviour
 
     IEnumerator RotateRight()
     {
-        float y = 180;
-        while (transform.rotation.y < 180)
+        while (transform.rotation.y < rotateAngleHorizontal)
         {
             transform.localRotation = Quaternion.Slerp(
                 transform.rotation,
-                Quaternion.AngleAxis(90f, Vector3.right),
+                Quaternion.AngleAxis(rotateAngleHorizontal, Vector3.forward),
                 rotationSpeed * Time.deltaTime
             );
             yield return null;
         }
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        transform.localRotation = Quaternion.Euler(0, rotateAngleHorizontal, 0);
+        rotateAngleHorizontal = rotateAngleHorizontal + 90f;
         yield return null;
     }
 }
