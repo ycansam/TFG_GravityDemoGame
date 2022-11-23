@@ -19,6 +19,11 @@ public class Gravity : MonoBehaviour
     // Elementos usado en el script
     private Rigidbody rb;
     private float verticalSpeed;
+    public float VerticalSpeed
+    {
+        get { return this.verticalSpeed; }
+        private set { this.verticalSpeed = value; }
+    }
 
     private void Awake()
     {
@@ -29,10 +34,7 @@ public class Gravity : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!cubeController.IsRotating)
-        {
-            UseGravity();
-        }
+        UseGravity();
     }
 
     private void UseGravity()
@@ -52,6 +54,7 @@ public class Gravity : MonoBehaviour
     private void OnCollisionStay(Collision other)
     {
         OnCollisionEnterWithWall(other);
+        OnCollisionEnterWithObjectMovable(other);
     }
 
     private void OnCollisionEnterWithWall(Collision other)
@@ -68,20 +71,66 @@ public class Gravity : MonoBehaviour
                 )
                 {
                     //  si esta en 90 grados se deja caer
-                    if (verticalSpeed <= -15f)
-                    {
-                        verticalSpeed = -15f;
-                        rb.velocity = Vector3.zero;
-                    }
+                    LimitSpeed();
                 }
                 else
                 {
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
                 }
+                if (verticalSpeed > -0.6f)
+                    rb.velocity = Vector3.down * 5f;
 
                 // print(Vector3.Angle(other.contacts[0].normal, Vector3.up));
             }
+        }
+    }
+
+    private void OnCollisionEnterWithObjectMovable(Collision other)
+    {
+        if (other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
+        {
+            if (
+                other.transform.position.y < transform.position.y + 2f
+                && other.transform.position.y > transform.position.y - 2f
+            )
+            {
+                rb.velocity = Vector3.zero;
+            }
+            else if (other.transform.position.y < transform.position.y)
+            {
+                if (
+                    Vector3.Angle(other.contacts[0].normal, Vector3.up) > 5f
+                    && Vector3.Angle(other.contacts[0].normal, Vector3.up) < 75
+                )
+                {
+                    if (!cubeController.IsRotating)
+                    {
+                        verticalSpeed = 0;
+                        rb.velocity = Vector3.down * 3f;
+                    }
+                    else
+                    {
+                        verticalSpeed = 0;
+                        rb.velocity = Vector3.zero;
+                    }
+                }
+                else if (Vector3.Angle(other.contacts[0].normal, Vector3.up) < 5f)
+                {
+                    verticalSpeed = 0;
+                    rb.velocity = Vector3.zero;
+                }
+            }
+            LimitSpeed();
+        }
+    }
+
+    private void LimitSpeed()
+    {
+        if (verticalSpeed <= -17f)
+        {
+            verticalSpeed = -17f;
+            rb.velocity = Vector3.zero;
         }
     }
 }

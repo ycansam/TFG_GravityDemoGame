@@ -62,6 +62,7 @@ public class CubeController : MonoBehaviour
         var endRotation = transform.rotation * Quaternion.Euler(direction);
         float t = 0.0f;
         rotating = true;
+        IsRotating = true;
         float rate = 1.0f / duration;
         while (t < 1f)
         {
@@ -73,6 +74,7 @@ public class CubeController : MonoBehaviour
             );
             yield return null;
         }
+        IsRotating = false;
         rotating = false;
     }
 }
