@@ -7,7 +7,6 @@ public class Gravity : MonoBehaviour
     [SerializeField]
     private CubeController cubeController;
 
-    // private GameObject gravityReferencePoint;
     public bool useGravity = false;
 
     [SerializeField]
@@ -19,15 +18,9 @@ public class Gravity : MonoBehaviour
     // Elementos usado en el script
     private Rigidbody rb;
     private float verticalSpeed;
-    public float VerticalSpeed
-    {
-        get { return this.verticalSpeed; }
-        private set { this.verticalSpeed = value; }
-    }
 
     private void Awake()
     {
-        // gravityReferencePoint = GameObject.Find("GravityReferencePoint");
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -41,20 +34,20 @@ public class Gravity : MonoBehaviour
     {
         if (useGravity)
         {
-            verticalSpeed -= gravity * Time.fixedDeltaTime * mass;
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y + (verticalSpeed * Time.fixedDeltaTime),
                 transform.position.z
             );
+            verticalSpeed -= gravity * Time.fixedDeltaTime * mass;
             // transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
     }
 
     private void OnCollisionStay(Collision other)
     {
-        OnCollisionEnterWithWall(other);
         OnCollisionEnterWithObjectMovable(other);
+        OnCollisionEnterWithWall(other);
     }
 
     private void OnCollisionEnterWithWall(Collision other)
@@ -78,10 +71,9 @@ public class Gravity : MonoBehaviour
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
                 }
-                if (verticalSpeed > -0.6f)
-                    rb.velocity = Vector3.down * 5f;
-
-                // print(Vector3.Angle(other.contacts[0].normal, Vector3.up));
+                if (verticalSpeed > -0.6f){
+                    rb.velocity = Vector3.down * 3f;
+                }
             }
         }
     }
@@ -120,6 +112,11 @@ public class Gravity : MonoBehaviour
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
                 }
+            }
+            else if (other.transform.position.y > transform.position.y)
+            {
+                if (verticalSpeed > -0.6f)
+                    rb.velocity = Vector3.down * 3f;
             }
             LimitSpeed();
         }
