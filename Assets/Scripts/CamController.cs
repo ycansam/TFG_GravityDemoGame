@@ -6,9 +6,12 @@ public class CamController : MonoBehaviour
 {
     [SerializeField]
     private Transform playerBody;
+      [SerializeField]
+    private GameObject astra3d;
     float mouseSensitivity = 500;
 
     private float xRotation = 0f;
+    private float yRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +28,12 @@ public class CamController : MonoBehaviour
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         playerBody.Rotate(Vector3.up * mouseX);
+
+        astra3d.transform.localRotation = transform.localRotation;
+
+        // astra3d.transform.Rotate(Vector3.right * -mouseY);
     }
 }

@@ -24,20 +24,20 @@ public class CubeController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !rotating)
         {
             if (transform.rotation.x == 0 && transform.rotation.y == 0)
-                StartCoroutine(RotateEase(rotationSpeed, player.forward * -90f));
+                StartCoroutine(RotateEase(rotationSpeed, transform.forward * -90f));
         }
         if (Input.GetKeyDown(KeyCode.Q) && !rotating)
         {
             if (transform.rotation.x == 0 && transform.rotation.y == 0)
-                StartCoroutine(RotateEase(rotationSpeed, player.forward * 90f));
+                StartCoroutine(RotateEase(rotationSpeed, transform.forward * 90f));
         }
         if (Input.GetKeyDown(KeyCode.R) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, player.right * 90f));
+            StartCoroutine(RotateEase(rotationSpeed, transform.right * 90f));
         }
         if (Input.GetKeyDown(KeyCode.F) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, player.right * -90f));
+            StartCoroutine(RotateEase(rotationSpeed, transform.right * -90f));
         }
     }
 
@@ -63,7 +63,7 @@ public class CubeController : MonoBehaviour
         rotating = false;
     }
 
-    void GetPlayerInputs() { }
+    // void GetPlayerInputs() { }
 
     // IEnumerator Rotate(float duration)
     // {
