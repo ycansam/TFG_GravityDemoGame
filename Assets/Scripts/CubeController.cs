@@ -5,6 +5,9 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     [SerializeField]
+    private Transform player;
+
+    [SerializeField]
     private bool isRotating = false;
     public bool IsRotating
     {
@@ -20,45 +23,27 @@ public class CubeController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, Vector3.back * 90f));
+            if (transform.rotation.x == 0 && transform.rotation.y == 0)
+                StartCoroutine(RotateEase(rotationSpeed, player.forward * -90f));
         }
         if (Input.GetKeyDown(KeyCode.Q) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, Vector3.back * -90f));
+            if (transform.rotation.x == 0 && transform.rotation.y == 0)
+                StartCoroutine(RotateEase(rotationSpeed, player.forward * 90f));
         }
         if (Input.GetKeyDown(KeyCode.R) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, new Vector3(90f, 0f, 0f)));
+            StartCoroutine(RotateEase(rotationSpeed, player.right * 90f));
         }
         if (Input.GetKeyDown(KeyCode.F) && !rotating)
         {
-            StartCoroutine(RotateEase(rotationSpeed, new Vector3(-90f, 0f, 0f)));
-        }
-    }
-
-    void GetPlayerInputs() { }
-
-    IEnumerator Rotate(float duration)
-    {
-        float startRotation = transform.eulerAngles.z;
-        float endRotation = startRotation + 90.0f;
-        float t = 0.0f;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            float yRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
-            transform.eulerAngles = new Vector3(
-                transform.eulerAngles.x,
-                transform.eulerAngles.y,
-                yRotation
-            );
-            yield return null;
+            StartCoroutine(RotateEase(rotationSpeed, player.right * -90f));
         }
     }
 
     IEnumerator RotateEase(float duration, Vector3 direction)
     {
-        var startRotation = this.transform.rotation;
+        var startRotation = transform.rotation;
         var endRotation = transform.rotation * Quaternion.Euler(direction);
         float t = 0.0f;
         rotating = true;
@@ -77,4 +62,24 @@ public class CubeController : MonoBehaviour
         IsRotating = false;
         rotating = false;
     }
+
+    void GetPlayerInputs() { }
+
+    // IEnumerator Rotate(float duration)
+    // {
+    //     float startRotation = transform.eulerAngles.z;
+    //     float endRotation = startRotation + 90.0f;
+    //     float t = 0.0f;
+    //     while (t < duration)
+    //     {
+    //         t += Time.deltaTime;
+    //         float yRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
+    //         transform.eulerAngles = new Vector3(
+    //             transform.eulerAngles.x,
+    //             transform.eulerAngles.y,
+    //             yRotation
+    //         );
+    //         yield return null;
+    //     }
+    // }
 }

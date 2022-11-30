@@ -70,8 +70,10 @@ public class Gravity : MonoBehaviour
                 {
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
                 }
-                if (verticalSpeed > -0.6f){
+                if (verticalSpeed > -0.6f)
+                {
                     rb.velocity = Vector3.down * 3f;
                 }
             }
@@ -105,12 +107,14 @@ public class Gravity : MonoBehaviour
                     {
                         verticalSpeed = 0;
                         rb.velocity = Vector3.zero;
+                        rb.angularVelocity = Vector3.zero;
                     }
                 }
                 else if (Vector3.Angle(other.contacts[0].normal, Vector3.up) < 5f)
                 {
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
                 }
             }
             else if (other.transform.position.y > transform.position.y)
@@ -128,6 +132,7 @@ public class Gravity : MonoBehaviour
         {
             verticalSpeed = -17f;
             rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 }
