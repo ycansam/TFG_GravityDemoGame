@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private CubeController cubeController;
+
+    [SerializeField]
     private Rigidbody rb;
+
+    [SerializeField]
+    private Transform cubeFather;
 
     [Header("Move Settings")]
     [SerializeField]
@@ -24,14 +29,10 @@ public class PlayerController : MonoBehaviour
     private bool gravityEnabled;
 
     [Header("Variables")]
-    private bool grounded = false;
-
     private float vertical_axis;
     private float horizontal_axis;
-
     private float gravity;
     private float verticalSpeed;
-    private bool colliding;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
         PlayerMove();
+        CubeFatherActions();
     }
 
     private void FixedUpdate()
@@ -51,6 +53,17 @@ public class PlayerController : MonoBehaviour
         DisableRbPhysics();
         if (gravityEnabled && !cubeController.IsRotating)
             PlayerGravity();
+    }
+
+    private void CubeFatherActions()
+    {
+        if (Input.GetKeyDown(GameConstants.KEY_CUBE_FATHER))
+        {
+            if (transform.parent == null)
+                transform.SetParent(cubeFather);
+            else
+                transform.SetParent(null);
+        }
     }
 
     private bool isGrounded()

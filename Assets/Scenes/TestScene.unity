@@ -2034,9 +2034,9 @@ GameObject:
   - component: {fileID: 543450651750218551}
   - component: {fileID: 919132147748888974}
   - component: {fileID: 919132147748888975}
+  - component: {fileID: 919132147748888977}
   - component: {fileID: 919132147748888978}
   - component: {fileID: 919132147748888976}
-  - component: {fileID: 919132147748888977}
   m_Layer: 0
   m_Name: Astra
   m_TagString: Player
@@ -2075,6 +2075,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeController: {fileID: 1838710095}
+  rb: {fileID: 919132147748888977}
+  cubeFather: {fileID: 1838710094}
   speed: 5
   jumpForce: 5
   gravityEnabled: 1
