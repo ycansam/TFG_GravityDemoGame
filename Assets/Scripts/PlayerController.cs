@@ -9,12 +9,19 @@ public class PlayerController : MonoBehaviour
     // componentes
     private CharacterController characterController;
 
+    [SerializeField]
+    private CubeController cubeController;
+    private Rigidbody rb;
+
     [Header("Move Settings")]
     [SerializeField]
     private float speed;
 
     [SerializeField]
     private float jumpForce;
+
+    [SerializeField]
+    private bool gravityEnabled;
 
     [Header("Variables")]
     private bool grounded = false;
@@ -25,37 +32,29 @@ public class PlayerController : MonoBehaviour
     private float gravity;
     private float verticalSpeed;
 
-
-    /// <EstaticosParaOtrasClases>
-    public static float ActualSpeed
-    {
-        get => actualSpeed;
-    }
-    private static float actualSpeed;
-
-    // weight que indica la cantidad de animacion se aplica cuando se sprinta (de 0 a 1)
-    public static float SprintWeight
-    {
-        get => sprintWeight;
-    }
-    private static float sprintWeight;
+    private Vector3 normalDir;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         gravity = GameConstants.PLAYERS_GRAVITY;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         GetInput();
-
         PlayerMove();
+        if (gravityEnabled)
+            PlayerGravity();
     }
 
     private void FixedUpdate()
     {
-        PlayerGravity();
+        rb.angularVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.inertiaTensor = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 
     /// <summary ="GetInput()">
@@ -73,10 +72,10 @@ public class PlayerController : MonoBehaviour
     private void PlayerMove()
     {
         Vector3 move =
-            (transform.forward * vertical_axis * speed)
-            + (transform.right * horizontal_axis * speed);
+            (Vector3.forward * vertical_axis * speed) + (Vector3.right * horizontal_axis * speed);
         Vector3 clampedMove = Vector3.ClampMagnitude(move, speed); // definiendo la magnitud maxima para la velocidad del personaje
-        characterController.Move(clampedMove * Time.deltaTime);
+        // characterController.Move(clampedMove * Time.deltaTime);
+        transform.Translate(move * Time.deltaTime);
     }
 
     /// <summary ="PlayerGravity()">
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (grounded)
         {
-            verticalSpeed = -gravity * Time.fixedDeltaTime;
+            verticalSpeed = -gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 verticalSpeed = jumpForce;
@@ -94,9 +93,22 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            verticalSpeed -= gravity * Time.fixedDeltaTime;
+            verticalSpeed -= gravity * Time.deltaTime;
         }
-        characterController.Move((transform.up * verticalSpeed) * Time.fixedDeltaTime);
+        if (verticalSpeed < -10f)
+        {
+            verticalSpeed = -10f;
+        }
         grounded = characterController.isGrounded;
+        print(grounded);
+        // transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
+        // characterController.Move((playerPos.up * verticalSpeed) * Time.deltaTime);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        print(hit.normal);
+        print(transform.up);
+        normalDir = hit.normal;
     }
 }
