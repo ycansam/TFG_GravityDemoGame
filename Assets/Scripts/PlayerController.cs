@@ -117,8 +117,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             verticalSpeed -= gravity * Time.deltaTime;
-            transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
         }
+        transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
         // transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
         // characterController.Move((playerPos.up * verticalSpeed) * Time.deltaTime);
     }
