@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CubeController))]
+public class CharacterController : MonoBehaviour
 {
     [Header("Components")]
-    // componentes
-    private CharacterController characterController;
-
     [SerializeField]
     private CubeController cubeController;
 
@@ -36,13 +34,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
         gravity = GameConstants.PLAYERS_GRAVITY;
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
+        if (gravityEnabled && !cubeController.IsRotating)
+            PlayerGravity();
         GetInput();
         PlayerMove();
         CubeFatherActions();
@@ -51,8 +50,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         DisableRbPhysics();
-        if (gravityEnabled && !cubeController.IsRotating)
-            PlayerGravity();
+        
     }
 
     private void CubeFatherActions()
@@ -97,7 +95,6 @@ public class PlayerController : MonoBehaviour
         Vector3 move =
             (Vector3.forward * vertical_axis * speed) + (Vector3.right * horizontal_axis * speed);
         Vector3 clampedMove = Vector3.ClampMagnitude(move, speed); // definiendo la magnitud maxima para la velocidad del personaje
-        // characterController.Move(clampedMove * Time.deltaTime);
         transform.Translate(move * Time.deltaTime);
     }
 
@@ -109,7 +106,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded())
         {
             verticalSpeed = 0f;
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 verticalSpeed = jumpForce;
             }
@@ -119,7 +116,5 @@ public class PlayerController : MonoBehaviour
             verticalSpeed -= gravity * Time.deltaTime;
         }
         transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
-        // transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
-        // characterController.Move((playerPos.up * verticalSpeed) * Time.deltaTime);
     }
 }
