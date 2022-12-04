@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private float gravity;
     private float verticalSpeed;
-
-    private Vector3 normalDir;
+    private bool colliding;
 
     void Start()
     {
@@ -45,11 +44,22 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
         PlayerMove();
-        if (gravityEnabled)
-            PlayerGravity();
     }
 
     private void FixedUpdate()
+    {
+        DisableRbPhysics();
+        if (gravityEnabled && !cubeController.IsRotating)
+            PlayerGravity();
+    }
+
+    private bool isGrounded()
+    {
+        Debug.DrawRay(transform.position, transform.up * -1, Color.red);
+        return Physics.Raycast(transform.position, transform.up * -1, 0.1f);
+    }
+
+    private void DisableRbPhysics()
     {
         rb.angularVelocity = Vector3.zero;
         rb.velocity = Vector3.zero;
@@ -83,9 +93,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void PlayerGravity()
     {
-        if (grounded)
+        if (isGrounded())
         {
-            verticalSpeed = -gravity * Time.deltaTime;
+            verticalSpeed = 0f;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 verticalSpeed = jumpForce;
@@ -94,21 +104,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             verticalSpeed -= gravity * Time.deltaTime;
+            transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
         }
-        if (verticalSpeed < -10f)
-        {
-            verticalSpeed = -10f;
-        }
-        grounded = characterController.isGrounded;
-        print(grounded);
         // transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
         // characterController.Move((playerPos.up * verticalSpeed) * Time.deltaTime);
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        print(hit.normal);
-        print(transform.up);
-        normalDir = hit.normal;
     }
 }
