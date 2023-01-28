@@ -50,7 +50,7 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         DisableRbPhysics();
-        
+
     }
 
     private void CubeFatherActions()
