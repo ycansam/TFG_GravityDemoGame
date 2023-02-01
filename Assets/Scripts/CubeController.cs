@@ -175,7 +175,11 @@ public class CubeController : MonoBehaviour
         bool playerOnLeftWallAndLookingTopInferior =
                    playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Top") && player.parent != null || playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Inferior") && player.parent != null;
 
+        bool playerOnFrontWallAndLookingLeftRight =
+                          playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Left") && player.parent != null || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Right") && player.parent != null;
 
+        bool playerOnFrontWallAndLookingTopInferior =
+                         playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Top") && player.parent != null || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Inferior") && player.parent != null;
 
         if (Input.GetKeyDown(rightKey) && !rotating)
         {
@@ -192,8 +196,10 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(0f, 0f, 90f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction2 * -90f));
+                else if (playerOnFrontWallAndLookingTopInferior || playerOnFrontWallAndLookingLeftRight)
+                    StartCoroutine(RotateEase(direction2 * 90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction1 * 90f));
                 else
@@ -215,8 +221,10 @@ public class CubeController : MonoBehaviour
             if (CheckCubeEuler(0f, 0f, 270f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction3 * 90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction1 * 90f));
                 else
@@ -225,10 +233,12 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(90f, 0f, 0f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * -90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction2 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * 90f));
                 else
                     StartCoroutine(RotateEase(direction2 * -90f * playerOnRightWallAndLookingFrontBack));
 
@@ -237,8 +247,10 @@ public class CubeController : MonoBehaviour
             {
 
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * 90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction3 * -90f));
                 else
@@ -247,8 +259,10 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(90f, 180f, 0f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * 90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction2 * -90f));
                 else
@@ -257,8 +271,10 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(90f, 270f, 0f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * 90f));
                 else if (playerOnLeftWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction3 * 90f));
                 else
@@ -305,8 +321,10 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(0f, 180f, 90f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction3 * -90f));
                 else if (playerOnInferiorWallAndLookingLeftRight || playerOnRightWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction1 * 90f));
                 else
@@ -316,8 +334,10 @@ public class CubeController : MonoBehaviour
             if (CheckCubeEuler(270f, 0f, 0f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * -90f));
                 else if (playerOnInferiorWallAndLookingLeftRight || playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction2 * 90f));
                 else
@@ -336,8 +356,10 @@ public class CubeController : MonoBehaviour
             }
             else if (CheckCubeEuler(270f, 180f, 0f))
             {
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * -90f));
                 else if (playerOnInferiorWallAndLookingLeftRight || playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction2 * -90f));
                 else
@@ -346,8 +368,10 @@ public class CubeController : MonoBehaviour
             }
             else if (CheckCubeEuler(270f, 270f, 0f))
             {
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction1 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction1 * -90f));
                 else if (playerOnInferiorWallAndLookingLeftRight || playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction3 * -90f));
                 else
@@ -360,8 +384,10 @@ public class CubeController : MonoBehaviour
             if (CheckCubeEuler(0f, 90f, 90f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction3 * -90f));
                 else if (playerOnRightWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction2 * -90f));
                 else if (playerOnRightWallCond)
@@ -382,8 +408,10 @@ public class CubeController : MonoBehaviour
             }
             else if (CheckCubeEuler(0f, 90f, 270f))
             {
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction3 * 90f));
                 else if (playerOnRightWallAndLookingTopInferior)
                     StartCoroutine(RotateEase(direction2 * 90f));
                 else
@@ -406,8 +434,10 @@ public class CubeController : MonoBehaviour
             if (CheckCubeEuler(0f, 270f, 270f))
             {
 
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * -90f));
+                else if (playerOnFrontWallAndLookingLeftRight)
+                    StartCoroutine(RotateEase(direction3 * 90f));
                 else if (playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction2 * -90f));
                 else
@@ -427,8 +457,10 @@ public class CubeController : MonoBehaviour
             }
             else if (CheckCubeEuler(0f, 270f, 90f))
             {
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
                     StartCoroutine(RotateEase(direction3 * 90f));
+                else if (playerOnFrontWallAndLookingLeftRight || playerOnFrontWallAndLookingTopInferior)
+                    StartCoroutine(RotateEase(direction3 * -90f));
                 else if (playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction2 * 90f));
                 else
@@ -439,7 +471,9 @@ public class CubeController : MonoBehaviour
             else if (CheckCubeEuler(0f, 270f, 180f))
             {
                 Debug.Log("a");
-                if (playerOnFrontWall || playerOnBackWall)
+                if (playerOnBackWall)
+                    StartCoroutine(RotateEase(direction2 * 90f));
+                else if (playerOnFrontWallAndLookingTopInferior || playerOnFrontWallAndLookingLeftRight)
                     StartCoroutine(RotateEase(direction2 * 90f));
                 else if (playerOnRightWallAndLookingTopInferior || playerOnTopWallLookingRightLeft)
                     StartCoroutine(RotateEase(direction3 * 90f));
