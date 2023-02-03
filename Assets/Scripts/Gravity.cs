@@ -33,7 +33,6 @@ public class Gravity : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            actualDirection = player.transform.up;
             if (ChangeWallController.playerOnWall != null)
                 if (ChangeWallController.playerOnWall.Contains("Left"))
                     actualDirection = Vector3.right;
@@ -70,16 +69,22 @@ public class Gravity : MonoBehaviour
     private void OnCollisionStay(Collision other)
     {
         // Condiciones de choque de Alturas
-        OnCollisionEnterWithObjectMovable(other, other.transform.position.y, transform.position.y);
-        OnCollisionEnterWithObjectMovable(other, transform.position.y, other.transform.position.y);
+        if (actualDirection == Vector3.up)
+            OnCollisionEnterWithObjectMovable(other, other.transform.position.y, transform.position.y);
+        if (actualDirection == Vector3.down)
+            OnCollisionEnterWithObjectMovable(other, transform.position.y, other.transform.position.y);
 
         // Condiciones de choque de Anchura
-        OnCollisionEnterWithObjectMovable(other, other.transform.position.x, transform.position.x);
-        OnCollisionEnterWithObjectMovable(other, transform.position.x, other.transform.position.x);
+        if (actualDirection == Vector3.right)
+            OnCollisionEnterWithObjectMovable(other, other.transform.position.x, transform.position.x);
+        if (actualDirection == Vector3.left)
+            OnCollisionEnterWithObjectMovable(other, transform.position.x, other.transform.position.x);
 
         // Condiciones de choque de profundidad
-        OnCollisionEnterWithObjectMovable(other, other.transform.position.z, transform.position.z);
-        OnCollisionEnterWithObjectMovable(other, transform.position.z, other.transform.position.z);
+        if (actualDirection == Vector3.forward)
+            OnCollisionEnterWithObjectMovable(other, other.transform.position.z, transform.position.z);
+        if (actualDirection == Vector3.back)
+            OnCollisionEnterWithObjectMovable(other, transform.position.z, other.transform.position.z);
 
         OnCollisionEnterWithWall(other);
     }
@@ -101,7 +106,6 @@ public class Gravity : MonoBehaviour
             else if (pos1 < pos2)
             {
 
-                Debug.Log(Vector3.Angle(other.contacts[0].normal, actualDirection));
                 if (
                     Vector3.Angle(other.contacts[0].normal, actualDirection) > 5f
                     && Vector3.Angle(other.contacts[0].normal, actualDirection) < 75
@@ -114,16 +118,12 @@ public class Gravity : MonoBehaviour
                     }
                     else
                     {
-                        verticalSpeed = 0;
-                        rb.velocity = Vector3.zero;
-                        rb.angularVelocity = Vector3.zero;
+                        ResetSpeeds();
                     }
                 }
                 else if (Vector3.Angle(other.contacts[0].normal, actualDirection) < 5f)
                 {
-                    verticalSpeed = 0;
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
+                    ResetSpeeds();
                 }
             }
             // Si el cubo de pos1 esta por encima de pos2
@@ -134,6 +134,13 @@ public class Gravity : MonoBehaviour
             LimitSpeed();
         }
     }
+    private void ResetSpeeds()
+    {
+        verticalSpeed = 0;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
     private void OnCollisionEnterWithWall(Collision other)
     {
         if (other.transform.tag == Tags.CUBEWALL_TAG)
@@ -152,14 +159,13 @@ public class Gravity : MonoBehaviour
                 }
                 else
                 {
-                    verticalSpeed = 0;
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
+                    ResetSpeeds();
                 }
                 SetSpeedDirection();
             }
         }
     }
+    // Limita la velocidad de caida
     private void LimitSpeed()
     {
         if (verticalSpeed <= -17f)
