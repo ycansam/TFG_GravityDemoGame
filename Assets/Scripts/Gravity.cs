@@ -34,26 +34,20 @@ public class Gravity : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             actualDirection = player.transform.up;
-            Debug.Log(actualDirection);
-            if (ChangeWallController.playerOnWall.Contains("Left"))
-                actualDirection = Vector3.right;
-            else if (ChangeWallController.playerOnWall.Contains("Right"))
-                actualDirection = Vector3.left;
-            else if (ChangeWallController.playerOnWall.Contains("Front"))
-                actualDirection = Vector3.back;
-            else if (ChangeWallController.playerOnWall.Contains("Back"))
-                actualDirection = Vector3.forward;
-            else if (ChangeWallController.playerOnWall.Contains("Top"))
-                actualDirection = Vector3.down;
-            else
-                actualDirection = Vector3.up;
-
+            if (ChangeWallController.playerOnWall != null)
+                if (ChangeWallController.playerOnWall.Contains("Left"))
+                    actualDirection = Vector3.right;
+                else if (ChangeWallController.playerOnWall.Contains("Right"))
+                    actualDirection = Vector3.left;
+                else if (ChangeWallController.playerOnWall.Contains("Front"))
+                    actualDirection = Vector3.back;
+                else if (ChangeWallController.playerOnWall.Contains("Back"))
+                    actualDirection = Vector3.forward;
+                else if (ChangeWallController.playerOnWall.Contains("Top"))
+                    actualDirection = Vector3.down;
+                else
+                    actualDirection = Vector3.up;
         }
-    }
-    // Formatea el vector de Float a Int y compara si son iguales
-    private bool Vector3Equals(Vector3 v1, Vector3 v2)
-    {
-        return Vector3.Equals(Vector3Int.FloorToInt(v1), Vector3Int.FloorToInt(v2));
     }
 
     // Update is called once per frame
@@ -75,10 +69,71 @@ public class Gravity : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        OnCollisionEnterWithObjectMovable(other);
+        // Condiciones de choque de Alturas
+        OnCollisionEnterWithObjectMovable(other, other.transform.position.y, transform.position.y);
+        OnCollisionEnterWithObjectMovable(other, transform.position.y, other.transform.position.y);
+
+        // Condiciones de choque de Anchura
+        OnCollisionEnterWithObjectMovable(other, other.transform.position.x, transform.position.x);
+        OnCollisionEnterWithObjectMovable(other, transform.position.x, other.transform.position.x);
+
+        // Condiciones de choque de profundidad
+        OnCollisionEnterWithObjectMovable(other, other.transform.position.z, transform.position.z);
+        OnCollisionEnterWithObjectMovable(other, transform.position.z, other.transform.position.z);
+
         OnCollisionEnterWithWall(other);
     }
 
+    private void OnCollisionEnterWithObjectMovable(Collision other, float pos1, float pos2)
+    {
+        if (other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
+        {
+            //  Si los cubos estan en contacto en la misma altura
+            if (
+                pos1 < pos2 + 2f
+                && pos1 > pos2 - 2f
+            )
+            {
+                rb.velocity = Vector3.zero;
+            }
+            // si el el cubo de pos2 esta por encima de cubo pos1
+            // el cubo del script es pos2
+            else if (pos1 < pos2)
+            {
+
+                Debug.Log(Vector3.Angle(other.contacts[0].normal, actualDirection));
+                if (
+                    Vector3.Angle(other.contacts[0].normal, actualDirection) > 5f
+                    && Vector3.Angle(other.contacts[0].normal, actualDirection) < 75
+                )
+                {
+                    if (!cubeController.IsRotating)
+                    {
+                        verticalSpeed = 0;
+                        SetSpeedDirection();
+                    }
+                    else
+                    {
+                        verticalSpeed = 0;
+                        rb.velocity = Vector3.zero;
+                        rb.angularVelocity = Vector3.zero;
+                    }
+                }
+                else if (Vector3.Angle(other.contacts[0].normal, actualDirection) < 5f)
+                {
+                    verticalSpeed = 0;
+                    rb.velocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                }
+            }
+            // Si el cubo de pos1 esta por encima de pos2
+            else if (pos1 > pos2)
+            {
+                SetSpeedDirection();
+            }
+            LimitSpeed();
+        }
+    }
     private void OnCollisionEnterWithWall(Collision other)
     {
         if (other.transform.tag == Tags.CUBEWALL_TAG)
@@ -101,56 +156,10 @@ public class Gravity : MonoBehaviour
                     rb.velocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                 }
-                CheckSpeed();
+                SetSpeedDirection();
             }
         }
     }
-
-    private void OnCollisionEnterWithObjectMovable(Collision other)
-    {
-        if (other.transform.tag == Tags.OBJECT_MOVABLE_TAG)
-        {
-            if (
-                other.transform.position.y < transform.position.y + 2f
-                && other.transform.position.y > transform.position.y - 2f
-            )
-            {
-                rb.velocity = Vector3.zero;
-            }
-            else if (other.transform.position.y < transform.position.y)
-            {
-                if (
-                    Vector3.Angle(other.contacts[0].normal, actualDirection) > 5f
-                    && Vector3.Angle(other.contacts[0].normal, actualDirection) < 75
-                )
-                {
-                    if (!cubeController.IsRotating)
-                    {
-                        verticalSpeed = 0;
-                        CheckSpeed();
-                    }
-                    else
-                    {
-                        verticalSpeed = 0;
-                        rb.velocity = Vector3.zero;
-                        rb.angularVelocity = Vector3.zero;
-                    }
-                }
-                else if (Vector3.Angle(other.contacts[0].normal, actualDirection) < 5f)
-                {
-                    verticalSpeed = 0;
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                }
-            }
-            else if (other.transform.position.y > transform.position.y)
-            {
-                CheckSpeed();
-            }
-            LimitSpeed();
-        }
-    }
-
     private void LimitSpeed()
     {
         if (verticalSpeed <= -17f)
@@ -161,7 +170,7 @@ public class Gravity : MonoBehaviour
         }
     }
 
-    private void CheckSpeed()
+    private void SetSpeedDirection()
     {
         if (verticalSpeed > -0.6f)
         {

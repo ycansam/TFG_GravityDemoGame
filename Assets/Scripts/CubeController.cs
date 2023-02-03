@@ -33,7 +33,7 @@ public class CubeController : MonoBehaviour
     {
         Controls();
         CheckPlayerLookingAt();
-        
+
     }
 
 
@@ -772,11 +772,8 @@ public class CubeController : MonoBehaviour
         var startRotation = transform.rotation;
         var endRotation = transform.rotation * Quaternion.Euler(direction);
         float t = 0.0f;
-        rotating = true;
-        IsRotating = true;
         float rate = 1.0f / rotationSpeed;
-        player.SetParent(transform);
-
+        InitVariablesBeforeRotate();
         while (t < 1f)
         {
             t += Time.deltaTime * rate;
@@ -786,16 +783,29 @@ public class CubeController : MonoBehaviour
                 Mathf.SmoothStep(0.0f, 1.0f, t)
             );
 
-
             yield return null;
         }
 
+        ResetVariablesAfterRotate();
+
         // Corrige los grados
         transform.eulerAngles = insideGrades();
+    }
+
+    private void InitVariablesBeforeRotate()
+    {
+        rotating = true;
+        IsRotating = true;
+        player.SetParent(transform);
+    }
+
+    private void ResetVariablesAfterRotate()
+    {
         IsRotating = false;
         rotating = false;
         player.parent = null;
     }
+
 
     // Comprueba que los grados son exactamente 0 90 180 270
     private Vector3 insideGrades()

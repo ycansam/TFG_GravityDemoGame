@@ -26,7 +26,7 @@ public class ChangeWallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookingWall();
+        LookingForwardRay();
         Controls();
     }
 
@@ -39,51 +39,50 @@ public class ChangeWallController : MonoBehaviour
         }
     }
 
-    private void LookingWall()
+    private void LookingForwardRay()
     {
+        // Crea el rayo y lo debugea
         Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 50;
-
         Debug.DrawRay(playerHead.position, forward, Color.green);
 
-        RaycastHit[] hits;
-        RaycastHit[] hits2;
-        hits = Physics.RaycastAll(playerHead.position, forward, 2.0F);
-        hits2 = Physics.RaycastAll(playerHead.position, forward, 50.0F);
+        AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F));
+        AssignHitHelpWall(Physics.RaycastAll(playerHead.position, forward, 50.0F));
 
-        if (hits.Length > 0)
-        {
-            ActiveMarker();
-            for (int i = 0; i < hits.Length; i++)
-            {
-                hit = hits[i];
-                if (hit.transform.name.Contains("Wall") && !hit.transform.name.Contains("Help"))
-                    marker.transform.position = hit.point;
-            }
-        }
-        else if (hits.Length == 0)
-        {
-            DesactiveMarker();
-        }
+    }
 
-        for (int i = 0; i < hits2.Length; i++)
+    // Asigna al marker un punto donde estar y aparecer
+    private void AssignMarkerPoint(RaycastHit[] hits)
+    {
+
+        // Activa el marcador si tiene puntos detectados en el rayo
+        ActiveMarker(hits.Length > 0);
+
+        for (int i = 0; i < hits.Length; i++)
         {
-            hit = hits2[i];
+            hit = hits[i];
+            if (hit.transform.name.Contains("Wall") && !hit.transform.name.Contains("Help"))
+                marker.transform.position = hit.point;
+        }
+    }
+
+    // Asigna la pared de ayuda a la que esta mirando con el rayo
+    private void AssignHitHelpWall(RaycastHit[] hits)
+    {
+        for (int i = 0; i < hits.Length; i++)
+        {
+            hit = hits[i];
             if (hit.transform.name.Contains("Wall") && hit.transform.name.Contains("Help"))
                 hitHelpWall = hit;
         }
-
     }
 
-    private void ActiveMarker()
+    // Activa o desactiva el marcador dependiendo de la condicion
+    private void ActiveMarker(bool activationCond)
     {
-        if (!marker.activeSelf)
+        if (!marker.activeSelf && activationCond)
             marker.SetActive(true);
-    }
-    private void DesactiveMarker()
-    {
-        if (marker.activeSelf)
+        else if (marker.activeSelf && !activationCond)
             marker.SetActive(false);
     }
-
 
 }
