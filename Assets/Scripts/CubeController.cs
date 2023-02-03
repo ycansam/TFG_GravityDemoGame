@@ -11,9 +11,6 @@ public class CubeController : MonoBehaviour
     private Transform player;
 
     [SerializeField]
-    private Transform wallsHelper;
-
-    [SerializeField]
     private bool isRotating = false;
     public bool IsRotating
     {
@@ -29,8 +26,6 @@ public class CubeController : MonoBehaviour
     [SerializeField]
     KeyCode keyFront = KeyCode.R;
 
-    private String playerLookingAtWall = "";
-    private String playerOnExteriorWall = "";
     private String playerLookingAtInteriorWall = "";
     private String playerOnWall = "";
 
@@ -38,14 +33,7 @@ public class CubeController : MonoBehaviour
     {
         Controls();
         CheckPlayerLookingAt();
-        if (player.parent == null)
-        {
-            wallsHelper.GetChild(0).gameObject.SetActive(true);
-        }
-        else
-        {
-            wallsHelper.GetChild(0).gameObject.SetActive(false);
-        }
+        
     }
 
 
@@ -65,10 +53,7 @@ public class CubeController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
-            if (hit.transform.gameObject.name.Contains("Help"))
-            {
-                playerLookingAtWall = hit.transform.gameObject.name;
-            }
+
             if (!hit.transform.gameObject.name.Contains("Help") && hit.transform.gameObject.name.Contains("Wall"))
             {
                 playerLookingAtInteriorWall = hit.transform.gameObject.name;
@@ -83,8 +68,6 @@ public class CubeController : MonoBehaviour
             {
                 playerOnWall = hit.transform.gameObject.name;
             }
-            else if (hit.transform.gameObject.name.Contains("Help") && hit.transform.gameObject.name.Contains("Wall"))
-                playerOnExteriorWall = hit.transform.gameObject.name;
         }
 
     }
@@ -94,35 +77,30 @@ public class CubeController : MonoBehaviour
         bool playerOnLeftWall =
        playerOnWall.Contains("Left") || playerOnWall.Contains("Right");
 
-        if (player.parent != null)
-        {
-            if (playerLookingAtInteriorWall.Contains("Front"))
-                RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right);
-            else if (playerLookingAtInteriorWall.Contains("Backward"))
+        if (playerLookingAtInteriorWall.Contains("Front"))
+            RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right);
+        else if (playerLookingAtInteriorWall.Contains("Backward"))
+            RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1);
+        else if (playerLookingAtInteriorWall.Contains("Right"))
+            if (playerOnWall.Contains("Top"))
+                RotateCubeByLookingAtAnyWall(transform.forward, transform.up * -1, transform.right * -1, keyFront, keyRight);
+            else
+                RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right, keyFront, keyRight);
+        else if (playerLookingAtInteriorWall.Contains("Left"))
+            if (playerOnWall.Contains("Top"))
+                RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up, transform.right, keyFront, keyRight);
+            else
+                RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1, keyFront, keyRight);
+        else if (playerLookingAtInteriorWall.Contains("Inferior"))
+            if (playerOnLeftWall)
+                RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1, keyFront, keyRight);
+            else
                 RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1);
-            else if (playerLookingAtInteriorWall.Contains("Right"))
-                if (playerOnWall.Contains("Top"))
-                    RotateCubeByLookingAtAnyWall(transform.forward, transform.up * -1, transform.right * -1, keyFront, keyRight);
-                else
-                    RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right, keyFront, keyRight);
-            else if (playerLookingAtInteriorWall.Contains("Left"))
-                if (playerOnWall.Contains("Top"))
-                    RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up, transform.right, keyFront, keyRight);
-                else
-                    RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1, keyFront, keyRight);
-            else if (playerLookingAtInteriorWall.Contains("Inferior"))
-                if (playerOnLeftWall)
-                    RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1, keyFront, keyRight);
-                else
-                    RotateCubeByLookingAtAnyWall(transform.forward * -1, transform.up * -1, transform.right * -1);
-            else if (playerLookingAtInteriorWall.Contains("Top"))
-                if (playerOnLeftWall)
-                    RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right, keyFront, keyRight);
-                else
-                    RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right);
-        }
-        else if (player.parent == null)
-            RotateHelperCube(transform.forward, transform.up, transform.right);
+        else if (playerLookingAtInteriorWall.Contains("Top"))
+            if (playerOnLeftWall)
+                RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right, keyFront, keyRight);
+            else
+                RotateCubeByLookingAtAnyWall(transform.forward, transform.up, transform.right);
     }
 
 
@@ -775,572 +753,6 @@ public class CubeController : MonoBehaviour
         }
 
     }
-    private void RotateHelperCube(Vector3 direction1, Vector3 direction2, Vector3 direction3,
-         KeyCode rightKey = KeyCode.E, KeyCode frontKey = KeyCode.R
-         )
-    {
-
-        bool LookingAtFrontWall = playerLookingAtWall.Contains("Front");
-        bool LookingAtBackWall = playerLookingAtWall.Contains("Back");
-        bool LookingAtLeftWall = playerLookingAtWall.Contains("Left");
-        bool LookingAtRightWall = playerLookingAtWall.Contains("Right");
-        bool LookingAtTopWall = playerLookingAtWall.Contains("Top");
-        bool LookingAtInferiorWall = playerLookingAtWall.Contains("Inferior");
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            wallsHelper.eulerAngles = new Vector3(0, 0, 0);
-        }
-        if (Input.GetKeyDown(rightKey) && !rotating)
-        {
-            if (CheckCubeEuler(0f, 0f, 0f))
-            {
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-            }
-
-        }
-
-        if (Input.GetKeyDown(frontKey))
-        {
-            Debug.Log(wallsHelper.eulerAngles);
-            if (CheckCubeEuler(0f, 0f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-
-            }
-            else if (CheckCubeEuler(270f, 0f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 180f, 180f))
-            {
-                Debug.Log("a");
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-
-                }
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(90f, 0f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 0f, 270f))
-            {
-                Debug.Log("a");
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-
-                }
-                else if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-
-                }
-            }
-            else if (CheckCubeEuler(0f, 0f, 180f))
-            {
-                Debug.Log("a");
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtBackWall)
-                    StartCoroutine(RotateEase(direction3 * 90f));
-            }
-            else if (CheckCubeEuler(0f, 0f, 90f))
-            {
-                Debug.Log("a");
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-
-                }
-                else if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-
-                }
-                else if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-
-                }
-            }
-            else if (CheckCubeEuler(0f, 90f, 270f))
-            {
-                Debug.Log("a");
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-                else if (LookingAtTopWall)
-                    StartCoroutine(RotateEase(direction2 * -90f));
-            }
-            else if (CheckCubeEuler(90f, 180f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 270f, 90f))
-            {
-                Debug.Log("a");
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else if (LookingAtBackWall)
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                else if (LookingAtTopWall)
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                else if (LookingAtInferiorWall)
-                    StartCoroutine(RotateEase(direction2 * -90f));
-            }
-            else if (CheckCubeEuler(0f, 180f, 90f))
-            {
-                Debug.Log("a");
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtTopWall)
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                else if (LookingAtBackWall)
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                else if (LookingAtFrontWall)
-                    StartCoroutine(RotateEase(direction3 * 90f));
-            }
-            else if (CheckCubeEuler(0f, 180f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtLeftWall)
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                else if (LookingAtBackWall)
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                else if (LookingAtFrontWall)
-                    StartCoroutine(RotateEase(direction3 * 90f));
-            }
-            else if (CheckCubeEuler(0f, 180f, 270f))
-            {
-                Debug.Log("a");
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 90f, 90f))
-            {
-                Debug.Log("a");
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 90f, 90f))
-            {
-                Debug.Log("a");
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(270f, 180f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 270f, 270f))
-            {
-                Debug.Log("a");
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(90f, 90f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(270f, 270f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(90f, 270f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-                else
-                if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(270f, 90f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else if (LookingAtInferiorWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * 90f));
-                }
-                else
-                if (LookingAtTopWall)
-                {
-                    StartCoroutine(RotateEase(direction2 * -90f));
-                }
-
-
-            }
-            else if (CheckCubeEuler(0f, 90f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 90f, 180f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 90f, 180f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 270f, 0f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-            }
-            else if (CheckCubeEuler(0f, 270f, 180f))
-            {
-                Debug.Log("a");
-                if (LookingAtLeftWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * -90f));
-                }
-                else
-                if (LookingAtRightWall)
-                {
-                    StartCoroutine(RotateEase(direction3 * 90f));
-                }
-                if (LookingAtBackWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * 90f));
-                }
-                else
-                if (LookingAtFrontWall)
-                {
-                    StartCoroutine(RotateEase(direction1 * -90f));
-                }
-            }
-
-
-
-
-        }
-    }
-
 
     private bool CheckCubeEuler(float x, float y, float z)
     {
@@ -1363,7 +775,7 @@ public class CubeController : MonoBehaviour
         rotating = true;
         IsRotating = true;
         float rate = 1.0f / rotationSpeed;
-
+        player.SetParent(transform);
 
         while (t < 1f)
         {
@@ -1374,20 +786,15 @@ public class CubeController : MonoBehaviour
                 Mathf.SmoothStep(0.0f, 1.0f, t)
             );
 
-            if (player.parent == null)
-                wallsHelper.rotation = Quaternion.Slerp(
-                                startRotation,
-                                endRotation,
-                                Mathf.SmoothStep(0.0f, 1.0f, t)
-                            );
+
             yield return null;
         }
 
         // Corrige los grados
         transform.eulerAngles = insideGrades();
-        wallsHelper.eulerAngles = insideGrades();
         IsRotating = false;
         rotating = false;
+        player.parent = null;
     }
 
     // Comprueba que los grados son exactamente 0 90 180 270
@@ -1417,7 +824,6 @@ public class CubeController : MonoBehaviour
         // Make a background box
         GUI.Box(new Rect(10, 10, 140, 150), "Loader Menu");
         // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-        GUI.TextArea(new Rect(20, 40, 120, 20), playerLookingAtWall);
         GUI.TextArea(new Rect(20, 65, 120, 20), playerLookingAtInteriorWall);
         GUI.TextArea(new Rect(20, 85, 120, 20), playerOnWall);
 

@@ -18,10 +18,42 @@ public class Gravity : MonoBehaviour
     // Elementos usado en el script
     private Rigidbody rb;
     private float verticalSpeed;
+    private Transform player;
+    private Vector3 actualDirection = Vector3.up;
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+    }
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            actualDirection = player.transform.up;
+            Debug.Log(actualDirection);
+            if (ChangeWallController.playerOnWall.Contains("Left"))
+                actualDirection = Vector3.right;
+            else if (ChangeWallController.playerOnWall.Contains("Right"))
+                actualDirection = Vector3.left;
+            else if (ChangeWallController.playerOnWall.Contains("Front"))
+                actualDirection = Vector3.back;
+            else if (ChangeWallController.playerOnWall.Contains("Back"))
+                actualDirection = Vector3.forward;
+            else if (ChangeWallController.playerOnWall.Contains("Top"))
+                actualDirection = Vector3.down;
+            else
+                actualDirection = Vector3.up;
+
+        }
+    }
+    // Formatea el vector de Float a Int y compara si son iguales
+    private bool Vector3Equals(Vector3 v1, Vector3 v2)
+    {
+        return Vector3.Equals(Vector3Int.FloorToInt(v1), Vector3Int.FloorToInt(v2));
     }
 
     // Update is called once per frame
@@ -34,13 +66,10 @@ public class Gravity : MonoBehaviour
     {
         if (useGravity)
         {
-            transform.position = new Vector3(
-                transform.position.x,
-                transform.position.y + (verticalSpeed * Time.fixedDeltaTime),
-                transform.position.z
-            );
+            Vector3 speedVectorized = actualDirection * verticalSpeed * Time.fixedDeltaTime;
+
+            transform.position += speedVectorized;
             verticalSpeed -= gravity * Time.fixedDeltaTime * mass;
-            // transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
     }
 
@@ -59,8 +88,8 @@ public class Gravity : MonoBehaviour
                 // Compruebo que el choque esta en fuera de 85 y 95 grados para que se aplique la gravedad
                 // fuera 85 y 95 para evitar errores en caso de que hubiese, se aplica la gravedad si el contacto es de 90º
                 if (
-                    Vector3.Angle(other.contacts[0].normal, Vector3.up) > 50
-                    && Vector3.Angle(other.contacts[0].normal, Vector3.up) < 130
+                    Vector3.Angle(other.contacts[0].normal, actualDirection) > 50
+                    && Vector3.Angle(other.contacts[0].normal, actualDirection) < 130
                 )
                 {
                     //  si esta en 90 grados se deja caer
@@ -72,10 +101,7 @@ public class Gravity : MonoBehaviour
                     rb.velocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                 }
-                if (verticalSpeed > -0.6f)
-                {
-                    rb.velocity = Vector3.down * 3f;
-                }
+                CheckSpeed();
             }
         }
     }
@@ -94,14 +120,14 @@ public class Gravity : MonoBehaviour
             else if (other.transform.position.y < transform.position.y)
             {
                 if (
-                    Vector3.Angle(other.contacts[0].normal, Vector3.up) > 5f
-                    && Vector3.Angle(other.contacts[0].normal, Vector3.up) < 75
+                    Vector3.Angle(other.contacts[0].normal, actualDirection) > 5f
+                    && Vector3.Angle(other.contacts[0].normal, actualDirection) < 75
                 )
                 {
                     if (!cubeController.IsRotating)
                     {
                         verticalSpeed = 0;
-                        rb.velocity = Vector3.down * 3f;
+                        CheckSpeed();
                     }
                     else
                     {
@@ -110,7 +136,7 @@ public class Gravity : MonoBehaviour
                         rb.angularVelocity = Vector3.zero;
                     }
                 }
-                else if (Vector3.Angle(other.contacts[0].normal, Vector3.up) < 5f)
+                else if (Vector3.Angle(other.contacts[0].normal, actualDirection) < 5f)
                 {
                     verticalSpeed = 0;
                     rb.velocity = Vector3.zero;
@@ -119,8 +145,7 @@ public class Gravity : MonoBehaviour
             }
             else if (other.transform.position.y > transform.position.y)
             {
-                if (verticalSpeed > -0.6f)
-                    rb.velocity = Vector3.down * 3f;
+                CheckSpeed();
             }
             LimitSpeed();
         }
@@ -135,4 +160,24 @@ public class Gravity : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
     }
+
+    private void CheckSpeed()
+    {
+        if (verticalSpeed > -0.6f)
+        {
+            if (actualDirection == Vector3.up)
+                rb.velocity = Vector3.down * 3f;
+            else if (actualDirection == Vector3.right)
+                rb.velocity = Vector3.left * 3f;
+            else if (actualDirection == Vector3.left)
+                rb.velocity = Vector3.right * 3f;
+            else if (actualDirection == Vector3.down)
+                rb.velocity = Vector3.up * 3f;
+            else if (actualDirection == Vector3.forward)
+                rb.velocity = Vector3.back * 3f;
+            else if (actualDirection == Vector3.back)
+                rb.velocity = Vector3.forward * 3f;
+        }
+    }
+
 }

@@ -6,4 +6,5 @@ public static class Tags
 {
     public static string CUBEWALL_TAG = "CubeWall";
     public static string OBJECT_MOVABLE_TAG = "ObjectMovable";
+    public static string PLAYER = "Player";
 }
