@@ -1955,6 +1955,7 @@ Transform:
   - {fileID: 1551115517}
   - {fileID: 1973911862}
   - {fileID: 1946529326}
+  - {fileID: 543450651750218551}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2618,15 +2619,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147748888973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7744857, y: -9.44, z: -11.14104}
+  m_LocalPosition: {x: 0.7744857, y: -9.44, z: 0.36896038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6832983489826485613}
   - {fileID: 7061363255551556394}
   - {fileID: 1592269068}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1838710094}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652983853026
 Transform:
@@ -2693,6 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651750218551}
   - component: {fileID: 919132147748888975}
+  - component: {fileID: 919132147748888979}
   - component: {fileID: 919132147748888977}
   - component: {fileID: 919132147748888978}
   - component: {fileID: 919132147748888976}
@@ -2764,6 +2766,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.71, y: 1.79, z: 0.8}
   m_Center: {x: 0, y: 0.88, z: 0}
+--- !u!114 &919132147748888979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147748888973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb12bc3678b7941a79e427a7c1f7e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHead: {fileID: 7687346004867784445}
+  markerPrefab: {fileID: 727627546689263889, guid: 8f98310b903c9d6478360f9fa8eb9617, type: 3}
 --- !u!1 &919132148797941080
 GameObject:
   m_ObjectHideFlags: 0
