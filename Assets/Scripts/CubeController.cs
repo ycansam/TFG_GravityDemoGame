@@ -128,32 +128,32 @@ public class CubeController : MonoBehaviour
         playerOnWall.Contains("Inferior") && playerLookingAtInteriorWall.Contains("Left") || playerOnWall.Contains("Inferior") && playerLookingAtInteriorWall.Contains("Right");
 
         bool playerOnRightWallAndLookingTopInferior =
-                playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Top") && player.parent != null || playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Inferior") && player.parent != null;
+                playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Top")  || playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Inferior") ;
 
         Int16 playerOnRightWallAndLookingFrontBack =
-       playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Front") && player.parent != null || playerLookingAtInteriorWall.Contains("Back") ? (short)-1 : (short)1;
+       playerOnWall.Contains("Right") && playerLookingAtInteriorWall.Contains("Front")  || playerLookingAtInteriorWall.Contains("Back") ? (short)-1 : (short)1;
 
-        Int16 inverted = playerOnLeftWallCond && player.parent != null ? (short)-1 : (short)1;
-        Int16 invertedOnTopWall = playerOnTopWall && player.parent != null ? (short)-1 : (short)1;
-        Int16 invertedOnBackWall = playerOnBackWall && player.parent != null ? (short)-1 : (short)1;
+        Int16 inverted = playerOnLeftWallCond  ? (short)-1 : (short)1;
+        Int16 invertedOnTopWall = playerOnTopWall  ? (short)-1 : (short)1;
+        Int16 invertedOnBackWall = playerOnBackWall  ? (short)-1 : (short)1;
 
         bool playerOnTopWallLookingBackFront =
-            playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Back") && player.parent != null || playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Front") && player.parent != null;
+            playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Back")  || playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Front") ;
 
         bool playerOnTopWallLookingRightLeft =
-            playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Right") && player.parent != null || playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Left") && player.parent != null;
+            playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Right")  || playerOnWall.Contains("Top") && playerLookingAtInteriorWall.Contains("Left") ;
 
         bool playerOnLeftWallAndLookingBackFront =
-            playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Back") && player.parent != null || playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Front") && player.parent != null;
+            playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Back")  || playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Front") ;
 
         bool playerOnLeftWallAndLookingTopInferior =
-                   playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Top") && player.parent != null || playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Inferior") && player.parent != null;
+                   playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Top")  || playerOnWall.Contains("Left") && playerLookingAtInteriorWall.Contains("Inferior") ;
 
         bool playerOnFrontWallAndLookingLeftRight =
-                          playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Left") && player.parent != null || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Right") && player.parent != null;
+                          playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Left")  || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Right") ;
 
         bool playerOnFrontWallAndLookingTopInferior =
-                         playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Top") && player.parent != null || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Inferior") && player.parent != null;
+                         playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Top")  || playerOnWall.Contains("Front") && playerLookingAtInteriorWall.Contains("Inferior") ;
 
         if (Input.GetKeyDown(rightKey) && !rotating)
         {
