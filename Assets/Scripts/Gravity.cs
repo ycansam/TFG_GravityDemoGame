@@ -60,7 +60,6 @@ public class Gravity : MonoBehaviour
         else
         {
             rb.constraints = RigidbodyConstraints.None;
-
         }
     }
 
@@ -78,13 +77,6 @@ public class Gravity : MonoBehaviour
         if (!IsGrounded())
         {
             rb.AddForce(Vector3.down * gravity * mass, ForceMode.Acceleration);
-            Debug.Log("a");
-        }
-        else
-        {
-            Debug.Log("b");
-            rb.constraints = RigidbodyConstraints.None;
-            rb.useGravity = true;
         }
     }
 
@@ -92,22 +84,32 @@ public class Gravity : MonoBehaviour
     {
         Vector3 origin = transform.position;
         origin.y += 0.1f;
-        float distance = 0.30f;
+        float distance = 2.3f;
         RaycastHit hit;
-        if (Physics.SphereCast(origin, 0.5f, Vector3.down, out hit, distance, groundLayers))
-        {
-            rb.constraints = RigidbodyConstraints.None;
-            return true;
-        }
-        return false;
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.GetComponent<Rigidbody>())
+
+        if (IsOnAnyObject())
         {
             rb.velocity = Vector3.zero;
         }
+
+        if (Physics.SphereCast(origin, 0.5f, Vector3.down, out hit, distance, groundLayers))
+        {
+            rb.velocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.None;
+            return true;
+        }
+
+
+        return false;
     }
+
+    private bool IsOnAnyObject()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * 2.1f, Color.red);
+        return Physics.Raycast(transform.position, Vector3.down * 2.1f, 2.1f);
+    }
+
+
     // private void OnCollisionStay(Collision other)
     // {
     //     // Condiciones de choque de Alturas
