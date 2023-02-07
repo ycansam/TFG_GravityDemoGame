@@ -56,6 +56,7 @@ public class Gravity : MonoBehaviour
         if (cubeController.IsRotating)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation;
+            rb.angularVelocity = Vector3.zero;
         }
         else
         {
@@ -65,16 +66,16 @@ public class Gravity : MonoBehaviour
 
     private void UseGravity()
     {
-        if (useGravity)
-        {
-            // Vector3 speedVectorized = actualDirection * verticalSpeed * Time.fixedDeltaTime;
+        // if (useGravity)
+        // {
+        // Vector3 speedVectorized = actualDirection * verticalSpeed * Time.fixedDeltaTime;
 
-            // transform.position += speedVectorized;
-            // verticalSpeed -= gravity * Time.fixedDeltaTime * mass;
-        }
+        // transform.position += speedVectorized;
+        // verticalSpeed -= gravity * Time.fixedDeltaTime * mass;
+        // }
 
 
-        if (!IsGrounded())
+        if (!IsGrounded() && useGravity)
         {
             rb.AddForce(Vector3.down * gravity * mass, ForceMode.Acceleration);
         }
@@ -84,7 +85,7 @@ public class Gravity : MonoBehaviour
     {
         Vector3 origin = transform.position;
         origin.y += 0.1f;
-        float distance = 2.3f;
+        float distance = 2.5f;
         RaycastHit hit;
 
         if (IsOnAnyObject())
@@ -92,7 +93,7 @@ public class Gravity : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if (Physics.SphereCast(origin, 0.5f, Vector3.down, out hit, distance, groundLayers))
+        if (Physics.SphereCast(origin, 3f, Vector3.down, out hit, distance, groundLayers))
         {
             rb.velocity = Vector3.zero;
             rb.constraints = RigidbodyConstraints.None;
@@ -107,6 +108,11 @@ public class Gravity : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector3.down * 2.1f, Color.red);
         return Physics.Raycast(transform.position, Vector3.down * 2.1f, 2.1f);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+
     }
 
 
