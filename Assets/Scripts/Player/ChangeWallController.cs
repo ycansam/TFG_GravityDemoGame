@@ -13,7 +13,7 @@ public class ChangeWallController : MonoBehaviour
     private RaycastHit hit;
     private RaycastHit hitHelpWall;
 
-    public static string playerOnWall;
+    private string playerOnWall;
 
 
     // Start is called before the first frame update
@@ -22,6 +22,7 @@ public class ChangeWallController : MonoBehaviour
         marker = Instantiate<GameObject>(markerPrefab);
         marker.SetActive(false);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -83,6 +84,11 @@ public class ChangeWallController : MonoBehaviour
             marker.SetActive(true);
         else if (marker.activeSelf && !activationCond)
             marker.SetActive(false);
+    }
+
+    public string GetPlayerOnWall()
+    {
+        return playerOnWall;
     }
 
 }

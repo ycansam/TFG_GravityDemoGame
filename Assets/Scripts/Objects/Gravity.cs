@@ -14,6 +14,8 @@ public class Gravity : MonoBehaviour
 
     [SerializeField]
     float mass = 1f;
+    [SerializeField]
+    ChangeWallController changeWallController;
 
     // Elementos usado en el script
     public Rigidbody rb;
@@ -31,28 +33,17 @@ public class Gravity : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (ChangeWallController.playerOnWall != null)
-                if (ChangeWallController.playerOnWall.Contains("Left"))
-                    actualDirection = Vector3.right;
-                else if (ChangeWallController.playerOnWall.Contains("Right"))
-                    actualDirection = Vector3.left;
-                else if (ChangeWallController.playerOnWall.Contains("Front"))
-                    actualDirection = Vector3.back;
-                else if (ChangeWallController.playerOnWall.Contains("Back"))
-                    actualDirection = Vector3.forward;
-                else if (ChangeWallController.playerOnWall.Contains("Top"))
-                    actualDirection = Vector3.down;
-                else if (ChangeWallController.playerOnWall.Contains("Inferior"))
-                    actualDirection = Vector3.up;
-        }
+        SetGravityDirection(changeWallController.GetPlayerOnWall());
     }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         UseGravity();
+        RigibodyStatsBasedOnRotation();
+    }
+
+    // Actualiza el estado del RigidBody cuando rota el cubo
+    private void RigibodyStatsBasedOnRotation()
+    {
         if (cubeController.IsRotating)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -64,6 +55,30 @@ public class Gravity : MonoBehaviour
         }
     }
 
+    // Actualiza la direccion basada en la pared en la que esta el jugador
+    private void SetGravityDirection(string playerOnWall)
+    {
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            if (playerOnWall != null)
+                if (playerOnWall.Contains("Left"))
+                    actualDirection = Vector3.right;
+                else if (playerOnWall.Contains("Right"))
+                    actualDirection = Vector3.left;
+                else if (playerOnWall.Contains("Front"))
+                    actualDirection = Vector3.back;
+                else if (playerOnWall.Contains("Back"))
+                    actualDirection = Vector3.forward;
+                else if (playerOnWall.Contains("Top"))
+                    actualDirection = Vector3.down;
+                else if (playerOnWall.Contains("Inferior"))
+                    actualDirection = Vector3.up;
+        }
+    }
+
+    // Update is called once per frame
+
+    // Activa la gravedad
     private void UseGravity()
     {
 
@@ -73,6 +88,7 @@ public class Gravity : MonoBehaviour
         }
     }
 
+    // Detecta si el cubo esta en el suelo o no
     private bool IsGrounded()
     {
         Vector3 origin = transform.position;
@@ -96,12 +112,14 @@ public class Gravity : MonoBehaviour
         return false;
     }
 
+    // Detecta si el cubo esta encima de otro cubo
     private bool IsOnAnyObject()
     {
         Debug.DrawRay(transform.position, GetGravityDirection() * 2.1f, Color.red);
         return Physics.Raycast(transform.position, GetGravityDirection() * 2.1f, 2.1f);
     }
 
+    // Obtiene la direccion en la que debe ir la gravedad en funcion de la situacion del jugador
     private Vector3 GetGravityDirection()
     {
 
