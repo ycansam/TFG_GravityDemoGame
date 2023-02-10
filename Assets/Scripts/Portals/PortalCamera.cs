@@ -7,6 +7,7 @@ public class PortalCamera : MonoBehaviour
     public Transform player_cam;
     public Transform portal;
     public Transform otherPortal;
+    public Transform cubeRotator;
 
     public bool neg;
 
@@ -20,9 +21,10 @@ public class PortalCamera : MonoBehaviour
         float angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
 
         Quaternion portalRotDiff = Quaternion.AngleAxis(angularDiff, Vector3.up);
-        Vector3 newCamDir = portalRotDiff * player_cam.forward;
+        // Vector3 newCamDir = player_cam.forward;
 
-        transform.rotation = Quaternion.LookRotation(newCamDir, Vector3.up);
+        // transform.rotation = Quaternion.LookRotation(newCamDir, Vector3.up);
+        transform.rotation = player_cam.rotation;
 
 
         /*   Matrix4x4 m = portal.localToWorldMatrix * otherPortal.localToWorldMatrix * player_cam.localToWorldMatrix;

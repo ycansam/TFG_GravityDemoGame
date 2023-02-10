@@ -53,17 +53,6 @@ public class CharacterController : MonoBehaviour
 
     }
 
-    private void CubeFatherActions()
-    {
-        if (Input.GetKeyDown(GameConstants.KEY_CUBE_FATHER))
-        {
-            if (transform.parent == null)
-                transform.SetParent(cubeFather);
-            else
-                transform.SetParent(null);
-        }
-    }
-
     private bool isGrounded()
     {
         Debug.DrawRay(transform.position, transform.up * -1, Color.red);
