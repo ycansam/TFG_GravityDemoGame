@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PortalCamera : MonoBehaviour
 {
-    public Transform player_cam;
     public Transform portal;
     public Transform otherPortal;
-    public Transform cubeRotator;
 
     public bool neg;
+    private Transform player_cam;
+    private void Start()
+    {
+        player_cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+    }
 
     void LateUpdate()
     {

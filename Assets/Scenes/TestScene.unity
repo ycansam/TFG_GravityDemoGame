@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 257035934}
   - component: {fileID: 257035935}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: CameraEnter2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,10 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1a7786087b91e44a7e92cef6c555eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_cam: {fileID: 963194228}
   portal: {fileID: 1478906606}
   otherPortal: {fileID: 1099382942}
-  cubeRotator: {fileID: 477429320}
   neg: 0
 --- !u!1 &278318320
 GameObject:
@@ -840,7 +838,7 @@ GameObject:
   - component: {fileID: 372636210}
   - component: {fileID: 372636209}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: CameraEnter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,10 +871,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1a7786087b91e44a7e92cef6c555eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_cam: {fileID: 963194228}
   portal: {fileID: 1099382942}
   otherPortal: {fileID: 1478906606}
-  cubeRotator: {fileID: 1838710094}
   neg: 0
 --- !u!20 &372636210
 Camera:
@@ -1479,7 +1475,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHead: {fileID: 512122151786878306}
   player: {fileID: 543450651750218551}
-  playerSim: {fileID: 0}
   isRotating: 0
   rotationSpeed: 0.75
   keyRight: 101
@@ -3070,7 +3065,7 @@ GameObject:
   - component: {fileID: 1099382944}
   - component: {fileID: 1099382943}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: PortalEnter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3696,7 +3691,7 @@ GameObject:
   - component: {fileID: 1478906608}
   - component: {fileID: 1478906607}
   m_Layer: 7
-  m_Name: Quad (1)
+  m_Name: PortalEnter2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3709,15 +3704,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478906605}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.12, z: -18.84}
+  m_LocalRotation: {x: -5.8207655e-10, y: 0.70710707, z: 4.0745357e-10, w: 0.70710665}
+  m_LocalPosition: {x: -6.481012e-11, y: -0.12, z: -18.840002}
   m_LocalScale: {x: 9.227549, y: 23.280794, z: 7.1607}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 257035932}
   m_Father: {fileID: 227369316}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!64 &1478906607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4057,7 +4052,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHead: {fileID: 512122151786878306}
   player: {fileID: 543450651750218551}
-  playerSim: {fileID: 0}
   isRotating: 0
   rotationSpeed: 0.75
   keyRight: 101
@@ -4829,7 +4823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147748888973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.01, y: -9.44, z: -23.58}
+  m_LocalPosition: {x: 7.2, y: -9.44, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

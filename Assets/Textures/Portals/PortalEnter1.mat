@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Short_FET
-  m_Shader: {fileID: 4800000, guid: 4445cac68bf38c34d9a4ccfa02e6212d, type: 3}
+  m_Name: PortalEnter1
+  m_Shader: {fileID: 4800000, guid: 4acbc007f4155034dbd13dd985e75dc1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
