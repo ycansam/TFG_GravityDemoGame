@@ -7,6 +7,8 @@ public class PortalTeleport : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private Transform otherPortal;
+
+    // Booleano que inidica si esta en un lado u otro
     [SerializeField]
     private bool neg;
     private Transform player;
@@ -22,19 +24,19 @@ public class PortalTeleport : MonoBehaviour
         if (other.tag == Tags.PLAYER)
         {
 
+            float distance = 0.02f;
             Vector3 playerFromPortal = transform.position - player.position;
-            Debug.Log(playerFromPortal.x);
+            // si es negativo 
             if (!neg)
             {
-                if (playerFromPortal.x <= -0.02)
+                if (playerFromPortal.x <= -distance)
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
             else
             {
-                if (playerFromPortal.x >= -0.02)
+                if (playerFromPortal.x >= -distance)
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
-
         }
     }
 
