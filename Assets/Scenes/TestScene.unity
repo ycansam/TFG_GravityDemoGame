@@ -3064,6 +3064,7 @@ GameObject:
   - component: {fileID: 1099382945}
   - component: {fileID: 1099382944}
   - component: {fileID: 1099382943}
+  - component: {fileID: 1099382946}
   m_Layer: 0
   m_Name: PortalEnter1
   m_TagString: Untagged
@@ -3151,6 +3152,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099382941}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1099382946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099382941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053875a5fe6de2a49854f90e52503a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1478906606}
+  neg: 1
 --- !u!1 &1110573667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +3705,7 @@ GameObject:
   - component: {fileID: 1478906609}
   - component: {fileID: 1478906608}
   - component: {fileID: 1478906607}
+  - component: {fileID: 1478906610}
   m_Layer: 7
   m_Name: PortalEnter2
   m_TagString: Untagged
@@ -3777,6 +3793,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478906605}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1478906610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478906605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053875a5fe6de2a49854f90e52503a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1099382942}
+  neg: 0
 --- !u!1 &1592269067
 GameObject:
   m_ObjectHideFlags: 0
