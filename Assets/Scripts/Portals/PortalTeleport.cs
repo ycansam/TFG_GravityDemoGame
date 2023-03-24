@@ -30,12 +30,13 @@ public class PortalTeleport : MonoBehaviour
             Debug.Log(playerFromPortal);
             if (!neg)
             {
-                if (playerFromPortal.x <= -distance || playerFromPortal.y <= -distance || playerFromPortal.z <= -distance)
+                if (playerFromPortal.x <= -distance )
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
             else
             {
-                if (playerFromPortal.x >= -distance || playerFromPortal.y >= -distance || playerFromPortal.z >= -distance)
+                //  || playerFromPortal.y >= -distance || playerFromPortal.z >= -distance
+                if (playerFromPortal.x >= -distance)
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
         }
