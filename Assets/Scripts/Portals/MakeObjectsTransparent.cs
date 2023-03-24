@@ -34,38 +34,42 @@ public class MakeObjectsTransparent : MonoBehaviour
         foreach (Transform wall in contactPoints)
         {
             float cameraPlayerDistance = Vector3.Magnitude(cam.position - wall.position);
-            Ray ray1_Forward = new Ray(cam.position, wall.position - cam.position);
-            Ray ray1_Backward = new Ray(wall.position, cam.position - wall.position);
-
-            Debug.DrawRay(cam.position, ray1_Forward.direction * cameraPlayerDistance, Color.green);
-
-
-            var hits1_Forward = Physics.RaycastAll(ray1_Forward, cameraPlayerDistance);
-            var hits1_Backward = Physics.RaycastAll(ray1_Backward, cameraPlayerDistance);
-
-            foreach (var hit in hits1_Forward)
+            if (cameraPlayerDistance < 50f)
             {
+                Ray ray1_Forward = new Ray(cam.position, wall.position - cam.position);
+                Ray ray1_Backward = new Ray(wall.position, cam.position - wall.position);
 
-                if (hit.collider.gameObject.TryGetComponent(out ObjectInTheWay inTheWay))
+                Debug.DrawRay(cam.position, ray1_Forward.direction * cameraPlayerDistance, Color.green);
+
+
+                var hits1_Forward = Physics.RaycastAll(ray1_Forward, cameraPlayerDistance);
+                var hits1_Backward = Physics.RaycastAll(ray1_Backward, cameraPlayerDistance);
+
+                foreach (var hit in hits1_Forward)
                 {
-                    if (!currentlyInTheWay.Contains(inTheWay))
+
+                    if (hit.collider.gameObject.TryGetComponent(out ObjectInTheWay inTheWay))
                     {
-                        currentlyInTheWay.Add(inTheWay);
+                        if (!currentlyInTheWay.Contains(inTheWay))
+                        {
+                            currentlyInTheWay.Add(inTheWay);
+                        }
                     }
                 }
-            }
 
-            foreach (var hit in hits1_Backward)
-            {
-                if (hit.collider.gameObject.TryGetComponent(out ObjectInTheWay inTheWay))
+                foreach (var hit in hits1_Backward)
                 {
-                    if (!currentlyInTheWay.Contains(inTheWay))
+                    if (hit.collider.gameObject.TryGetComponent(out ObjectInTheWay inTheWay))
                     {
-                        currentlyInTheWay.Add(inTheWay);
+                        if (!currentlyInTheWay.Contains(inTheWay))
+                        {
+                            currentlyInTheWay.Add(inTheWay);
+                        }
                     }
                 }
             }
         }
+
 
 
 
