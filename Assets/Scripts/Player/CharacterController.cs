@@ -44,7 +44,6 @@ public class CharacterController : MonoBehaviour
             PlayerGravity();
         GetInput();
         PlayerMove();
-        // CubeFatherActions();
     }
 
     private void FixedUpdate()
