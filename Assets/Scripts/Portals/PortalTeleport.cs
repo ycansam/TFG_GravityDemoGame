@@ -27,14 +27,15 @@ public class PortalTeleport : MonoBehaviour
             float distance = 0.02f;
             Vector3 playerFromPortal = transform.position - player.position;
             // si es negativo 
+            Debug.Log(playerFromPortal);
             if (!neg)
             {
-                if (playerFromPortal.x <= -distance)
+                if (playerFromPortal.x <= -distance || playerFromPortal.y <= -distance || playerFromPortal.z <= -distance)
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
             else
             {
-                if (playerFromPortal.x >= -distance)
+                if (playerFromPortal.x >= -distance || playerFromPortal.y >= -distance || playerFromPortal.z >= -distance)
                     player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
         }
