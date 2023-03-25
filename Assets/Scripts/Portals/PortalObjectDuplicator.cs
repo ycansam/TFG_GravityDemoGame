@@ -11,9 +11,23 @@ public class PortalObjectDuplicator : MonoBehaviour
     private List<GameObject> duplicatedObjects = new List<GameObject>();
     private List<GameObject> otherPortalObjects = new List<GameObject>();
 
+    private void FixedUpdate()
+    {
+        PasteObjectPositionInOtherPortal();
+    }
 
+    private void PasteObjectPositionInOtherPortal()
+    {
+        for (int i = 0; i < duplicatedObjects.Count; i++)
+        {
+            Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
+            otherPortalObjects[i].transform.position = otherPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
+            otherPortalObjects[i].transform.rotation = duplicatedObjects[i].transform.rotation;
+            otherPortalObjects[i].transform.localScale = duplicatedObjects[i].transform.localScale;
+        }
+    }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag != Tags.PLAYER)
         {
@@ -23,13 +37,6 @@ public class PortalObjectDuplicator : MonoBehaviour
                 instanceOfObject.transform.SetParent(otherPortal.parent);
                 duplicatedObjects.Add(other.gameObject);
                 otherPortalObjects.Add(instanceOfObject);
-            }
-            for (int i = 0; i < duplicatedObjects.Count; i++)
-            {
-                Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
-                otherPortalObjects[i].transform.position = otherPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
-                otherPortalObjects[i].transform.rotation = duplicatedObjects[i].transform.rotation;
-                otherPortalObjects[i].transform.localScale = duplicatedObjects[i].transform.localScale;
             }
         }
     }

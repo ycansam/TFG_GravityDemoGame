@@ -23,6 +23,7 @@ public class Gravity : MonoBehaviour
     private Transform player;
     private Vector3 actualDirection = Vector3.up;
     public LayerMask groundLayers;
+    public int ingorePortalLayer = 7;
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -98,6 +99,7 @@ public class Gravity : MonoBehaviour
 
         if (IsOnAnyObject())
         {
+            Debug.Log("Is On Object");
             rb.velocity = Vector3.zero;
         }
 
@@ -116,7 +118,7 @@ public class Gravity : MonoBehaviour
     private bool IsOnAnyObject()
     {
         Debug.DrawRay(transform.position, GetGravityDirection() * 2.1f, Color.red);
-        return Physics.Raycast(transform.position, GetGravityDirection() * 2.1f, 2.1f);
+        return Physics.Raycast(transform.position, GetGravityDirection() * 2.1f, 2.1f, ingorePortalLayer);
     }
 
     // Obtiene la direccion en la que debe ir la gravedad en funcion de la situacion del jugador

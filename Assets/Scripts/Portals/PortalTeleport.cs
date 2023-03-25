@@ -27,7 +27,6 @@ public class PortalTeleport : MonoBehaviour
             float distance = 0.02f;
             Vector3 playerFromPortal = transform.position - player.position;
             // si es negativo 
-            Debug.Log(playerFromPortal);
             if (!neg)
             {
                 if (playerFromPortal.x <= -distance )

@@ -1240,6 +1240,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &368748052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2313,6 +2316,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &517119979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2401,6 +2407,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &553759529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2648,6 +2657,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &597288495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2942,6 +2954,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &741427767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3439,6 +3454,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &858263088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6608,6 +6626,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!54 &2128366986
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6621,7 +6642,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &2128366987
