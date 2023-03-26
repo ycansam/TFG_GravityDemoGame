@@ -11,8 +11,6 @@ public class PlayerInCube : MonoBehaviour
         if (!colliderList.Contains(collider.gameObject))
         {
             colliderList.Add(collider.gameObject);
-            Debug.Log("Added " + gameObject.name);
-            Debug.Log("GameObjects in list: " + colliderList.Count);
         }
     }
 
@@ -21,8 +19,6 @@ public class PlayerInCube : MonoBehaviour
         if (colliderList.Contains(collider.gameObject))
         {
             colliderList.Remove(collider.gameObject);
-            Debug.Log("Removed " + gameObject.name);
-            Debug.Log("GameObjects in list: " + colliderList.Count);
         }
     }
 
