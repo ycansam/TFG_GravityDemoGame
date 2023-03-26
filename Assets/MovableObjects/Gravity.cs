@@ -99,7 +99,6 @@ public class Gravity : MonoBehaviour
 
         if (IsOnAnyObject())
         {
-            Debug.Log("Is On Object");
             rb.velocity = Vector3.zero;
         }
 

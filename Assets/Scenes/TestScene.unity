@@ -599,7 +599,7 @@ Transform:
   - {fileID: 420132378}
   - {fileID: 591586881}
   - {fileID: 1478906606}
-  - {fileID: 597288493}
+  - {fileID: 949175432}
   m_Father: {fileID: 477429320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.122, y: 0, z: 0}
@@ -1240,9 +1240,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &368748052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1256,9 +1254,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &368748053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2316,9 +2314,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &517119979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2332,9 +2328,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &517119980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,9 +2403,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &553759529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2423,9 +2417,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &553759530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2599,145 +2593,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591586880}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &597288492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 597288493}
-  - component: {fileID: 597288498}
-  - component: {fileID: 597288497}
-  - component: {fileID: 597288496}
-  - component: {fileID: 597288495}
-  - component: {fileID: 597288494}
-  m_Layer: 6
-  m_Name: CubeMovable (2)
-  m_TagString: ObjectMovable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &597288493
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9, y: -7.887357, z: -19.996872}
-  m_LocalScale: {x: 2.5058966, y: 2.505896, z: 2.505896}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 227369316}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &597288494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
-  useGravity: 1
-  gravity: 9.81
-  mass: 3
-  changeWallController: {fileID: 919132147748888979}
-  rb: {fileID: 0}
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!54 &597288495
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!65 &597288496
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &597288497
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &597288498
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597288492}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &685470564
 GameObject:
@@ -2954,9 +2809,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &741427767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2970,9 +2823,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &741427768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3454,9 +3307,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &858263088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3470,9 +3321,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &858263089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3777,6 +3628,158 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948867944}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &949175431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949175432}
+  - component: {fileID: 949175438}
+  - component: {fileID: 949175437}
+  - component: {fileID: 949175436}
+  - component: {fileID: 949175435}
+  - component: {fileID: 949175434}
+  - component: {fileID: 949175433}
+  m_Layer: 6
+  m_Name: CubeMovable (4)
+  m_TagString: ObjectMovable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &949175432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.33, y: 5.1, z: -8.41}
+  m_LocalScale: {x: 2.5058966, y: 2.505896, z: 2.505896}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 227369316}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949175433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00b21b2d30d3e245931d976bc9af29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SolidMaterial: {fileID: 2100000, guid: 4e79662959955d148bf4373aef81425e, type: 2}
+  TransparentMaterial: {fileID: 2100000, guid: 6539bce2281515e4fa73d721b90a5cc3, type: 2}
+--- !u!114 &949175434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeController: {fileID: 1838710095}
+  useGravity: 1
+  gravity: 9.81
+  mass: 3
+  changeWallController: {fileID: 919132147748888979}
+  rb: {fileID: 0}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  ingorePortalLayer: 7
+--- !u!54 &949175435
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  serializedVersion: 2
+  m_Mass: 2000
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &949175436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &949175437
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &949175438
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949175431}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,6 +4317,7 @@ GameObject:
   - component: {fileID: 1099382943}
   - component: {fileID: 1099382946}
   - component: {fileID: 1099382947}
+  - component: {fileID: 1099382948}
   m_Layer: 7
   m_Name: PortalEnter1
   m_TagString: Untagged
@@ -4430,6 +4434,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1478906606}
+--- !u!114 &1099382948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099382941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2858f76a438f751429e76dc59ab1c8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1478906606}
+  neg: 0
 --- !u!1 &1110573667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5250,6 +5268,7 @@ GameObject:
   - component: {fileID: 1478906608}
   - component: {fileID: 1478906607}
   - component: {fileID: 1478906610}
+  - component: {fileID: 1478906611}
   m_Layer: 7
   m_Name: PortalEnter2
   m_TagString: Untagged
@@ -5351,6 +5370,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1099382942}
   neg: 0
+--- !u!114 &1478906611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478906605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2858f76a438f751429e76dc59ab1c8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1099382942}
+  neg: 1
 --- !u!1 &1481638069
 GameObject:
   m_ObjectHideFlags: 0
@@ -5663,7 +5696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70d1b0c958e1814ba94d8243dc475ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: fc532d3abe602c143b74b49fb2dda9a6, type: 2}
 --- !u!1 &1705988276
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,7 +5836,7 @@ GameObject:
   - component: {fileID: 1838710094}
   - component: {fileID: 1838710095}
   m_Layer: 0
-  m_Name: MainCube
+  m_Name: Cube 1
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6626,9 +6658,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  portalLayer:
-    serializedVersion: 2
-    m_Bits: 384
+  ingorePortalLayer: 7
 --- !u!54 &2128366986
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6644,7 +6674,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &2128366987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7090,6 +7120,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   gravityEnabled: 1
+  ignorePortalLayer: 7
 --- !u!54 &919132147748888977
 Rigidbody:
   m_ObjectHideFlags: 0

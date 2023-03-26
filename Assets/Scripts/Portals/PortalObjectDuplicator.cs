@@ -27,7 +27,7 @@ public class PortalObjectDuplicator : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag != Tags.PLAYER)
         {
@@ -45,6 +45,7 @@ public class PortalObjectDuplicator : MonoBehaviour
     {
         if (other.tag != Tags.PLAYER)
         {
+            
             if (duplicatedObjects.Contains(other.gameObject))
             {
                 int index = duplicatedObjects.IndexOf(other.gameObject);
