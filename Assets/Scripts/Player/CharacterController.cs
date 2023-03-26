@@ -13,8 +13,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
-    [SerializeField]
-    private Transform cubeFather;
 
     [Header("Move Settings")]
     [SerializeField]

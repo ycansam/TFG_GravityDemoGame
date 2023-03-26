@@ -57,7 +57,6 @@ public class PortalTeleport : MonoBehaviour
         Vector3 objectFromEntryPoint = enterPoint.position - player.transform.position;
         Vector3 objectFromExitPoint = exitPoint.position - player.transform.position;
         float distance = objectFromEntryPoint.magnitude - objectFromExitPoint.magnitude;
-        Debug.Log(distance);
         return distance;
     }
 
