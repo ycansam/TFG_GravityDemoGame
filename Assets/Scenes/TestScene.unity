@@ -4546,6 +4546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1478906606}
+  enterPoint: {fileID: 1071842188}
+  exitPoint: {fileID: 1668483390}
   neg: 1
 --- !u!114 &1099382947
 MonoBehaviour:
@@ -5498,6 +5500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1099382942}
+  enterPoint: {fileID: 430352290}
+  exitPoint: {fileID: 317009394}
   neg: 0
 --- !u!114 &1478906611
 MonoBehaviour:

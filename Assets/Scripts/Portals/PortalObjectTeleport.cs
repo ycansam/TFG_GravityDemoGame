@@ -36,7 +36,7 @@ public class PortalObjectTeleport : MonoBehaviour
         }
     }
 
-    // true si ha salido por delante, false si ha salido por detras
+    // true si ha salido por detras del portal, false si ha salido por delante
     private bool GetFromWhereIsTheObjectExiting(GameObject objectToTp)
     {
 
