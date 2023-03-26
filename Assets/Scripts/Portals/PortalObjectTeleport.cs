@@ -8,6 +8,13 @@ public class PortalObjectTeleport : MonoBehaviour
     [SerializeField]
     private Transform otherPortal;
 
+    [SerializeField]
+    private Transform enterPoint;
+
+    [SerializeField]
+    private Transform exitPoint;
+
+
     // Booleano que inidica si esta en un lado u otro
     [SerializeField]
     private bool neg;
@@ -18,17 +25,27 @@ public class PortalObjectTeleport : MonoBehaviour
         if (other.tag != Tags.PLAYER)
         {
 
-            Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
-            // si es negativo 
-            if (!neg)
+
+            bool exitedFromBack = GetFromWhereIsTheObjectExiting(objectToTp);
+            if (exitedFromBack == neg)
             {
-                Debug.Log(playerFromPortal);
+                Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
                 objectToTp.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-            }
-            else
-            {
-                objectToTp.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+
             }
         }
     }
+
+    // true si ha salido por delante, false si ha salido por detras
+    private bool GetFromWhereIsTheObjectExiting(GameObject objectToTp)
+    {
+
+        Vector3 objectFromEntryPoint = enterPoint.position - objectToTp.transform.position;
+        Vector3 objectFromExitPoint = exitPoint.position - objectToTp.transform.position;
+        float direction = objectFromEntryPoint.magnitude - objectFromExitPoint.magnitude;
+        if (direction > 0)
+            return true;
+        return false;
+    }
+
 }
