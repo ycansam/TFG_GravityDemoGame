@@ -4631,6 +4631,7 @@ GameObject:
   - component: {fileID: 1099382943}
   - component: {fileID: 1099382946}
   - component: {fileID: 1099382948}
+  - component: {fileID: 1099382949}
   m_Layer: 7
   m_Name: PortalEnter1
   m_TagString: Untagged
@@ -4752,6 +4753,21 @@ MonoBehaviour:
   enterPoint: {fileID: 1071842188}
   exitPoint: {fileID: 1668483390}
   neg: 1
+--- !u!114 &1099382949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099382941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1478906606}
+  duplicatedObjects: []
+  otherPortalObjects: []
 --- !u!1 &1110573667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +5682,7 @@ GameObject:
   - component: {fileID: 1478906607}
   - component: {fileID: 1478906610}
   - component: {fileID: 1478906611}
+  - component: {fileID: 1478906612}
   m_Layer: 7
   m_Name: PortalEnter2
   m_TagString: Untagged
@@ -5787,6 +5804,21 @@ MonoBehaviour:
   enterPoint: {fileID: 430352290}
   exitPoint: {fileID: 317009394}
   neg: 0
+--- !u!114 &1478906612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478906605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 1099382942}
+  duplicatedObjects: []
+  otherPortalObjects: []
 --- !u!1 &1481638069
 GameObject:
   m_ObjectHideFlags: 0
