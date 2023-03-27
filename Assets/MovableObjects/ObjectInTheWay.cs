@@ -12,11 +12,13 @@ public class ObjectInTheWay : MonoBehaviour
     }
     public void ShowSolid()
     {
-        GetComponent<MeshRenderer>().material = SolidMaterial;
+        if (this)
+            GetComponent<MeshRenderer>().material = SolidMaterial;
     }
     public void ShowTransparent()
     {
-        GetComponent<MeshRenderer>().material = TransparentMaterial;
+        if (this)
+            GetComponent<MeshRenderer>().material = TransparentMaterial;
     }
 
 
