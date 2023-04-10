@@ -12,6 +12,7 @@ public class ChangeWallController : MonoBehaviour
     private GameObject marker;
     private RaycastHit hit;
     private RaycastHit hitHelpWall;
+    private RaycastHit actualPlayerStandingWall;
 
     private string playerOnWall;
 
@@ -28,6 +29,7 @@ public class ChangeWallController : MonoBehaviour
     void Update()
     {
         LookingForwardRay();
+        LookingDownwardRay();
         Controls();
     }
 
@@ -35,9 +37,40 @@ public class ChangeWallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && marker.activeSelf)
         {
-            transform.eulerAngles = hit.transform.eulerAngles;
+            RotatePlayerByWall(actualPlayerStandingWall.transform.name);
             playerOnWall = hitHelpWall.transform.name;
         }
+    }
+
+    private void RotatePlayerByWall(string wallName)
+    {
+        Debug.Log(wallName);
+        if (wallName.Contains("Inferior"))
+        {
+            float fixedY = FixRotationToInt(transform.localEulerAngles.y);
+            transform.eulerAngles = new Vector3(transform.localEulerAngles.x - 90f, transform.localEulerAngles.y - fixedY, transform.localEulerAngles.z);
+            Debug.Log(transform.eulerAngles);
+        }
+        else
+        {
+
+        }
+
+    }
+
+    private float FixRotationToInt(float axisAngle)
+    {
+        return axisAngle - 90f;
+    }
+
+
+
+    private void LookingDownwardRay()
+    {
+        Vector3 downward = transform.TransformDirection(Vector3.down) * 50f;
+        Debug.DrawRay(transform.position, downward, Color.green);
+        AssignPlayerOnWall(Physics.RaycastAll(playerHead.position, downward, 50.0F));
+
     }
 
     private void LookingForwardRay()
@@ -48,7 +81,6 @@ public class ChangeWallController : MonoBehaviour
 
         AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F));
         AssignHitHelpWall(Physics.RaycastAll(playerHead.position, forward, 50.0F));
-
     }
 
     // Asigna al marker un punto donde estar y aparecer
@@ -74,6 +106,16 @@ public class ChangeWallController : MonoBehaviour
             hit = hits[i];
             if (hit.transform.name.Contains("Wall") && hit.transform.name.Contains("Help"))
                 hitHelpWall = hit;
+        }
+    }
+
+    private void AssignPlayerOnWall(RaycastHit[] hits)
+    {
+        for (int i = 0; i < hits.Length; i++)
+        {
+            hit = hits[i];
+            if (hit.transform.name.Contains("Wall") && hit.transform.name.Contains("Help"))
+                actualPlayerStandingWall = hit;
         }
     }
 
