@@ -48,19 +48,34 @@ public class ChangeWallController : MonoBehaviour
         if (wallName.Contains("Inferior"))
         {
             float fixedY = FixRotationToInt(transform.localEulerAngles.y);
-            transform.eulerAngles = new Vector3(transform.localEulerAngles.x - 90f, transform.localEulerAngles.y - fixedY, transform.localEulerAngles.z);
+            // transform.eulerAngles = new Vector3(transform.localEulerAngles.x - 90f, transform.localEulerAngles.y - fixedY, transform.localEulerAngles.z);
+            transform.Rotate(new Vector3(-90f, 0f - fixedY, 0f), Space.Self);
             Debug.Log(transform.eulerAngles);
+            Debug.Log(transform.localEulerAngles);
         }
-        else
+        else if (wallName.Contains("Right") || wallName.Contains("Front") || wallName.Contains("Left") || wallName.Contains("Back"))
         {
-
+            transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 90f, transform.localEulerAngles.z);
         }
 
     }
 
     private float FixRotationToInt(float axisAngle)
     {
-        return axisAngle - 90f;
+        int timesError = (int)(axisAngle / 90f);
+        Debug.Log(timesError);
+
+        Debug.Log(axisAngle % 90f);
+        float error = axisAngle % 90f;
+
+        if (axisAngle > 45f && axisAngle < 90f || axisAngle >= 135f && axisAngle < 180f || axisAngle >= 225f && axisAngle < 270f)
+        {
+            float newError = 90f - error;
+            return -newError;
+        }
+        return error;
+        // Debug.Log(axisAngle - timesError * 90f);
+
     }
 
 
