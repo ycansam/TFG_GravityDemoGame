@@ -9,6 +9,7 @@ public class ChangeWallController : MonoBehaviour
 
     [SerializeField]
     private GameObject markerPrefab;
+
     private GameObject marker;
     private RaycastHit hit;
     private RaycastHit hitHelpWall;
@@ -29,16 +30,15 @@ public class ChangeWallController : MonoBehaviour
     void Update()
     {
         LookingForwardRay();
-        LookingDownwardRay();
         Controls();
     }
 
     private void Controls()
     {
+        Debug.Log(transform.localEulerAngles);
         if (Input.GetKeyDown(KeyCode.X) && marker.activeSelf)
         {
-            RotatePlayerByWall(actualPlayerStandingWall.transform.name);
-            playerOnWall = hitHelpWall.transform.name;
+            RotatePlayerByWall(CharacterWallsInformation.GetCharOnWallHelpName());
         }
     }
 
@@ -55,7 +55,14 @@ public class ChangeWallController : MonoBehaviour
         }
         else if (wallName.Contains("Right") || wallName.Contains("Front") || wallName.Contains("Left") || wallName.Contains("Back"))
         {
-            transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 90f, transform.localEulerAngles.z);
+            if (transform.localEulerAngles.x > 300f && transform.localEulerAngles.x <= 360f || transform.localEulerAngles.x > 0f && transform.localEulerAngles.x <= 60f)
+            {
+                transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 90f, transform.localEulerAngles.z);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 90f, transform.localEulerAngles.z);
+            }
         }
 
     }
@@ -75,27 +82,15 @@ public class ChangeWallController : MonoBehaviour
         }
         return error;
         // Debug.Log(axisAngle - timesError * 90f);
-
-    }
-
-
-
-    private void LookingDownwardRay()
-    {
-        Vector3 downward = transform.TransformDirection(Vector3.down) * 50f;
-        Debug.DrawRay(transform.position, downward, Color.green);
-        AssignPlayerOnWall(Physics.RaycastAll(playerHead.position, downward, 50.0F));
-
     }
 
     private void LookingForwardRay()
     {
         // Crea el rayo y lo debugea
-        Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 50;
-        Debug.DrawRay(playerHead.position, forward, Color.green);
+        Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 4F;
+        Debug.DrawRay(playerHead.position, forward, Color.yellow);
 
         AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F));
-        AssignHitHelpWall(Physics.RaycastAll(playerHead.position, forward, 50.0F));
     }
 
     // Asigna al marker un punto donde estar y aparecer
@@ -108,31 +103,12 @@ public class ChangeWallController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
-            if (hit.transform.name.Contains("Wall") && !hit.transform.name.Contains("Help"))
+            if (CharacterWallsInformation.IsRayHittingWall(hit))
                 marker.transform.position = hit.point;
         }
     }
 
-    // Asigna la pared de ayuda a la que esta mirando con el rayo
-    private void AssignHitHelpWall(RaycastHit[] hits)
-    {
-        for (int i = 0; i < hits.Length; i++)
-        {
-            hit = hits[i];
-            if (hit.transform.name.Contains("Wall") && hit.transform.name.Contains("Help"))
-                hitHelpWall = hit;
-        }
-    }
-
-    private void AssignPlayerOnWall(RaycastHit[] hits)
-    {
-        for (int i = 0; i < hits.Length; i++)
-        {
-            hit = hits[i];
-            if (hit.transform.name.Contains("Wall") && hit.transform.name.Contains("Help"))
-                actualPlayerStandingWall = hit;
-        }
-    }
+ 
 
     // Activa o desactiva el marcador dependiendo de la condicion
     private void ActiveMarker(bool activationCond)
@@ -142,10 +118,6 @@ public class ChangeWallController : MonoBehaviour
         else if (marker.activeSelf && !activationCond)
             marker.SetActive(false);
     }
-
-    public string GetPlayerOnWall()
-    {
-        return playerOnWall;
-    }
+   
 
 }

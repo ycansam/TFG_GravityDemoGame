@@ -34,7 +34,7 @@ public class Gravity : MonoBehaviour
     }
     void Update()
     {
-        SetGravityDirection(changeWallController.GetPlayerOnWall());
+        SetGravityDirection(CharacterWallsInformation.GetCharOnWallName());
     }
     void FixedUpdate()
     {
