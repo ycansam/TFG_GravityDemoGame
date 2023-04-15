@@ -7724,8 +7724,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147748888973}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.2, y: -9.44, z: -16.5}
+  m_LocalRotation: {x: -0, y: 0.7069861, z: -0, w: 0.70722747}
+  m_LocalPosition: {x: -13.47, y: -12.93, z: -26.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7734,7 +7734,7 @@ Transform:
   - {fileID: 1592269068}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.98, z: 0}
 --- !u!4 &543450652983853026
 Transform:
   m_ObjectHideFlags: 0
@@ -7805,6 +7805,7 @@ GameObject:
   - component: {fileID: 919132147748888980}
   - component: {fileID: 919132147748888977}
   - component: {fileID: 919132147748888978}
+  - component: {fileID: 919132147748888981}
   m_Layer: 0
   m_Name: Astra
   m_TagString: Player
@@ -7871,8 +7872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bb12bc3678b7941a79e427a7c1f7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHead: {fileID: 7687346004867784445}
-  markerPrefab: {fileID: 727627546689263889, guid: 8f98310b903c9d6478360f9fa8eb9617, type: 3}
+  playerWallMarker: {fileID: 919132147748888981}
 --- !u!114 &919132147748888980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7886,6 +7886,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 7687346004867784445}
+--- !u!114 &919132147748888981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147748888973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da39805327c72a14885008afaca3ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHead: {fileID: 7687346004867784445}
+  markerPrefab: {fileID: 727627546689263889, guid: 8f98310b903c9d6478360f9fa8eb9617, type: 3}
 --- !u!1 &919132148797941080
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,120 +4,172 @@ using UnityEngine;
 
 public class ChangeWallController : MonoBehaviour
 {
-    [SerializeField]
-    private Transform playerHead;
+    [SerializeField] PlayerWallMarker playerWallMarker;
 
-    [SerializeField]
-    private GameObject markerPrefab;
-
-    private GameObject marker;
-    private RaycastHit hit;
-    private RaycastHit hitHelpWall;
-    private RaycastHit actualPlayerStandingWall;
-
-    private string playerOnWall;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        marker = Instantiate<GameObject>(markerPrefab);
-        marker.SetActive(false);
-    }
-
-
-    // Update is called once per frame
     void Update()
     {
-        LookingForwardRay();
         Controls();
     }
 
     private void Controls()
     {
-        Debug.Log(transform.localEulerAngles);
-        if (Input.GetKeyDown(KeyCode.X) && marker.activeSelf)
+        if (Input.GetKeyDown(KeyCode.X) && playerWallMarker.IsMarkerActivated())
         {
-            RotatePlayerByWall(CharacterWallsInformation.GetCharOnWallHelpName());
+            RotatePlayer();
         }
     }
 
-    private void RotatePlayerByWall(string wallName)
+    private void RotatePlayer()
     {
-        Debug.Log(wallName);
-        if (wallName.Contains("Inferior"))
+        IsPlayerOnInferiorWall();
+        IsPlayerOnRightWall();
+        IsPlayerOnFrontWall();
+        IsPlayerOnLeftWall();
+        IsPlayerOnBackWall();
+        IsPlayerOnTopWall();
+
+    }
+
+    private void IsPlayerOnInferiorWall()
+    {
+        if (PlayerOnHelpWall.IsOnInferiorWall())
         {
-            float fixedY = FixRotationToInt(transform.localEulerAngles.y);
-            // transform.eulerAngles = new Vector3(transform.localEulerAngles.x - 90f, transform.localEulerAngles.y - fixedY, transform.localEulerAngles.z);
-            transform.Rotate(new Vector3(-90f, 0f - fixedY, 0f), Space.Self);
-            Debug.Log(transform.eulerAngles);
-            Debug.Log(transform.localEulerAngles);
-        }
-        else if (wallName.Contains("Right") || wallName.Contains("Front") || wallName.Contains("Left") || wallName.Contains("Back"))
-        {
-            if (transform.localEulerAngles.x > 300f && transform.localEulerAngles.x <= 360f || transform.localEulerAngles.x > 0f && transform.localEulerAngles.x <= 60f)
+            if (PlayerLookingAtHelpWall.IsLookingRightWall())
             {
-                transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 90f, transform.localEulerAngles.z);
+                RotatePlayer(0f, 0f, 90f);
             }
-            else
+            if (PlayerLookingAtHelpWall.IsLookingFrontWall())
             {
-                transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 90f, transform.localEulerAngles.z);
+                RotatePlayer(-90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+            {
+                RotatePlayer(0f, 0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingBackWall())
+            {
+                RotatePlayer(90f);
             }
         }
-
     }
 
-    private float FixRotationToInt(float axisAngle)
+    private void IsPlayerOnRightWall()
     {
-        int timesError = (int)(axisAngle / 90f);
-        Debug.Log(timesError);
-
-        Debug.Log(axisAngle % 90f);
-        float error = axisAngle % 90f;
-
-        if (axisAngle > 45f && axisAngle < 90f || axisAngle >= 135f && axisAngle < 180f || axisAngle >= 225f && axisAngle < 270f)
+        if (PlayerOnHelpWall.IsOnRightWall())
         {
-            float newError = 90f - error;
-            return -newError;
-        }
-        return error;
-        // Debug.Log(axisAngle - timesError * 90f);
-    }
-
-    private void LookingForwardRay()
-    {
-        // Crea el rayo y lo debugea
-        Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 4F;
-        Debug.DrawRay(playerHead.position, forward, Color.yellow);
-
-        AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F));
-    }
-
-    // Asigna al marker un punto donde estar y aparecer
-    private void AssignMarkerPoint(RaycastHit[] hits)
-    {
-
-        // Activa el marcador si tiene puntos detectados en el rayo
-        ActiveMarker(hits.Length > 0);
-
-        for (int i = 0; i < hits.Length; i++)
-        {
-            hit = hits[i];
-            if (CharacterWallsInformation.IsRayHittingWall(hit))
-                marker.transform.position = hit.point;
+            if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+            {
+                RotatePlayer(0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+            {
+                RotatePlayer(0f, 0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingBackWall())
+            {
+                RotatePlayer(0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingTopWall())
+            {
+                RotatePlayer(0f, 0f, 90f);
+            }
         }
     }
 
- 
-
-    // Activa o desactiva el marcador dependiendo de la condicion
-    private void ActiveMarker(bool activationCond)
+    private void IsPlayerOnFrontWall()
     {
-        if (!marker.activeSelf && activationCond)
-            marker.SetActive(true);
-        else if (marker.activeSelf && !activationCond)
-            marker.SetActive(false);
+        if (PlayerOnHelpWall.IsOnFrontWall())
+        {
+            if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+            {
+                RotatePlayer(0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+            {
+                RotatePlayer(90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingRightWall())
+            {
+                RotatePlayer(0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingTopWall())
+            {
+                RotatePlayer(-90f);
+            }
+        }
     }
-   
+    private void IsPlayerOnLeftWall()
+    {
+        if (PlayerOnHelpWall.IsOnLeftWall())
+        {
+            if (PlayerLookingAtHelpWall.IsLookingBackWall())
+            {
+                RotatePlayer(0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+            {
+                RotatePlayer(0f, 0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+            {
+                RotatePlayer(0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingTopWall())
+            {
+                RotatePlayer(0f, 0f, -90f);
+            }
+        }
+    }
+    private void IsPlayerOnBackWall()
+    {
+        if (PlayerOnHelpWall.IsOnBackWall())
+        {
+            if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+            {
+                RotatePlayer(0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+            {
+                RotatePlayer(-90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingRightWall())
+            {
+                RotatePlayer(0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingTopWall())
+            {
+                RotatePlayer(90f);
+            }
+        }
+    }
+
+    private void IsPlayerOnTopWall()
+    {
+        if (PlayerOnHelpWall.IsOnTopWall())
+        {
+            if (PlayerLookingAtHelpWall.IsLookingRightWall())
+            {
+                RotatePlayer(0f, 0f, -90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+            {
+                RotatePlayer(90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+            {
+                RotatePlayer(0f, 0f, 90f);
+            }
+            if (PlayerLookingAtHelpWall.IsLookingBackWall())
+            {
+                RotatePlayer(-90f);
+            }
+        }
+    }
+
+    private void RotatePlayer(float x = 0f, float y = 0f, float z = 0f)
+    {
+        transform.Rotate(new Vector3(x, y, z), Space.World);
+    }
+
 
 }

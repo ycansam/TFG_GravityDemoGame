@@ -31,6 +31,6 @@ public class PlayerOnHelpWall : MonoBehaviour
 
     private static string GetWallName()
     {
-        return CharacterWallsInformation.GetCharLookingAtHelpWallName();
+        return CharacterWallsInformation.GetCharOnWallHelpName();
     }
 }
