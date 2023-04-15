@@ -34,7 +34,7 @@ public class Gravity : MonoBehaviour
     }
     void Update()
     {
-        SetGravityDirection(CharacterWallsInformation.GetCharOnWallName());
+        SetGravityDirection();
     }
     void FixedUpdate()
     {
@@ -57,22 +57,22 @@ public class Gravity : MonoBehaviour
     }
 
     // Actualiza la direccion basada en la pared en la que esta el jugador
-    private void SetGravityDirection(string playerOnWall)
+    private void SetGravityDirection()
     {
         if (Input.GetKeyUp(KeyCode.X))
         {
-            if (playerOnWall != null)
-                if (playerOnWall.Contains("Left"))
+            if (CharacterWallsInformation.GetCharOnWallName() != null)
+                if (PlayerOnWall.IsOnLeftWall())
                     actualDirection = Vector3.right;
-                else if (playerOnWall.Contains("Right"))
+                else if (PlayerOnWall.IsOnRightWall())
                     actualDirection = Vector3.left;
-                else if (playerOnWall.Contains("Front"))
+                else if (PlayerOnWall.IsOnFrontWall())
                     actualDirection = Vector3.back;
-                else if (playerOnWall.Contains("Back"))
+                else if (PlayerOnWall.IsOnBackWall())
                     actualDirection = Vector3.forward;
-                else if (playerOnWall.Contains("Top"))
+                else if (PlayerOnWall.IsOnTopWall())
                     actualDirection = Vector3.down;
-                else if (playerOnWall.Contains("Inferior"))
+                else if (PlayerOnWall.IsOnInferiorWall())
                     actualDirection = Vector3.up;
         }
     }

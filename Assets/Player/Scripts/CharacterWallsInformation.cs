@@ -32,15 +32,6 @@ public class CharacterWallsInformation : MonoBehaviour
     {
         return charLookingAtHelpWallHit.transform.name;
     }
-    public static int GetForwardRayHitsLength()
-    {
-        return forwardHits.Length;
-    }
-    public static int GetDownwardRayHitsLength()
-    {
-        return downwardHits.Length;
-    }
-
 
     void Update()
     {
