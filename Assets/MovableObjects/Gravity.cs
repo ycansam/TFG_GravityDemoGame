@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    [SerializeField]
-    private CubeController cubeController;
+    private CubeRotator cubeRotator;
 
     public bool useGravity = false;
 
@@ -31,6 +30,7 @@ public class Gravity : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
+        cubeRotator = FindObjectOfType<CubeRotator>();
     }
     void Update()
     {
@@ -45,7 +45,7 @@ public class Gravity : MonoBehaviour
     // Actualiza el estado del RigidBody cuando rota el cubo
     private void RigibodyStatsBasedOnRotation()
     {
-        if (cubeController.IsRotating)
+        if (cubeRotator.IsRotating)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             rb.angularVelocity = Vector3.zero;

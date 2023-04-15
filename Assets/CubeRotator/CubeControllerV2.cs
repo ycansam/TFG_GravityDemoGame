@@ -2,115 +2,221 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+[RequireComponent(typeof(CubeRotator))]
 public class CubeControllerV2 : MonoBehaviour
 {
 
     [SerializeField]
-    private Transform player;
-    [SerializeField]
-    private PlayerInCube playerInCube;
-    [SerializeField]
-    private Transform refCubeRotation;
-
-    [SerializeField]
-    private bool isRotating = false;
-    public bool IsRotating
-    {
-        get { return this.isRotating; }
-        private set { this.isRotating = value; }
-    }
-
-    [SerializeField]
-    private float rotationSpeed = 5f;
-    bool rotating = false;
-    [SerializeField]
     KeyCode keyRight = KeyCode.E;
     [SerializeField]
+    KeyCode KeyLeft = KeyCode.Q;
+    [SerializeField]
     KeyCode keyFront = KeyCode.R;
+    [SerializeField]
+    KeyCode keyBack = KeyCode.F;
+    CubeRotator cubeRotator;
+
+    private void Start()
+    {
+        cubeRotator = GetComponent<CubeRotator>();
+    }
+
     void Update()
     {
-        Controls();
+        if (!cubeRotator.IsRotating)
+            Controls();
     }
 
     private void Controls()
     {
         if (Input.GetKeyDown(keyRight))
         {
-            StartCoroutine(RotateEase(new Vector3(1f, 0f, 0f)));
+            HorizontalMove(1);
         }
-    }
-
-    private bool CheckCubeEuler(float x, float y, float z)
-    {
-        if (transform.eulerAngles.x < 0f && transform.eulerAngles.x > -1f)
-            x = 360f;
-        if (transform.eulerAngles.y < 0f && transform.eulerAngles.y > -1f)
-            y = 360f;
-        if (transform.eulerAngles.z < 0f && transform.eulerAngles.z > -1f)
-            z = 360f;
-
-        return ((int)Math.Round(transform.eulerAngles.x, MidpointRounding.AwayFromZero) == x && (int)Math.Round(transform.eulerAngles.y, MidpointRounding.AwayFromZero) == y && (int)Math.Round(transform.eulerAngles.z, MidpointRounding.AwayFromZero) == z);
-    }
-
-
-    IEnumerator RotateEase(Vector3 direction)
-    {
-        refCubeRotation.rotation = transform.rotation;
-        Vector3 startRotation = refCubeRotation.eulerAngles;
-        refCubeRotation.Rotate(direction * 90f, Space.World);
-        refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
-        Vector3 endRotation = refCubeRotation.eulerAngles;
-
-        // float t = 0.0f;
-        // float rate = 1.0f / rotationSpeed;
-        //     t += Time.deltaTime * rate;
-        while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
+        if (Input.GetKeyDown(KeyLeft))
         {
-            transform.Rotate(direction, Space.World);
-            yield return null;
+            HorizontalMove(-1);
         }
-
-        ResetVariablesAfterRotate();
-        // Corrige los grados
-        transform.eulerAngles = insideGrades(transform);
+        if (Input.GetKeyDown(keyFront) || Input.GetKeyDown(keyBack))
+        {
+            VerticalMove();
+        }
     }
 
-    private void InitVariablesBeforeRotate()
+    private void HorizontalMove(int direction)
     {
-        rotating = true;
-        IsRotating = true;
-        if (playerInCube.isPlayerOnCube())
-            player.SetParent(transform);
+        if (PlayerLookingAtHelpWall.IsLookingRightWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.right * direction);
+        }
+        else
+        if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.forward * direction);
+        }
+        else
+        if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.left * direction);
+        }
+        else
+        if (PlayerLookingAtHelpWall.IsLookingBackWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.back * direction);
+        }
+        else
+        if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.down * direction);
+        }
+        else
+        if (PlayerLookingAtHelpWall.IsLookingTopWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.up * direction);
+        }
     }
 
-    private void ResetVariablesAfterRotate()
+
+    private void PlayerOnInferiorWallConds()
     {
-        IsRotating = false;
-        rotating = false;
-        player.parent = null;
+
+        if (PlayerLookingAtHelpWall.IsLookingRightWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.back);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.forward);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.right);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingBackWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.left);
+        }
     }
 
-
-    // Comprueba que los grados son exactamente 0 90 180 270
-    private Vector3 insideGrades(Transform tr)
+    private void PlayerOnTopWallConds()
     {
-        int x = correctedGrade(tr.eulerAngles.x);
-        int y = correctedGrade(tr.eulerAngles.y);
-        int z = correctedGrade(tr.eulerAngles.z);
 
-        return new Vector3(x, y, z);
+        if (PlayerLookingAtHelpWall.IsLookingRightWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.forward);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.back);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.left);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingBackWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.right);
+        }
     }
 
-    // Corrige los grados a 0 90 180 70
-    private int correctedGrade(float angle)
+    private void PlayerOnLeftWallConds()
     {
-        if (angle > 45 && angle <= 135)
-            return 90;
-        if (angle > 135 && angle <= 235)
-            return 180;
-        if (angle > 235 && angle <= 315)
-            return 270;
-        return 0;
+
+        if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.back);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingTopWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.forward);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.down);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingBackWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.up);
+        }
+    }
+
+    private void PlayerOnRightWallConds()
+    {
+
+        if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.forward);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingTopWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.back);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingFrontWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.up);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingBackWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.down);
+        }
+    }
+
+    private void PlayerOnFrontWallConds()
+    {
+
+        if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.left);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingTopWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.right);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingRightWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.down);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.up);
+        }
+    }
+
+    private void PlayerOnBackWallConds()
+    {
+
+
+        if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.right);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingTopWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.left);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingRightWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.up);
+        }
+        if (PlayerLookingAtHelpWall.IsLookingLeftWall())
+        {
+            cubeRotator.RotateSmooth(Vector3.down);
+        }
+    }
+
+    private void VerticalMove()
+    {
+        if (PlayerOnHelpWall.IsOnInferiorWall())
+            PlayerOnInferiorWallConds();
+        else if (PlayerOnHelpWall.IsOnTopWall())
+            PlayerOnTopWallConds();
+        else if (PlayerOnHelpWall.IsOnLeftWall())
+            PlayerOnLeftWallConds();
+        else if (PlayerOnHelpWall.IsOnRightWall())
+            PlayerOnRightWallConds();
+        else if (PlayerOnHelpWall.IsOnFrontWall())
+            PlayerOnFrontWallConds();
+        else if (PlayerOnHelpWall.IsOnBackWall())
+            PlayerOnBackWallConds();
     }
 }

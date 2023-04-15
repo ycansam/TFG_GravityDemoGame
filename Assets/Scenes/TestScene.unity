@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -2156,7 +2156,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477429320}
-  - component: {fileID: 477429319}
+  - component: {fileID: 477429322}
+  - component: {fileID: 477429321}
   m_Layer: 0
   m_Name: Cube 2
   m_TagString: Untagged
@@ -2164,25 +2165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &477429319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477429318}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78b00953abb623419bb5d80ae4f386b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHead: {fileID: 512122151786878306}
-  player: {fileID: 543450651750218551}
-  playerInCube: {fileID: 682887334}
-  isRotating: 0
-  rotationSpeed: 0.75
-  keyRight: 101
-  keyFront: 114
 --- !u!4 &477429320
 Transform:
   m_ObjectHideFlags: 0
@@ -2200,6 +2182,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477429321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477429318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7a048fd01855547abba34f8a54a628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyRight: 101
+  KeyLeft: 113
+  keyFront: 114
+  keyBack: 102
+--- !u!114 &477429322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477429318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539192c8d19a9864cab6b2de8f4bfca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 543450651750218551}
+  refCubeRotation: {fileID: 1536429602}
+  isRotating: 0
+  rotationSpeed: 1
 --- !u!1 &498294341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -2516,7 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -2981,7 +2995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -3479,7 +3493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -3974,7 +3988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -6413,8 +6427,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838710094}
-  - component: {fileID: 1838710095}
   - component: {fileID: 1838710096}
+  - component: {fileID: 1838710097}
   m_Layer: 0
   m_Name: Cube 1
   m_TagString: Untagged
@@ -6439,25 +6453,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1838710095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838710093}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78b00953abb623419bb5d80ae4f386b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHead: {fileID: 512122151786878306}
-  player: {fileID: 543450651750218551}
-  playerInCube: {fileID: 1614628955}
-  isRotating: 0
-  rotationSpeed: 0.75
-  keyRight: 101
-  keyFront: 114
 --- !u!114 &1838710096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6470,13 +6465,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7a048fd01855547abba34f8a54a628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyRight: 101
+  KeyLeft: 113
+  keyFront: 114
+  keyBack: 102
+--- !u!114 &1838710097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838710093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539192c8d19a9864cab6b2de8f4bfca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 543450651750218551}
-  playerInCube: {fileID: 1614628955}
   refCubeRotation: {fileID: 1536429602}
   isRotating: 0
   rotationSpeed: 1
-  keyRight: 101
-  keyFront: 114
 --- !u!1 &1855931710
 GameObject:
   m_ObjectHideFlags: 0
@@ -7359,7 +7367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e27ed934ca9144eb770e47651ad644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   useGravity: 1
   gravity: 9.81
   mass: 3
@@ -7885,7 +7893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498ab331171564b498135901f19c9161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeController: {fileID: 1838710095}
+  cubeController: {fileID: 0}
   rb: {fileID: 919132147748888977}
   speed: 5
   jumpForce: 5
