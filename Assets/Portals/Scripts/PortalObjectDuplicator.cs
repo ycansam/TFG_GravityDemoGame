@@ -34,7 +34,6 @@ public class PortalObjectDuplicator : MonoBehaviour
         {
             if (!duplicatedObjects.Contains(other.gameObject))
             {
-                Debug.Log(other.gameObject.name);
                 GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
                 instanceOfObject.transform.SetParent(otherPortal.parent);
                 Destroy(instanceOfObject.GetComponent<Collider>());

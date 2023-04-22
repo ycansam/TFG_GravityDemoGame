@@ -77,6 +77,23 @@ public class CubeControllerV2 : MonoBehaviour
     }
 
 
+    private void VerticalMove()
+    {
+        if (PlayerOnHelpWall.IsOnInferiorWall())
+            PlayerOnInferiorWallConds();
+        else if (PlayerOnHelpWall.IsOnTopWall())
+            PlayerOnTopWallConds();
+        else if (PlayerOnHelpWall.IsOnLeftWall())
+            PlayerOnLeftWallConds();
+        else if (PlayerOnHelpWall.IsOnRightWall())
+            PlayerOnRightWallConds();
+        else if (PlayerOnHelpWall.IsOnFrontWall())
+            PlayerOnFrontWallConds();
+        else if (PlayerOnHelpWall.IsOnBackWall())
+            PlayerOnBackWallConds();
+    }
+
+
     private void PlayerOnInferiorWallConds()
     {
 
@@ -204,19 +221,4 @@ public class CubeControllerV2 : MonoBehaviour
         }
     }
 
-    private void VerticalMove()
-    {
-        if (PlayerOnHelpWall.IsOnInferiorWall())
-            PlayerOnInferiorWallConds();
-        else if (PlayerOnHelpWall.IsOnTopWall())
-            PlayerOnTopWallConds();
-        else if (PlayerOnHelpWall.IsOnLeftWall())
-            PlayerOnLeftWallConds();
-        else if (PlayerOnHelpWall.IsOnRightWall())
-            PlayerOnRightWallConds();
-        else if (PlayerOnHelpWall.IsOnFrontWall())
-            PlayerOnFrontWallConds();
-        else if (PlayerOnHelpWall.IsOnBackWall())
-            PlayerOnBackWallConds();
-    }
 }

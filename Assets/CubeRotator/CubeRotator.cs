@@ -34,22 +34,23 @@ public class CubeRotator : MonoBehaviour
 
     private IEnumerator RotateEase(Vector3 direction)
     {
+        InitVariablesBeforeRotate();
         refCubeRotation.rotation = transform.rotation;
         Vector3 startRotation = refCubeRotation.eulerAngles;
         refCubeRotation.Rotate(direction * 90f, Space.World);
         refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
         Vector3 endRotation = refCubeRotation.eulerAngles;
 
-        InitVariablesBeforeRotate();
         while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
         {
             transform.Rotate(direction * rotationSpeed, Space.World);
             yield return null;
         }
 
-        ResetVariablesAfterRotate();
         // Corrige los grados
         transform.eulerAngles = insideGrades(transform);
+
+        ResetVariablesAfterRotate();
     }
 
     private void InitVariablesBeforeRotate()

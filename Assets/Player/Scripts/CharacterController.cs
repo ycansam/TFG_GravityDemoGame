@@ -40,16 +40,16 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        if (gravityEnabled && !cubeRotator.IsRotating)
-            PlayerGravity();
-        GetInput();
-        PlayerMove();
+
     }
 
     private void FixedUpdate()
     {
         DisableRbPhysics();
-
+        if (gravityEnabled && !cubeRotator.IsRotating)
+            PlayerGravity();
+        GetInput();
+        PlayerMove();
     }
 
     private bool isGrounded()
