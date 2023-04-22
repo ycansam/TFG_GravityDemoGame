@@ -1470,7 +1470,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372636207
 GameObject:
@@ -4412,7 +4412,7 @@ Transform:
   m_Children:
   - {fileID: 983782575}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029721739
 GameObject:
@@ -5884,7 +5884,7 @@ Transform:
   m_Children:
   - {fileID: 498294342}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536429598
 GameObject:
@@ -5924,7 +5924,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592269067
 GameObject:
@@ -6444,6 +6444,7 @@ Transform:
   m_Children:
   - {fileID: 821798910}
   - {fileID: 1614628953}
+  - {fileID: 543450651750218551}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6951,7 +6952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2037733576
 Transform:
   m_ObjectHideFlags: 0
@@ -7785,17 +7786,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147748888973}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.16, y: -12.93, z: -7.98}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.574371, y: -8.366794, z: 2.1994374}
+  m_LocalScale: {x: 0.64708376, y: 0.64708376, z: 0.64708376}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6832983489826485613}
   - {fileID: 7061363255551556394}
   - {fileID: 1592269068}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_Father: {fileID: 1838710094}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652983853026
 Transform:
   m_ObjectHideFlags: 0
@@ -7918,7 +7919,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.71, y: 1.79, z: 0.8}
+  m_Size: {x: 0.4, y: 1.83, z: 0.32}
   m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!114 &919132147748888979
 MonoBehaviour:

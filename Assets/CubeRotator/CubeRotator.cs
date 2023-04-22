@@ -49,15 +49,15 @@ public class CubeRotator : MonoBehaviour
 
         // Corrige los grados
         transform.eulerAngles = insideGrades(transform);
-
+        yield return null;
         ResetVariablesAfterRotate();
     }
 
     private void InitVariablesBeforeRotate()
     {
-        IsRotating = true;
         if (playerInCube.isPlayerOnCube())
-            player.SetParent(transform);
+            player.parent = transform;
+        IsRotating = true;
     }
 
     private void ResetVariablesAfterRotate()

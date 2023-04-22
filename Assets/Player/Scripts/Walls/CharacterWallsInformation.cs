@@ -32,7 +32,10 @@ public class CharacterWallsInformation : MonoBehaviour
     {
         return charLookingAtHelpWallHit.transform.name;
     }
-
+    public static RaycastHit[] GetDownwardHits()
+    {
+        return downwardHits;
+    }
     void Update()
     {
         ForwardRay();

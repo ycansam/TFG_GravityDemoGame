@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CubeRotator))]
 public class CharacterController : MonoBehaviour
 {
     [Header("Components")]
@@ -11,7 +9,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     private CubeRotator cubeRotator;
-
 
     [Header("Move Settings")]
     [SerializeField]
@@ -38,18 +35,13 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
-        DisableRbPhysics();
         if (gravityEnabled && !cubeRotator.IsRotating)
             PlayerGravity();
         GetInput();
         PlayerMove();
+        DisableRbPhysics();
     }
 
     private bool isGrounded()
