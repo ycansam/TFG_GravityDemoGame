@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
 {
     [Header("Components")]
 
     [SerializeField]
     private Rigidbody rb;
-    private CubeRotator cubeRotator;
 
     [Header("Move Settings")]
     [SerializeField]
@@ -31,13 +31,12 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         gravity = GameConstants.PLAYERS_GRAVITY;
-        cubeRotator = FindObjectOfType<CubeRotator>();
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if (gravityEnabled && !cubeRotator.IsRotating)
+        if (gravityEnabled)
             PlayerGravity();
         GetInput();
         PlayerMove();
