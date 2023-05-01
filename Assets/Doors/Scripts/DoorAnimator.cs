@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorButtonAnimator : BaseToggleAnimator
+public class DoorAnimator : BaseToggleAnimator
 {
-
+   
 }
