@@ -7,7 +7,6 @@ public class CharacterController : MonoBehaviour
 {
     [Header("Components")]
 
-    [SerializeField]
     private Rigidbody rb;
 
     [Header("Move Settings")]
@@ -20,7 +19,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private bool gravityEnabled;
     [SerializeField]
-    private int ignorePortalLayer = 7;
+    private int[] ignoreLayers;
 
     [Header("Variables")]
     private float vertical_axis;
@@ -46,7 +45,7 @@ public class CharacterController : MonoBehaviour
     private bool isGrounded()
     {
         Debug.DrawRay(transform.position, transform.up * -1, Color.red);
-        return Physics.Raycast(transform.position, transform.up * -1, 0.1f, ignorePortalLayer);
+        return Physics.Raycast(transform.position, transform.up * -1, 0.1f, LayerUtils.CreateLayerMask(true, ignoreLayers));
     }
 
     private void DisableRbPhysics()

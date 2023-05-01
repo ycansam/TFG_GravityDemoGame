@@ -17,12 +17,12 @@ public class Gravity : MonoBehaviour
     ChangeWallController changeWallController;
 
     // Elementos usado en el script
-    public Rigidbody rb;
+    private Rigidbody rb;
     protected float verticalSpeed;
     private Transform player;
     private Vector3 actualDirection = Vector3.up;
     public LayerMask groundLayers;
-    public int ingorePortalLayer = 7;
+    public int[] ingorePortalLayer;
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -102,7 +102,7 @@ public class Gravity : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if (Physics.SphereCast(origin, 1f, GetGravityDirection(), out hit, distance, groundLayers))
+        if (Physics.SphereCast(origin, 0.8f, GetGravityDirection(), out hit, distance, groundLayers))
         {
             rb.velocity = Vector3.zero;
             rb.constraints = RigidbodyConstraints.None;
@@ -117,7 +117,7 @@ public class Gravity : MonoBehaviour
     private bool IsOnAnyObject()
     {
         Debug.DrawRay(transform.position, GetGravityDirection() * 2.1f, Color.red);
-        return Physics.Raycast(transform.position, GetGravityDirection() * 2.1f, 1f, ingorePortalLayer);
+        return Physics.Raycast(transform.position, GetGravityDirection() * 2.1f, 1f, LayerUtils.CreateLayerMask(true, ingorePortalLayer));
     }
 
     // Obtiene la direccion en la que debe ir la gravedad en funcion de la situacion del jugador
