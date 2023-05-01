@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4621362733312078518}
   - component: {fileID: 4621362733312078473}
   - component: {fileID: 4621362733312078472}
+  - component: {fileID: 4083897103645262687}
   m_Layer: 7
   m_Name: FloorButtonParent
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedBtn: {fileID: 7400000, guid: 59bd2572d794f12468fe7532d5fc50dd, type: 2}
   desactivatedBtn: {fileID: 7400000, guid: d4c37bae47f6e9643a26d004d627dbe2, type: 2}
+--- !u!114 &4083897103645262687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621362733312078519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7264cb424beb94daed2a0750edc186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4621362733966313809
 GameObject:
   m_ObjectHideFlags: 0
