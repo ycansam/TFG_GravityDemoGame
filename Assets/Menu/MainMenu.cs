@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private LoadingScreen loadingScreen;
     public void NewGame()
     {
-        SceneManager.LoadScene("Level1");
+        loadingScreen.LoadScreen("Level1");
     }
 
     public void LoadGame()
