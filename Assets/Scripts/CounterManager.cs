@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class GameManager : MonoBehaviour
+public class CounterManager : MonoBehaviour
 {
     public float initialTime = 30f;
     public Transform cubo;
     private float actualTime;
     private bool activeCounter = true;
+    [SerializeField] TextMesh text;
     void Start()
     {
         InitCounter(initialTime);
@@ -35,10 +36,12 @@ public class GameManager : MonoBehaviour
     private void InitCounter(float initialTime)
     {
         actualTime = initialTime;
+        text.text = actualTime.ToString();
     }
     private void LessCounter()
     {
         actualTime -= Time.deltaTime;
+        text.text = actualTime.ToString("F2");
     }
 
 }

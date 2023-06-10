@@ -14,5 +14,19 @@ public class PlayerRays : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
         return Physics.RaycastAll(playerHead.position, forward, 50.0F); ;
     }
+    public RaycastHit GetFirstForwardRayHit()
+    {
+        Vector3 forward = playerHead.TransformDirection(Vector3.forward);
+        Ray ray = new Ray(playerHead.position, forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 50.0f, ~LayerMask.GetMask("IgnoreRaycast"), QueryTriggerInteraction.Ignore))
+        {
+            Debug.DrawRay(playerHead.position, forward * hit.distance, Color.green);
+            return hit;
+        }
+
+        return default(RaycastHit);
+    }
 
 }

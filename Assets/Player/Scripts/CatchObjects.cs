@@ -5,6 +5,8 @@ using UnityEngine;
 public class CatchObjects : MonoBehaviour
 {
     private PlayerRays playerRays;
+    RaycastHit hit;
+    RaycastHit[] raycastHits;
     private void Start()
     {
         playerRays = GetComponent<PlayerRays>();
@@ -16,23 +18,18 @@ public class CatchObjects : MonoBehaviour
 
     private void FilterObjects()
     {
-        RaycastHit[] raycastHits = playerRays.GetForwardRayHits();
+        hit = playerRays.GetFirstForwardRayHit();
         if (Input.GetKeyDown(KeyCode.C))
-            for (int i = 0; i < raycastHits.Length; i++)
-            {
-                Transform item = raycastHits[i].transform;
-                if (item.name.Contains("AstraSuit"))
-                {
-                    item.gameObject.SetActive(false);
-                    PlayerSuit.SetPlayerSuitOn();
-                }
-            }
-
-
+            CatchAstraSuit(hit.transform);
     }
-    private void CatchItem()
+    private void CatchAstraSuit(Transform item)
     {
 
+        if (item.name.Contains("Suit"))
+        {
+            item.gameObject.SetActive(false);
+            PlayerSuit.SetPlayerSuitOn();
+        }
     }
 
 }
