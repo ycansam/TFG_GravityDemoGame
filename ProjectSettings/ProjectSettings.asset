@@ -703,8 +703,9 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT
-    Standalone: CROSS_PLATFORM_INPUT
+    Android: CROSS_PLATFORM_INPUT;MOBILE_INPUT;PROBUILDER_EXPERIMENTAL_FEATURES
+    Server: PROBUILDER_EXPERIMENTAL_FEATURES
+    Standalone: CROSS_PLATFORM_INPUT;PROBUILDER_EXPERIMENTAL_FEATURES
     Windows Store Apps: MOBILE_INPUT
     iPhone: CROSS_PLATFORM_INPUT;MOBILE_INPUT
   additionalCompilerArguments: {}
