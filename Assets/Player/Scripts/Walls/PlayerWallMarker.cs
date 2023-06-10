@@ -22,13 +22,14 @@ public class PlayerWallMarker : MonoBehaviour
 
     private void Update()
     {
-        LookingForwardRay();
+        if (PlayerSuit.HasSuit()) LookingForwardRay();
     }
 
-    public bool IsMarkerActivated(){
+    public bool IsMarkerActivated()
+    {
         return marker.activeSelf;
     }
-    
+
     private void LookingForwardRay()
     {
         // Crea el rayo y lo debugea
@@ -42,15 +43,19 @@ public class PlayerWallMarker : MonoBehaviour
     private void AssignMarkerPoint(RaycastHit[] hits)
     {
 
-        // Activa el marcador si tiene puntos detectados en el rayo
-        ActiveMarker(hits.Length > 0);
 
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
+            Debug.Log(hit.transform.name);
+            if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
+                return;
             if (CharacterWallsInformation.IsRayHittingWall(hit))
                 marker.transform.position = hit.point;
         }
+
+        // Activa el marcador si tiene puntos detectados en el rayo
+        ActiveMarker(hits.Length > 0);
     }
 
 

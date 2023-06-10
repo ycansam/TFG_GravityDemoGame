@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChangeWallController : MonoBehaviour
 {
     [SerializeField] PlayerWallMarker playerWallMarker;
-
+    
     void Update()
     {
         Controls();

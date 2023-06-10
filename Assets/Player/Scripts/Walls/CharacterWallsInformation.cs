@@ -15,6 +15,7 @@ public class CharacterWallsInformation : MonoBehaviour
 
     const string wallName = "Wall";
     const string helpName = "Help";
+    const string invalidWallName = "Invalid";
 
     public static string GetCharOnWallName()
     {
@@ -111,6 +112,10 @@ public class CharacterWallsInformation : MonoBehaviour
     public static bool IsRayHittingWall(RaycastHit hit)
     {
         return hit.transform.name.Contains(wallName) && !hit.transform.name.Contains(helpName);
+    }
+    public static bool IsRayHittingInvalidWall(RaycastHit hit)
+    {
+        return hit.transform.name.Contains(invalidWallName);
     }
 
 
