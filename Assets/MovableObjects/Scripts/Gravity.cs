@@ -45,7 +45,7 @@ public class Gravity : MonoBehaviour
     // Actualiza el estado del RigidBody cuando rota el cubo
     private void RigibodyStatsBasedOnRotation()
     {
-        if (cubeRotator.IsRotating)
+        if (cubeRotator != null && cubeRotator.IsRotating)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             rb.angularVelocity = Vector3.zero;

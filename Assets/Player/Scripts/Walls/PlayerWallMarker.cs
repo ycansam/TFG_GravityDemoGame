@@ -36,17 +36,17 @@ public class PlayerWallMarker : MonoBehaviour
         Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 4F;
         Debug.DrawRay(playerHead.position, forward, Color.yellow);
 
-        AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F));
+        AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F, 9));
     }
 
     // Asigna al marker un punto donde estar y aparecer
     private void AssignMarkerPoint(RaycastHit[] hits)
     {
 
-
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
+            Debug.Log(hit.transform.name);
             if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
                 return;
             if (CharacterWallsInformation.IsRayHittingWall(hit))

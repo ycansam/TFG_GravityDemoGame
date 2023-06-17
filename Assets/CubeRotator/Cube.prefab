@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 5614755667568780958}
   - component: {fileID: 5614755667568780957}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: FrontWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 5614755667596357767}
   - component: {fileID: 5614755667596357766}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +447,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5614755668609136253}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &5614755667596357761
 MonoBehaviour:
@@ -837,6 +837,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5614755667817185306}
+  - component: {fileID: 6735918259207220962}
+  - component: {fileID: 2523794216338389487}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -861,6 +863,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6735918259207220962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614755667817185305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539192c8d19a9864cab6b2de8f4bfca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  refCubeRotation: {fileID: 0}
+  isRotating: 0
+  rotationSpeed: 1
+--- !u!114 &2523794216338389487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614755667817185305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7a048fd01855547abba34f8a54a628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyRight: 101
+  KeyLeft: 113
+  keyFront: 114
+  keyBack: 102
 --- !u!1 &5614755667833701261
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,7 +978,7 @@ GameObject:
   - component: {fileID: 5614755668206130931}
   - component: {fileID: 5614755668206130930}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: InferiorWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1260,7 +1294,7 @@ GameObject:
   - component: {fileID: 5614755668274803787}
   - component: {fileID: 5614755668274803786}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: BackwardWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1593,10 +1627,10 @@ Transform:
   - {fileID: 4555849128160874397}
   - {fileID: 5614755668206130926}
   - {fileID: 5614755668274803785}
-  - {fileID: 5614755669408105817}
   - {fileID: 5614755669010561918}
-  - {fileID: 5614755667568780956}
   - {fileID: 5614755667596357765}
+  - {fileID: 5614755667568780956}
+  - {fileID: 5614755669408105817}
   m_Father: {fileID: 5614755667817185306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,7 +1942,7 @@ GameObject:
   - component: {fileID: 5614755669010561912}
   - component: {fileID: 5614755669010561919}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1927,7 +1961,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5614755668609136253}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &5614755669010561914
 MonoBehaviour:
@@ -2322,7 +2356,7 @@ GameObject:
   - component: {fileID: 5614755669408105819}
   - component: {fileID: 5614755669408105818}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: TopWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2341,7 +2375,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5614755668609136253}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5614755669408105813
 MonoBehaviour:

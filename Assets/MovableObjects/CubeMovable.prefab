@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00b21b2d30d3e245931d976bc9af29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SolidMaterial: {fileID: 2100000, guid: 4e79662959955d148bf4373aef81425e, type: 2}
+  SolidMaterial: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
   TransparentMaterial: {fileID: 2100000, guid: 6539bce2281515e4fa73d721b90a5cc3, type: 2}
 --- !u!114 &4025257338781840187
 MonoBehaviour:
@@ -163,3 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bf7245bb7a1814ab5831d15e8ef3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: 0
