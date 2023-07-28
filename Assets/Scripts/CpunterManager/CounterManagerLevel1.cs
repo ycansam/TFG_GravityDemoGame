@@ -6,6 +6,10 @@ public class CounterManagerLevel1 : CounterManager
 {
     public Transform cubo;
 
+    private void Start()
+    {
+        InitCounter(initialTime);
+    }
     private void Update()
     {
         MoveCubeUpside();

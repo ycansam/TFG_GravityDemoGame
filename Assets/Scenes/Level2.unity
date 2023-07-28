@@ -2337,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2437224280336487508, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: m_Name
-      value: Cube (1)
+      value: Activador
       objectReference: {fileID: 0}
     - target: {fileID: 2437224280336487508, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: m_TagString

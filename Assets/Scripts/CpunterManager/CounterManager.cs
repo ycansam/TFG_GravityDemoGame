@@ -6,13 +6,22 @@ public class CounterManager : MonoBehaviour
 {
     public float initialTime = 30f;
     protected float actualTime;
-    protected bool activeCounter = true;
+    protected bool activeCounter = false;
     [SerializeField] protected TextMesh text;
-    protected void Start()
+    protected void InitCounter(float initialTime)
     {
-        InitCounter(initialTime);
+        activeCounter = true;
+        actualTime = initialTime;
+        if (text != null)
+            text.text = actualTime.ToString();
     }
 
+    protected void ResetCounter(float initialTime)
+    {
+        activeCounter = false;
+        actualTime = initialTime;
+    }
+    
     protected void RunCounter()
     {
         if (activeCounter)
@@ -27,17 +36,14 @@ public class CounterManager : MonoBehaviour
         }
     }
 
-    private void InitCounter(float initialTime)
-    {
-        actualTime = initialTime;
-        if (text != null)
-            text.text = actualTime.ToString();
-    }
+
+
     private void LessCounter()
     {
         actualTime -= Time.deltaTime;
         if (text != null)
             text.text = actualTime.ToString("F2");
     }
+
 
 }
