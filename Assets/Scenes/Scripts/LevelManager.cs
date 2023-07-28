@@ -18,7 +18,21 @@ public class LevelManager : MonoBehaviour
     public void CompleteLevel1()
     {
         Debug.Log("completed level 1");
-        isLevelCompleted = true;
-        doorAnimator.Activate();
+        if (!isLevelCompleted)
+        {
+            isLevelCompleted = true;
+            doorAnimator.Activate();
+        }
+    }
+
+    public void CompleteLevel2()
+    {
+        Debug.Log("completed level 2");
+        if (!isLevelCompleted)
+        {
+            isLevelCompleted = true;
+            doorAnimator.Activate();
+        }
+
     }
 }

@@ -20,7 +20,7 @@ public class PlayerRays : MonoBehaviour
         Ray ray = new Ray(playerHead.position, forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 50.0f, ~LayerMask.GetMask("IgnoreRaycast"), QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out hit, 50.0f, 9, QueryTriggerInteraction.Ignore))
         {
             Debug.DrawRay(playerHead.position, forward * hit.distance, Color.green);
             return hit;

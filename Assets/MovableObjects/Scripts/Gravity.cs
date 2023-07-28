@@ -41,7 +41,10 @@ public class Gravity : MonoBehaviour
         UseGravity();
         RigibodyStatsBasedOnRotation();
     }
-
+    public void UseGravity(bool state)
+    {
+        useGravity = state;
+    }
     // Actualiza el estado del RigidBody cuando rota el cubo
     private void RigibodyStatsBasedOnRotation()
     {
@@ -137,5 +140,7 @@ public class Gravity : MonoBehaviour
         else
             return Vector3.forward;
     }
+
+
 
 }
