@@ -11,7 +11,6 @@ public class ButtonGravity : MonoBehaviour
     {
         foreach (GameObject item in cubes)
         {
-            Debug.Log(item);
             cubesGravity.Add(item.GetComponent<Gravity>());
         }
     }
@@ -22,6 +21,7 @@ public class ButtonGravity : MonoBehaviour
         {
             cubeG.UseGravity(false);
         }
+        useGravity = false;
     }
     public void EnableCubesGravity()
     {
@@ -29,5 +29,6 @@ public class ButtonGravity : MonoBehaviour
         {
             cubeG.UseGravity(true);
         }
+        useGravity = true;
     }
 }

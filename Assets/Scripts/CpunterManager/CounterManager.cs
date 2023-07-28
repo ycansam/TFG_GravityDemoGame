@@ -5,16 +5,15 @@ using UnityEngine.UI;
 public class CounterManager : MonoBehaviour
 {
     public float initialTime = 30f;
-    public Transform cubo;
-    private float actualTime;
-    private bool activeCounter = true;
-    [SerializeField] TextMesh text;
-    void Start()
+    protected float actualTime;
+    protected bool activeCounter = true;
+    [SerializeField] protected TextMesh text;
+    protected void Start()
     {
         InitCounter(initialTime);
     }
 
-    void Update()
+    protected void RunCounter()
     {
         if (activeCounter)
         {
@@ -22,11 +21,6 @@ public class CounterManager : MonoBehaviour
             {
                 activeCounter = false;
                 actualTime = 0f;
-
-                // Hacer que el cubo vaya hacia arriba
-                Vector3 posicion = cubo.position;
-                posicion.y += 5f;
-                cubo.position = posicion;
                 return;
             }
             LessCounter();
@@ -36,12 +30,14 @@ public class CounterManager : MonoBehaviour
     private void InitCounter(float initialTime)
     {
         actualTime = initialTime;
-        text.text = actualTime.ToString();
+        if (text != null)
+            text.text = actualTime.ToString();
     }
     private void LessCounter()
     {
         actualTime -= Time.deltaTime;
-        text.text = actualTime.ToString("F2");
+        if (text != null)
+            text.text = actualTime.ToString("F2");
     }
 
 }

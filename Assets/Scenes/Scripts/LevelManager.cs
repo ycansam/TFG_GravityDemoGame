@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static bool isLevelCompleted = false;
-    [SerializeField] DoorAnimator doorAnimator;
+    [SerializeField] protected DoorAnimator doorAnimator;
 
     private void Update()
     {
@@ -15,6 +15,23 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    protected void UncompleteLevel()
+    {
+        if (isLevelCompleted)
+        {
+            isLevelCompleted = false;
+            doorAnimator.Desactivate();
+        }
+    }
+    
+    protected void CompleteLevel()
+    {
+        if (!isLevelCompleted)
+        {
+            isLevelCompleted = true;
+            doorAnimator.Activate();
+        }
+    }
     public void CompleteLevel1()
     {
         Debug.Log("completed level 1");
@@ -25,14 +42,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void CompleteLevel2()
-    {
-        Debug.Log("completed level 2");
-        if (!isLevelCompleted)
-        {
-            isLevelCompleted = true;
-            doorAnimator.Activate();
-        }
-
-    }
 }

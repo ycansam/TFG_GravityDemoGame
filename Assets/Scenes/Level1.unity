@@ -3211,7 +3211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1972829296}
-  - component: {fileID: 1972829297}
+  - component: {fileID: 1972829298}
   m_Layer: 0
   m_Name: CounterManager
   m_TagString: Untagged
@@ -3234,7 +3234,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1972829297
+--- !u!114 &1972829298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3243,12 +3243,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972829295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a377a8cc69f20ef4aae45041677bcd86, type: 3}
+  m_Script: {fileID: 11500000, guid: a2d0efb8cf9b1f54ebe93899eb85cb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 1
-  cubo: {fileID: 1377742456}
+  initialTime: 2
   text: {fileID: 1677294987}
+  cubo: {fileID: 1377742456}
 --- !u!4 &57086942999993704
 Transform:
   m_ObjectHideFlags: 0
