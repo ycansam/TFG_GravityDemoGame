@@ -8,4 +8,5 @@ public static class Tags
     public static string OBJECT_MOVABLE_TAG = "ObjectMovable";
     public static string PLAYER = "Player";
     public static string BUTTON_GRAVITY = "ButtonGravity";
+    public static string OBJECT_STATIC_CATCHABLE = "ObjectCatchable";
 }
