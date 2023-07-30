@@ -19,23 +19,36 @@ public class CatchObjects : MonoBehaviour
     private void FilterObjects()
     {
         hit = playerRays.GetFirstForwardRayHit();
+        Debug.Log(hit.transform.name);
         if (Input.GetKeyDown(KeyCode.C))
             CatchAstraSuit(hit.transform);
         if (Input.GetKeyDown(KeyCode.C))
+            CatchAstraPhone(hit.transform);
+        if (Input.GetKeyDown(KeyCode.C))
             PressStopButtonGravity(hit.transform);
+
     }
     private void CatchAstraSuit(Transform item)
     {
-
         if (item.name.Contains("Suit"))
         {
             item.gameObject.SetActive(false);
             PlayerSuit.SetPlayerSuitOn();
         }
     }
+
+    private void CatchAstraPhone(Transform item)
+    {
+        Debug.Log(item.name);
+        if (item.name.Contains("Phone"))
+        {
+            item.gameObject.SetActive(false);
+            PlayerPhone.SetPlayerPhoneOn();
+        }
+    }
+
     private void PressStopButtonGravity(Transform item)
     {
-        Debug.Log(item.tag);
         if (item.tag == Tags.BUTTON_GRAVITY)
         {
             Debug.Log("buttonpressed");

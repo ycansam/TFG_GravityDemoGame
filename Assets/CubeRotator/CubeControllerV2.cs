@@ -23,8 +23,9 @@ public class CubeControllerV2 : MonoBehaviour
 
     void Update()
     {
-        if (!cubeRotator.IsRotating)
-            Controls();
+        if (PlayerPhone.HasPhone())
+            if (!cubeRotator.IsRotating)
+                Controls();
     }
 
     private void Controls()
