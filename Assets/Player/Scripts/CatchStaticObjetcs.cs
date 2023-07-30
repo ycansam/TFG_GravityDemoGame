@@ -7,9 +7,17 @@ public class CatchStaticObjetcs : MonoBehaviour
     private Rigidbody rb;
     public static bool collided = false;
     private float distance;
-   
+
+    [SerializeField] private Transform pointMovableObject;
+
+    private Transform initialParent;
+
+    private void Start()
+    {
+    }
+
     // Update is called once per frame
-    public void UpdatePos(Transform pointMovableObject, Transform objectCatched)
+    public void UpdatePos(Transform objectCatched)
     {
         objectCatched.rotation = transform.rotation;
         distance = Vector3.Distance(objectCatched.position, pointMovableObject.transform.position);
@@ -20,9 +28,10 @@ public class CatchStaticObjetcs : MonoBehaviour
         }
     }
 
-    public void ControlObject(Transform pointMovableObject, Transform objectCatched)
+    public void ControlObject(Transform objectCatched)
     {
         rb = objectCatched.GetComponent<Rigidbody>();
+        initialParent = objectCatched.parent;
         objectCatched.SetParent(pointMovableObject.gameObject.transform);
         objectCatched.transform.rotation = Quaternion.Euler(new Vector3(0, gameObject.transform.rotation.y, 0));
         rb.isKinematic = false;
@@ -30,7 +39,7 @@ public class CatchStaticObjetcs : MonoBehaviour
 
     public void stopControlingObject(Transform collectedObject)
     {
-        collectedObject.gameObject.transform.SetParent(null);
+        collectedObject.gameObject.transform.SetParent(initialParent);
         rb.isKinematic = true;
     }
 }

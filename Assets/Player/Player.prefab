@@ -2064,7 +2064,6 @@ GameObject:
   - component: {fileID: 8900544173432309359}
   - component: {fileID: 8053856572228593209}
   - component: {fileID: 8191702358189159053}
-  - component: {fileID: 1042415197214707434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2200,8 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6218b4b2682e86b45b435bad50761b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catchableObjectsPos: {fileID: 7784403769330850263}
-  catchStaticObjetcs: {fileID: 1042415197214707434}
+  catchStaticObjetcs: {fileID: 8191702358189159053}
 --- !u!114 &8900544173432309356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,18 +2249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd68901093a77ab4699450558245a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1042415197214707434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8900544173432309338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd68901093a77ab4699450558245a1c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pointMovableObject: {fileID: 7784403769330850263}
 --- !u!1 &8900544173434865947
 GameObject:
   m_ObjectHideFlags: 0

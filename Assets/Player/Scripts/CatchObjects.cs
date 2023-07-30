@@ -6,7 +6,6 @@ public class CatchObjects : MonoBehaviour
 {
     private PlayerRays playerRays;
     private RaycastHit hit;
-    [SerializeField] private Transform catchableObjectsPos;
     private Transform staticObjectCatched = null;
 
     [SerializeField] private CatchStaticObjetcs catchStaticObjetcs;
@@ -27,7 +26,7 @@ public class CatchObjects : MonoBehaviour
 
     private void MoveCatchedObject()
     {
-        catchStaticObjetcs.UpdatePos(catchableObjectsPos, staticObjectCatched);
+        catchStaticObjetcs.UpdatePos(staticObjectCatched);
         if (Input.GetKeyDown(KeyCode.C))
         {
             catchStaticObjetcs.stopControlingObject(staticObjectCatched);
@@ -69,7 +68,7 @@ public class CatchObjects : MonoBehaviour
         if (item.tag == Tags.OBJECT_STATIC_CATCHABLE)
         {
             staticObjectCatched = item;
-            catchStaticObjetcs.ControlObject(catchableObjectsPos, staticObjectCatched);
+            catchStaticObjetcs.ControlObject(staticObjectCatched);
         }
     }
 
