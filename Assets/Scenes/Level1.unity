@@ -3008,7 +3008,7 @@ GameObject:
   - component: {fileID: 1647851387}
   - component: {fileID: 1647851391}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: LevelPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3105,6 +3105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1025727182}
+  levelName: Level2
 --- !u!1 &1677294986
 GameObject:
   m_ObjectHideFlags: 0

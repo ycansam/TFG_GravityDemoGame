@@ -5,6 +5,8 @@ using UnityEngine;
 public class TriggerLevelChanger : MonoBehaviour
 {
     [SerializeField] private LoadingScreen loadingScreen;
+    [SerializeField] private string levelName;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +16,6 @@ public class TriggerLevelChanger : MonoBehaviour
 
     private void ChangeLevel()
     {
-        loadingScreen.LoadScreen("Level2");
+        loadingScreen.LoadScreen(levelName);
     }
 }
