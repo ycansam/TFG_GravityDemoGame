@@ -7,6 +7,10 @@ public class PortalTeleport : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private Transform otherPortal;
+
+    [SerializeField]
+    private Transform exitPortal;
+
     [SerializeField]
     private Transform enterPoint;
 
@@ -17,6 +21,8 @@ public class PortalTeleport : MonoBehaviour
     [SerializeField]
     private bool neg;
     private Transform player;
+
+    private float firstContactPoint = 0;
 
     private void Start()
     {
@@ -32,20 +38,40 @@ public class PortalTeleport : MonoBehaviour
             float distance = 0.001f;
             Vector3 playerFromPortal = transform.position - player.position;
             float playerFromPortalDistance = GetPlayerFromPortalDistance();
+            if (firstContactPoint == 0)
+            {
+                firstContactPoint = playerFromPortalDistance;
+            }
+            Debug.Log(firstContactPoint);
             // si es negativo 
-
             if (!neg)
             {
-                if (playerFromPortalDistance < -distance)
-                {
-                    player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                }
+                // if (playerFromPortalDistance < -distance)
+                // {
+                //     player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                //     Debug.Log("a");
+                // }
 
             }
             else
             {
-                if (playerFromPortalDistance > -distance)
-                    player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                if (firstContactPoint > 0)
+                {
+                    if (playerFromPortalDistance > -distance)
+                    {
+                        Debug.Log("b1");
+                        player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                    }
+                }
+                else if (firstContactPoint < 0)
+                {
+                    if (playerFromPortalDistance > -distance)
+                    {
+                        Debug.Log("b2");
+                        player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                    }
+                }
+
             }
         }
     }
