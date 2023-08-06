@@ -23,6 +23,7 @@ public class PortalTeleport : MonoBehaviour
     private Transform player;
 
     private static float firstContactPoint = 0;
+    private static string portalName = "";
     private bool teleporting = false;
 
     private void Start()
@@ -43,46 +44,49 @@ public class PortalTeleport : MonoBehaviour
             if (firstContactPoint == 0)
             {
                 firstContactPoint = playerFromPortalDistance;
+                portalName = transform.name;
             }
-            // si es negativo 
-            if (!neg)
+            if (portalName == transform.name)
             {
-                if (firstContactPoint > 0)
+                if (!neg)
                 {
-                    if (playerFromPortalDistance > -distance)
+                    if (firstContactPoint > 0)
                     {
-                        Debug.Log("a1");
-                        player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        if (playerFromPortalDistance > -distance)
+                        {
+                            Debug.Log("a1");
+                            player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        }
+                    }
+                    else if (firstContactPoint < 0)
+                    {
+                        if (playerFromPortalDistance > -distance)
+                        {
+                            Debug.Log("a2");
+                            player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        }
                     }
                 }
-                else if (firstContactPoint < 0)
+                else
                 {
-                    if (playerFromPortalDistance > -distance)
+                    if (firstContactPoint > 0)
                     {
-                        Debug.Log("a2");
-                        player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        if (playerFromPortalDistance > -distance)
+                        {
+                            Debug.Log("b1");
+                            player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        }
                     }
-                }
-            }
-            else
-            {
-                if (firstContactPoint > 0)
-                {
-                    if (playerFromPortalDistance > -distance)
+                    else if (firstContactPoint < 0)
                     {
-                        Debug.Log("b1");
-                        player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        if (playerFromPortalDistance > -distance)
+                        {
+                            Debug.Log("b2");
+                            player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                        }
                     }
-                }
-                else if (firstContactPoint < 0)
-                {
-                    if (playerFromPortalDistance > -distance)
-                    {
-                        Debug.Log("b2");
-                        player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                    }
-                }
 
+                }
             }
         }
     }
@@ -102,6 +106,7 @@ public class PortalTeleport : MonoBehaviour
         {
             firstContactPoint = 0;
             teleporting = false;
+            portalName = "";
         }
     }
 
