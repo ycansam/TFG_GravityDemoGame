@@ -22,7 +22,8 @@ public class PortalTeleport : MonoBehaviour
     private bool neg;
     private Transform player;
 
-    private float firstContactPoint = 0;
+    private static float firstContactPoint = 0;
+    private bool teleporting = false;
 
     private void Start()
     {
@@ -36,22 +37,32 @@ public class PortalTeleport : MonoBehaviour
         {
 
             float distance = 0.001f;
+            teleporting = true;
             Vector3 playerFromPortal = transform.position - player.position;
             float playerFromPortalDistance = GetPlayerFromPortalDistance();
             if (firstContactPoint == 0)
             {
                 firstContactPoint = playerFromPortalDistance;
             }
-            Debug.Log(firstContactPoint);
             // si es negativo 
             if (!neg)
             {
-                // if (playerFromPortalDistance < -distance)
-                // {
-                //     player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                //     Debug.Log("a");
-                // }
-
+                if (firstContactPoint > 0)
+                {
+                    if (playerFromPortalDistance > -distance)
+                    {
+                        Debug.Log("a1");
+                        player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                    }
+                }
+                else if (firstContactPoint < 0)
+                {
+                    if (playerFromPortalDistance > -distance)
+                    {
+                        Debug.Log("a2");
+                        player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                    }
+                }
             }
             else
             {
@@ -83,6 +94,15 @@ public class PortalTeleport : MonoBehaviour
         Vector3 objectFromExitPoint = exitPoint.position - player.transform.position;
         float distance = objectFromEntryPoint.magnitude - objectFromExitPoint.magnitude;
         return distance;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == Tags.PLAYER)
+        {
+            firstContactPoint = 0;
+            teleporting = false;
+        }
     }
 
 }
