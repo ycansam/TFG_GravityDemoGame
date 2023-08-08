@@ -45,12 +45,12 @@ public class PortalTeleport : MonoBehaviour
                 portalName = transform.name;
             }
             portalName = transform.parent.parent.name;
-            Debug.Log(portalName);
+            Debug.Log(firstContactPoint);
             if (portalName == transform.parent.parent.name)
             {
                 if (!neg)
                 {
-                    if (firstContactPoint > 0)
+                    if (firstContactPoint > 0.02)
                     {
                         if (playerFromPortalDistance < -distance)
                         {
@@ -58,7 +58,7 @@ public class PortalTeleport : MonoBehaviour
                             player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
-                    else if (firstContactPoint < 0)
+                    else if (firstContactPoint < -0.02)
                     {
                         if (playerFromPortalDistance > -distance)
                         {
@@ -69,7 +69,7 @@ public class PortalTeleport : MonoBehaviour
                 }
                 else
                 {
-                    if (firstContactPoint > 0)
+                    if (firstContactPoint > 0.02)
                     {
                         if (playerFromPortalDistance < -distance)
                         {
@@ -77,7 +77,7 @@ public class PortalTeleport : MonoBehaviour
                             player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
-                    else if (firstContactPoint < 0)
+                    else if (firstContactPoint < -0.02)
                     {
                         if (playerFromPortalDistance > -distance)
                         {
