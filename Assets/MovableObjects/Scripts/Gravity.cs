@@ -13,8 +13,6 @@ public class Gravity : MonoBehaviour
 
     [SerializeField]
     float mass = 1f;
-    [SerializeField]
-    ChangeWallController changeWallController;
 
     // Elementos usado en el script
     private Rigidbody rb;

@@ -280,6 +280,14 @@ PrefabInstance:
       propertyPath: changeWallController
       value: 
       objectReference: {fileID: 2031971153}
+    - target: {fileID: 2049035265068799685, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: ingorePortalLayer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049035265068799685, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: ingorePortalLayer.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799687, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2077,11 +2085,10 @@ MonoBehaviour:
   useGravity: 1
   gravity: 9.81
   mass: 3
-  changeWallController: {fileID: 2031971153}
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  ingorePortalLayer: 07000000
+  ingorePortalLayer: 0700000008000000
 --- !u!54 &367763641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3244,11 +3251,10 @@ MonoBehaviour:
   useGravity: 1
   gravity: 9.81
   mass: 3
-  changeWallController: {fileID: 2031971153}
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  ingorePortalLayer: 07000000
+  ingorePortalLayer: 0700000008000000
 --- !u!54 &635195642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10949,6 +10955,14 @@ PrefabInstance:
       propertyPath: changeWallController
       value: 
       objectReference: {fileID: 2031971153}
+    - target: {fileID: 2049035265068799685, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: ingorePortalLayer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049035265068799685, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: ingorePortalLayer.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799687, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
