@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1543517149}
+  exitPortal: {fileID: 116474470}
   enterPoint: {fileID: 230198229}
   exitPoint: {fileID: 1783035581}
   neg: 0
@@ -810,6 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 1543517149}
+  exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1904189540}
   exitPoint: {fileID: 200642778}
   neg: 0
@@ -8682,6 +8684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 116474470}
+  exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1313468102}
   exitPoint: {fileID: 314471896}
   neg: 1

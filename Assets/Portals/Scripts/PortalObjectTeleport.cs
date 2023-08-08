@@ -7,6 +7,8 @@ public class PortalObjectTeleport : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private Transform otherPortal;
+    [SerializeField]
+    private Transform exitPortal;
 
     [SerializeField]
     private Transform enterPoint;
@@ -25,13 +27,15 @@ public class PortalObjectTeleport : MonoBehaviour
         if (other.tag != Tags.PLAYER)
         {
 
-
             bool exitedFromBack = GetFromWhereIsTheObjectExiting(objectToTp);
+            Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
             if (exitedFromBack == neg)
             {
-                Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
                 objectToTp.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-
+            }
+            else
+            {
+                objectToTp.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
             }
         }
     }

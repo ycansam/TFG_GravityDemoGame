@@ -36,7 +36,7 @@ public class PortalTeleport : MonoBehaviour
         if (other.tag == Tags.PLAYER)
         {
 
-            float distance = 0.001f;
+            float distance = 0.00001f;
             Vector3 playerFromPortal = transform.position - player.position;
             float playerFromPortalDistance = GetPlayerFromPortalDistance();
             if (firstContactPoint == 0)
@@ -45,7 +45,6 @@ public class PortalTeleport : MonoBehaviour
                 portalName = transform.name;
             }
             portalName = transform.parent.parent.name;
-            Debug.Log(firstContactPoint);
             if (portalName == transform.parent.parent.name)
             {
                 if (!neg)
