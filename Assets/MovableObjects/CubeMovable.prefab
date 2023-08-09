@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2049035265068799685}
   - component: {fileID: 2049035265068799683}
   - component: {fileID: 4025257338781840187}
+  - component: {fileID: 8713033606754227512}
   m_Layer: 6
   m_Name: CubeMovable
   m_TagString: ObjectMovable
@@ -132,7 +133,6 @@ MonoBehaviour:
   useGravity: 1
   gravity: 9.81
   mass: 3
-  changeWallController: {fileID: 0}
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -164,3 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
+--- !u!114 &8713033606754227512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049035265068799691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

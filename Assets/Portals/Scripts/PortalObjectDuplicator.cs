@@ -21,7 +21,7 @@ public class PortalObjectDuplicator : MonoBehaviour
         for (int i = 0; i < duplicatedObjects.Count; i++)
         {
             Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
-            duplicatedObjects[i].GetComponent<ObjectInTheWay>().ShowSolid();
+            // duplicatedObjects[i].GetComponent<ObjectInTheWay>().ShowSolid();
             otherPortalObjects[i].transform.position = otherPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
             otherPortalObjects[i].transform.rotation = duplicatedObjects[i].transform.rotation;
             otherPortalObjects[i].transform.localScale = duplicatedObjects[i].transform.localScale;
@@ -34,14 +34,20 @@ public class PortalObjectDuplicator : MonoBehaviour
         {
             if (!duplicatedObjects.Contains(other.gameObject))
             {
-                GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
-                instanceOfObject.transform.SetParent(otherPortal.parent);
-                Destroy(instanceOfObject.GetComponent<Collider>());
-                Destroy(instanceOfObject.GetComponent<Gravity>());
-                Destroy(instanceOfObject.GetComponent<Rigidbody>());
-                Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
-                duplicatedObjects.Add(other.gameObject);
-                otherPortalObjects.Add(instanceOfObject);
+                if (!other.name.Contains("Clone"))
+                {
+                    GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
+                    instanceOfObject.GetComponent<ObjectIsTeleporting>().isClone = true;
+                    instanceOfObject.transform.SetParent(otherPortal.parent);
+                    // Destroy(instanceOfObject.GetComponent<Collider>());
+                    Destroy(instanceOfObject.GetComponent<Gravity>());
+                    // Destroy(instanceOfObject.GetComponent<Rigidbody>());
+                    Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
+                    duplicatedObjects.Add(other.gameObject);
+                    otherPortalObjects.Add(instanceOfObject);
+                    other.gameObject.GetComponent<ObjectIsTeleporting>().isTeleporting = true;
+                    instanceOfObject.GetComponent<ObjectIsTeleporting>().isTeleporting = true;
+                }
             }
         }
     }
@@ -57,6 +63,7 @@ public class PortalObjectDuplicator : MonoBehaviour
                 duplicatedObjects.RemoveAt(index);
                 otherPortalObjects.RemoveAt(index);
                 Destroy(duplicated);
+                other.gameObject.GetComponent<ObjectIsTeleporting>().isTeleporting = false;
             }
         }
     }
