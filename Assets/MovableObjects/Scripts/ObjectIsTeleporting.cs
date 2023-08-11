@@ -6,6 +6,7 @@ public class ObjectIsTeleporting : MonoBehaviour
 {
     [HideInInspector]
     public bool isTeleporting = false;
+
     [HideInInspector]
-    public bool isClone = false;
+    public bool isTeleportingFromEnterPortal = false;
 }

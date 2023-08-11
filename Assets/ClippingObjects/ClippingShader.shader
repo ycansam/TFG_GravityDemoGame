@@ -7,7 +7,7 @@ Shader "Custom/ClippingShader"
         _Metallic ("Metalness", Range(0, 1)) = 0
         [HDR]_Emission ("Emission", color) = (0,0,0)
 
-        [HDR]_CutoffColor("Cutoff Color", Color) = (1,0,0,0)
+        [HDR]_CutoffColor("Cutoff Color", Color) = (1,1,1,1)
     }
 
     SubShader{
@@ -56,11 +56,11 @@ Shader "Custom/ClippingShader"
 
             //normal color stuff
             fixed4 col = tex2D(_MainTex, i.uv_MainTex);
-            col *= _Color;
+            col *= _Color ;
             o.Albedo = col.rgb * facing;
             o.Metallic = _Metallic * facing;
             o.Smoothness = _Smoothness * facing;
-            o.Emission = lerp(_CutoffColor, _Emission, facing);
+            o.Emission = lerp(_CutoffColor , _Emission, facing);
         }
         ENDCG
     }

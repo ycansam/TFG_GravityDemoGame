@@ -37,7 +37,6 @@ public class PortalObjectDuplicator : MonoBehaviour
                 if (!other.name.Contains("Clone"))
                 {
                     GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
-                    instanceOfObject.GetComponent<ObjectIsTeleporting>().isClone = true;
                     instanceOfObject.transform.SetParent(otherPortal.parent);
                     // Destroy(instanceOfObject.GetComponent<Collider>());
                     Destroy(instanceOfObject.GetComponent<Gravity>());

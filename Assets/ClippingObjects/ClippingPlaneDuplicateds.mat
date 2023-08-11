@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClippingPlane
+  m_Name: ClippingPlaneDuplicateds
   m_Shader: {fileID: 4800000, guid: 27108ad925c39a843bf403c1b3e5c994, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

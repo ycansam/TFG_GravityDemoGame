@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerClippingObjects : MonoBehaviour
+public class TriggerClippingPlaneDuplicateds : MonoBehaviour
 {
-    ClippingPlane clippingPlane;
+    ClippingPlaneDuplicateds clippingPlane;
 
     private void Awake()
     {
-        clippingPlane = GetComponent<ClippingPlane>();
+        clippingPlane = GetComponent<ClippingPlaneDuplicateds>();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG && other.name.Contains("Clone"))
         {
+            Debug.Log(other.name);
             if (other.GetComponent<ObjectIsTeleporting>().isTeleporting)
             {
                 clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
