@@ -43,7 +43,6 @@ public class TriggerClippingObjects : MonoBehaviour
             if (!other.name.Contains("Clone"))
             {
                 other.GetComponent<Renderer>().material = other.GetComponent<ObjectProperties>().objectMat;
-
             }
         }
     }

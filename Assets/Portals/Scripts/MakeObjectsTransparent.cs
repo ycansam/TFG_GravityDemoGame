@@ -21,10 +21,10 @@ public class MakeObjectsTransparent : MonoBehaviour
 
     void Update()
     {
-        GetAllObjectsInTheWay();
+        // GetAllObjectsInTheWay();
 
-        TurnObjectsSolid();
-        TurnObjectsTransparent();
+        // TurnObjectsSolid();
+        // TurnObjectsTransparent();
     }
 
     private void GetAllObjectsInTheWay()
