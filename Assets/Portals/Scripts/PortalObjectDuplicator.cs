@@ -23,10 +23,9 @@ public class PortalObjectDuplicator : MonoBehaviour
     {
         for (int i = 0; i < duplicatedObjects.Count; i++)
         {
-            Debug.Log(duplicatedObjects[i].gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack);
+            Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
             if (!duplicatedObjects[i].gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
             {
-                Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
                 // duplicatedObjects[i].GetComponent<ObjectInTheWay>().ShowSolid();
                 enterPortalObjects[i].transform.position = enterPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
                 enterPortalObjects[i].transform.rotation = duplicatedObjects[i].transform.rotation;
@@ -34,7 +33,6 @@ public class PortalObjectDuplicator : MonoBehaviour
             }
             else
             {
-                Vector3 objectFromPortal = transform.position - duplicatedObjects[i].transform.position;
                 // duplicatedObjects[i].GetComponent<ObjectInTheWay>().ShowSolid();
                 inversePortalObjects[i].transform.position = inversePortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
                 inversePortalObjects[i].transform.rotation = duplicatedObjects[i].transform.rotation;
@@ -51,32 +49,26 @@ public class PortalObjectDuplicator : MonoBehaviour
             {
                 if (!other.name.Contains("Clone"))
                 {
+                    GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
+
                     if (!other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
                     {
-                        GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
                         instanceOfObject.transform.SetParent(enterPortal.parent);
-                        // Destroy(instanceOfObject.GetComponent<Collider>());
-                        Destroy(instanceOfObject.GetComponent<Gravity>());
-                        // Destroy(instanceOfObject.GetComponent<Rigidbody>());
-                        Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
-                        duplicatedObjects.Add(other.gameObject);
                         enterPortalObjects.Add(instanceOfObject);
-                        other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
-                        instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     }
                     else
                     {
-                        GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
                         instanceOfObject.transform.SetParent(inversePortal.parent);
-                        // Destroy(instanceOfObject.GetComponent<Collider>());
-                        Destroy(instanceOfObject.GetComponent<Gravity>());
-                        // Destroy(instanceOfObject.GetComponent<Rigidbody>());
-                        Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
-                        duplicatedObjects.Add(other.gameObject);
                         inversePortalObjects.Add(instanceOfObject);
-                        other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
-                        instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     }
+
+                    Destroy(instanceOfObject.GetComponent<Gravity>());
+                    Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
+                    // Destroy(instanceOfObject.GetComponent<Collider>());
+                    // Destroy(instanceOfObject.GetComponent<Rigidbody>());
+                    duplicatedObjects.Add(other.gameObject);
+                    other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
+                    instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
                 }
             }
         }
@@ -89,23 +81,18 @@ public class PortalObjectDuplicator : MonoBehaviour
             if (duplicatedObjects.Contains(other.gameObject))
             {
                 int index = duplicatedObjects.IndexOf(other.gameObject);
+                GameObject duplicated = enterPortalObjects[index];
+                duplicatedObjects.RemoveAt(index);
                 if (!other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
                 {
-
-                    GameObject duplicated = enterPortalObjects[index];
-                    duplicatedObjects.RemoveAt(index);
                     enterPortalObjects.RemoveAt(index);
-                    Destroy(duplicated);
-                    other.gameObject.GetComponent<ObjectProperties>().isTeleporting = false;
                 }
                 else
                 {
-                    GameObject duplicated = inversePortalObjects[index];
-                    duplicatedObjects.RemoveAt(index);
                     inversePortalObjects.RemoveAt(index);
-                    Destroy(duplicated);
-                    other.gameObject.GetComponent<ObjectProperties>().isTeleporting = false;
                 }
+                Destroy(duplicated);
+                other.gameObject.GetComponent<ObjectProperties>().isTeleporting = false;
             }
         }
     }
