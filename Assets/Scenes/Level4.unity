@@ -408,7 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPortal: {fileID: 1543517149}
+  enterPortal: {fileID: 0}
+  inversePortal: {fileID: 0}
 --- !u!114 &56530627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,7 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPortal: {fileID: 1543517149}
+  enterPortal: {fileID: 0}
+  inversePortal: {fileID: 0}
 --- !u!114 &116474472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8936,7 +8938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPortal: {fileID: 56530625}
+  enterPortal: {fileID: 116474470}
+  inversePortal: {fileID: 56530625}
 --- !u!114 &1543517151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10934,7 +10937,7 @@ GameObject:
   - component: {fileID: 1924445931}
   - component: {fileID: 1924445930}
   m_Layer: 8
-  m_Name: PortalEnter1 (1)
+  m_Name: PortalEnter1Inverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10947,9 +10950,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924445925}
-  m_LocalRotation: {x: -0.0015085168, y: -0.7071064, z: -0.0015085188, w: -0.7071039}
-  m_LocalPosition: {x: 0, y: -0.12, z: -18.84}
-  m_LocalScale: {x: 9.227549, y: 23.280794, z: 7.1607}
+  m_LocalRotation: {x: -0.0015085166, y: -0.7071064, z: -0.0015085185, w: -0.7071039}
+  m_LocalPosition: {x: 0, y: -0.12, z: -18.840002}
+  m_LocalScale: {x: 9.22755, y: 23.280792, z: 7.1607018}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045162955}
@@ -11311,7 +11314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.32
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.y
