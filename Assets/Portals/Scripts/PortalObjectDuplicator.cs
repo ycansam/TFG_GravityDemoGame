@@ -43,7 +43,7 @@ public class PortalObjectDuplicator : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag != Tags.PLAYER)
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
         {
             if (!duplicatedObjects.Contains(other.gameObject))
             {

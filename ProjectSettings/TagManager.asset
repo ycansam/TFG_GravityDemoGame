@@ -8,6 +8,7 @@ TagManager:
   - ObjectMovable
   - ButtonGravity
   - ObjectCatchable
+  - Camera
   layers:
   - Default
   - TransparentFX

@@ -9,4 +9,5 @@ public static class Tags
     public static string PLAYER = "Player";
     public static string BUTTON_GRAVITY = "ButtonGravity";
     public static string OBJECT_STATIC_CATCHABLE = "ObjectCatchable";
+    public static string CAMERA = "Camera";
 }
