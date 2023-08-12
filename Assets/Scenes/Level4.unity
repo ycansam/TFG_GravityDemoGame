@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeMovable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8713033606754227512, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: objectMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
 --- !u!4 &44405202 stripped
@@ -552,7 +556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &76379794
 Transform:
   m_ObjectHideFlags: 0
@@ -606,6 +610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07552ca5159b2d4cbc6875327575ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clippingPlane: {fileID: 0}
+  neg: 0
 --- !u!1 &88384164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,7 +2264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTeleporting: 0
-  isTeleportingFromEnterPortal: 0
+  hasEnteredFromBack: 0
+  objectMat: {fileID: 0}
 --- !u!1 &370085732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,7 +3314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635195638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.97, y: 5.12, z: -18.64}
+  m_LocalPosition: {x: -5.97, y: 5.09, z: -11}
   m_LocalScale: {x: 2.5058966, y: 2.5058959, z: 2.5058959}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3439,7 +3446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTeleporting: 0
-  isTeleportingFromEnterPortal: 0
+  hasEnteredFromBack: 0
+  objectMat: {fileID: 0}
 --- !u!1 &645410097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,8 +3714,8 @@ GameObject:
   - component: {fileID: 760349425}
   - component: {fileID: 760349428}
   - component: {fileID: 760349429}
-  m_Layer: 0
-  m_Name: ClippingPlane (2)
+  m_Layer: 8
+  m_Name: ClippingPlaneExitClone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3739,7 +3747,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -359.999, z: 90}
 --- !u!114 &760349428
 MonoBehaviour:
@@ -4925,6 +4933,80 @@ Transform:
   m_Father: {fileID: 116474470}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &865895095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 865895096}
+  - component: {fileID: 865895099}
+  - component: {fileID: 865895098}
+  - component: {fileID: 865895097}
+  m_Layer: 7
+  m_Name: ClippingPlaneInverse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &865895096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865895095}
+  m_LocalRotation: {x: -0.0007588939, y: 0.0007499677, z: -0.707106, w: -0.7071067}
+  m_LocalPosition: {x: 0, y: 5.0921016, z: -17.983604}
+  m_LocalScale: {x: 3.8283992, y: 3.8283992, z: 3.8284006}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045162955}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0.122, y: -359.999, z: 90}
+--- !u!114 &865895097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865895095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07552ca5159b2d4cbc6875327575ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clippingPlane: {fileID: 865895099}
+  neg: 1
+--- !u!65 &865895098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865895095}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.046436, y: 1.7250056, z: 2.5271318}
+  m_Center: {x: -2.2646368, y: 0.858352, z: 0.09480128}
+--- !u!114 &865895099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865895095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe48b7de5959e649b86d6ca2cef52f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 7e28b8559bd2d8f4ebb7cb85f5ad2a13, type: 2}
 --- !u!1 &885648528
 GameObject:
   m_ObjectHideFlags: 0
@@ -10113,8 +10195,8 @@ GameObject:
   - component: {fileID: 1789920169}
   - component: {fileID: 1789920168}
   - component: {fileID: 1789920167}
-  m_Layer: 0
-  m_Name: ClippingPlane (1)
+  m_Layer: 7
+  m_Name: ClippingPlaneEnter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10132,6 +10214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07552ca5159b2d4cbc6875327575ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clippingPlane: {fileID: 1789920169}
+  neg: 0
 --- !u!65 &1789920168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10165,13 +10249,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789920166}
-  m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: 0.0000020191073, w: 0.0000020191073}
-  m_LocalPosition: {x: 0, y: 7.81, z: -21.4}
-  m_LocalScale: {x: 5.9163895, y: 5.9163895, z: 5.9163904}
+  m_LocalRotation: {x: -0.7071064, y: -0.7071064, z: -0.0007522408, w: 0.00075627904}
+  m_LocalPosition: {x: 0, y: 5.0921016, z: -17.983604}
+  m_LocalScale: {x: 3.8283992, y: 3.8283992, z: 3.8284006}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 2045162955}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 90}
 --- !u!1 &1803521997
 GameObject:
@@ -11227,7 +11311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.33
+      value: -2.32
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11269,6 +11353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeMovable
       objectReference: {fileID: 0}
+    - target: {fileID: 8713033606754227512, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+      propertyPath: objectMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
 --- !u!4 &1984089925 stripped
@@ -11663,6 +11751,8 @@ Transform:
   - {fileID: 1816670118}
   - {fileID: 1543517149}
   - {fileID: 1924445926}
+  - {fileID: 1789920170}
+  - {fileID: 865895096}
   m_Father: {fileID: 1000292712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.122, y: 0, z: 0}

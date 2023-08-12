@@ -46,7 +46,6 @@ public class PlayerWallMarker : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
-            Debug.Log("Marker" + hit.transform.name);
             if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
                 return;
             if (CharacterWallsInformation.IsRayHittingWall(hit))

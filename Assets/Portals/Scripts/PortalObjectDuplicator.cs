@@ -44,8 +44,8 @@ public class PortalObjectDuplicator : MonoBehaviour
                     Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
                     duplicatedObjects.Add(other.gameObject);
                     otherPortalObjects.Add(instanceOfObject);
-                    other.gameObject.GetComponent<ObjectIsTeleporting>().isTeleporting = true;
-                    instanceOfObject.GetComponent<ObjectIsTeleporting>().isTeleporting = true;
+                    other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
+                    instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
                 }
             }
         }
@@ -62,7 +62,7 @@ public class PortalObjectDuplicator : MonoBehaviour
                 duplicatedObjects.RemoveAt(index);
                 otherPortalObjects.RemoveAt(index);
                 Destroy(duplicated);
-                other.gameObject.GetComponent<ObjectIsTeleporting>().isTeleporting = false;
+                other.gameObject.GetComponent<ObjectProperties>().isTeleporting = false;
             }
         }
     }

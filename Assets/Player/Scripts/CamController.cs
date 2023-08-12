@@ -11,7 +11,6 @@ public class CamController : MonoBehaviour
     float mouseSensitivity = 500;
 
     private float xRotation = 0f;
-    private float yRotation = 0f;
 
     // Start is called before the first frame update
     void Start()

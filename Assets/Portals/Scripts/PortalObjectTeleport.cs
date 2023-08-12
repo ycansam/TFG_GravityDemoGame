@@ -21,13 +21,25 @@ public class PortalObjectTeleport : MonoBehaviour
     [SerializeField]
     private bool neg;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        {
+            if (!other.gameObject.name.Contains("Clone"))
+            {
+                bool objectHasEnteredFromBack = ObjectHasExitedFromBack(other.gameObject);
+                other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack = objectHasEnteredFromBack;
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         GameObject objectToTp = other.gameObject;
         if (other.tag != Tags.PLAYER)
         {
 
-            bool exitedFromBack = GetFromWhereIsTheObjectExiting(objectToTp);
+            bool exitedFromBack = ObjectHasExitedFromBack(objectToTp);
             Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
             if (exitedFromBack == neg)
             {
@@ -41,7 +53,7 @@ public class PortalObjectTeleport : MonoBehaviour
     }
 
     // true si ha salido por detras del portal, false si ha salido por delante
-    private bool GetFromWhereIsTheObjectExiting(GameObject objectToTp)
+    private bool ObjectHasExitedFromBack(GameObject objectToTp)
     {
 
         Vector3 objectFromEntryPoint = enterPoint.position - objectToTp.transform.position;

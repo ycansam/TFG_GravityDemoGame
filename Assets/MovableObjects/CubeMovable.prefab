@@ -136,7 +136,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  ingorePortalLayer: 07000000
+  ingorePortalLayer: 0700000008000000
 --- !u!114 &2049035265068799683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTeleporting: 0
+  hasEnteredFromBack: 0
+  objectMat: {fileID: 0}

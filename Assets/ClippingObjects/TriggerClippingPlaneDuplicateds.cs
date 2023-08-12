@@ -15,8 +15,7 @@ public class TriggerClippingPlaneDuplicateds : MonoBehaviour
     {
         if (other.tag == Tags.OBJECT_MOVABLE_TAG && other.name.Contains("Clone"))
         {
-            Debug.Log(other.name);
-            if (other.GetComponent<ObjectIsTeleporting>().isTeleporting)
+            if (other.GetComponent<ObjectProperties>().isTeleporting)
             {
                 clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
                 other.GetComponent<Renderer>().material = clippingPlane.mat;
