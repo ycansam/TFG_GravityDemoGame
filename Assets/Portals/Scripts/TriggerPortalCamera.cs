@@ -5,8 +5,7 @@ using UnityEngine;
 public class TriggerPortalCamera : MonoBehaviour
 {
     [SerializeField]
-    Transform cam;
-
+    private List<Transform> portalCameras = new List<Transform>();
     private List<GameObject> includedObjects = new List<GameObject>();
 
 
@@ -49,9 +48,12 @@ public class TriggerPortalCamera : MonoBehaviour
             IncludeMovableIfNotIncluded(other.gameObject);
         }
 
-        if (other.name == cam.name)
+        foreach (Transform portalCamera in portalCameras)
         {
-            DisableObjectRenders();
+            if (other.name == portalCamera.name)
+            {
+                DisableObjectRenders();
+            }
         }
     }
 
@@ -62,9 +64,13 @@ public class TriggerPortalCamera : MonoBehaviour
             RemoveMovableIfIncluded(other.gameObject);
         }
 
-        if (other.name == cam.name)
+        foreach (Transform portalCamera in portalCameras)
         {
-            EnableObjectRenders();
+            if (other.name == portalCamera.name)
+            {
+                EnableObjectRenders();
+            }
         }
+
     }
 }
