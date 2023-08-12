@@ -1297,8 +1297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1657844684}
-  cam2: {fileID: 1012807703}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -1520,8 +1518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 857997781}
-  cam2: {fileID: 1657844684}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -3050,8 +3046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 857997781}
-  cam2: {fileID: 1657844684}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -3854,8 +3848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1012807703}
-  cam2: {fileID: 857997781}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -4658,8 +4650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1012807703}
-  cam2: {fileID: 857997781}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -5875,6 +5865,7 @@ GameObject:
   - component: {fileID: 983231055}
   - component: {fileID: 983231054}
   - component: {fileID: 983231057}
+  - component: {fileID: 983231058}
   m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: ObjectMovable
@@ -5976,6 +5967,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &983231058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983231052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTeleporting: 0
+  hasEnteredFromBack: 0
+  objectMat: {fileID: 0}
 --- !u!1 &988453122
 GameObject:
   m_ObjectHideFlags: 0
@@ -6828,8 +6834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1657844684}
-  cam2: {fileID: 857997781}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -9038,6 +9042,7 @@ GameObject:
   - component: {fileID: 1442134875}
   - component: {fileID: 1442134874}
   - component: {fileID: 1442134877}
+  - component: {fileID: 1442134878}
   m_Layer: 6
   m_Name: Sphere
   m_TagString: ObjectMovable
@@ -9139,6 +9144,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1442134878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442134872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTeleporting: 0
+  hasEnteredFromBack: 0
+  objectMat: {fileID: 0}
 --- !u!1 &1478058822
 GameObject:
   m_ObjectHideFlags: 0

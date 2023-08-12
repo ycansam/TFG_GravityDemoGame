@@ -43,9 +43,12 @@ public class TriggerPortalCamera : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG && !other.name.Contains("Clone"))
         {
-            IncludeMovableIfNotIncluded(other.gameObject);
+            if (!other.GetComponent<ObjectProperties>().isTeleporting)
+            {
+                IncludeMovableIfNotIncluded(other.gameObject);
+            }
         }
 
         foreach (Transform portalCamera in portalCameras)
@@ -59,9 +62,12 @@ public class TriggerPortalCamera : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG && !other.name.Contains("Clone"))
         {
-            RemoveMovableIfIncluded(other.gameObject);
+            if (!other.GetComponent<ObjectProperties>().isTeleporting)
+            {
+                RemoveMovableIfIncluded(other.gameObject);
+            }
         }
 
         foreach (Transform portalCamera in portalCameras)
