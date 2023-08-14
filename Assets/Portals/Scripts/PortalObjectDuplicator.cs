@@ -64,8 +64,6 @@ public class PortalObjectDuplicator : MonoBehaviour
 
                     Destroy(instanceOfObject.GetComponent<Gravity>());
                     Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
-                    // Destroy(instanceOfObject.GetComponent<Collider>());
-                    // Destroy(instanceOfObject.GetComponent<Rigidbody>());
                     duplicatedObjects.Add(other.gameObject);
                     other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;

@@ -888,8 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e42126ca3bcff438335ba39bcf120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterPortal: {fileID: 0}
-  inversePortal: {fileID: 0}
+  enterPortal: {fileID: 56530625}
+  inversePortal: {fileID: 1543517149}
 --- !u!114 &116474472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ GameObject:
   - component: {fileID: 167078637}
   - component: {fileID: 167078636}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs (1)
+  m_Name: TriggerCameraObjetcsPortal3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,11 +1297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!65 &167078637
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 171007285}
   - component: {fileID: 171007284}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs (1)
+  m_Name: TriggerCameraObjetcsPortal2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,11 +1518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!65 &171007285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367763637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.33, y: 5.11, z: -15.43}
+  m_LocalPosition: {x: 3.05, y: -8.31, z: -15.46}
   m_LocalScale: {x: 2.5058966, y: 2.5058959, z: 2.5058959}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3013,7 +3013,7 @@ GameObject:
   - component: {fileID: 523866579}
   - component: {fileID: 523866578}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs
+  m_Name: TriggerCameraObjetcsPortal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3046,11 +3046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!65 &523866579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3815,7 +3815,7 @@ GameObject:
   - component: {fileID: 725421638}
   - component: {fileID: 725421637}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs (1)
+  m_Name: TriggerCameraObjetcsPortal1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3848,11 +3848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!65 &725421638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 814101975}
   - component: {fileID: 814101976}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs
+  m_Name: TriggerCameraObjetcsPortal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4650,11 +4650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!1 &816254225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6801,7 +6801,7 @@ GameObject:
   - component: {fileID: 1103082012}
   - component: {fileID: 1103082011}
   m_Layer: 0
-  m_Name: TriggerCameraObjetcs
+  m_Name: TriggerCameraObjetcsPortal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6834,11 +6834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
   - {fileID: 1657844684}
-  - {fileID: 2091706115}
 --- !u!65 &1103082012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10780,12 +10780,10 @@ MonoBehaviour:
   - {fileID: 1012807706}
   - {fileID: 857997778}
   - {fileID: 1657844687}
-  - {fileID: 2091706118}
   mats:
   - {fileID: 2100000, guid: 95de027e5d1ad004daae7ea0fefa2607, type: 2}
   - {fileID: 2100000, guid: 74fbb58ee673d284689e3601f11687b4, type: 2}
   - {fileID: 2100000, guid: bbe6f00be8513d24cb892f0fa09bb717, type: 2}
-  - {fileID: 2100000, guid: 8fe23909ef8ed0f45a798194c8572daa, type: 2}
 --- !u!4 &1784396848
 Transform:
   m_ObjectHideFlags: 0
@@ -11929,15 +11927,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.21
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.27
+      value: -8.89
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.99
+      value: -19.02
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12301,7 +12299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498ab331171564b498135901f19c9161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   jumpForce: 5
   gravityEnabled: 1
   ignoreLayers: 07000000
@@ -12460,7 +12458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2091706115
 Transform:
   m_ObjectHideFlags: 0
