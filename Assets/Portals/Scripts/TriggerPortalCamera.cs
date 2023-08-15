@@ -77,19 +77,28 @@ public class TriggerPortalCamera : MonoBehaviour
         Debug.Log("PLAYER: " + playerTriggeredByTransform);
         for (int i = 0; i < teleportingClonesClass.Count; i++)
         {
-            // if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
-            // {
-                //  ME HE QUEDADO POR AQUI
-            if (transform.name.Contains("("))
+            if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
             {
-                Debug.Log(transform.name);
-                Debug.Log(teleportingClonesClass[i].triggeredTransform);
-                if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
+                if (transform.name.Contains("("))
                 {
-                    teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                    if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
+                    {
+                        teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                    }
                 }
             }
-         
+
+            if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
+            {
+                if (!transform.name.Contains("("))
+                {
+                    if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
+                    {
+                        teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                    }
+                }
+            }
+
         }
     }
 
@@ -133,6 +142,16 @@ public class TriggerPortalCamera : MonoBehaviour
                                 PushTeleportingClone(other.gameObject);
                             }
                         }
+                        else
+                        {
+                            if (!transform.name.Contains("("))
+                            {
+                                Debug.Log(transform.name);
+                                Debug.Log(other.gameObject.name);
+                                PushTeleportingClone(other.gameObject);
+                            }
+                        }
+
                     }
                 }
             }
