@@ -5,6 +5,8 @@ using UnityEngine;
 public class TriggerClippingPlaneDuplicateds : MonoBehaviour
 {
     ClippingPlaneDuplicateds clippingPlane;
+    [SerializeField]
+    private string clipOnCube = "-1";
 
     private void Awake()
     {
@@ -21,11 +23,14 @@ public class TriggerClippingPlaneDuplicateds : MonoBehaviour
             // if (other.transform.parent.name != transform.parent.name)
             if (other.GetComponent<ObjectProperties>().isTeleporting)
             {
-                clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
-                other.GetComponent<Renderer>().material = clippingPlane.mat;
+                if (other.transform.name.Contains(clipOnCube))
+                {
+                    clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
+                    other.GetComponent<Renderer>().material = clippingPlane.mat;
+                }
+
             }
-            Debug.Log(transform.parent.name);
-            Debug.Log(other.transform.parent.name);
+            Debug.Log(other.transform.name);
             // }
 
         }
