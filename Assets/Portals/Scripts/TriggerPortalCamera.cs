@@ -61,6 +61,20 @@ public class TriggerPortalCamera : MonoBehaviour
             int index = includedObjects.IndexOf(ob);
             includedObjects.RemoveAt(index);
         }
+        if (teleportingClones.Contains(ob))
+        {
+            int index = teleportingClones.IndexOf(ob);
+            teleportingClones.RemoveAt(index);
+            teleportingClonesClass.RemoveAt(index);
+
+        }
+        if (teleportingObjetcs.Contains(ob))
+        {
+            int index = teleportingObjetcs.IndexOf(ob);
+            teleportingObjetcs.RemoveAt(index);
+            teleportingObjetcsClass.RemoveAt(index);
+
+        }
     }
 
     private void DisableObjectRenders()
@@ -71,29 +85,28 @@ public class TriggerPortalCamera : MonoBehaviour
         }
     }
 
+
+
     private void DisableObjectCloneRenders()
     {
 
-        Debug.Log("PLAYER: " + playerTriggeredByTransform);
         for (int i = 0; i < teleportingClonesClass.Count; i++)
         {
-            if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
+            if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
             {
-                if (transform.name.Contains("("))
+                if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
                 {
-                    if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
+                    if (transform.name.Contains("("))
                     {
                         teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
                     }
                 }
-            }
 
-            if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
-            {
-                if (!transform.name.Contains("("))
+                if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
                 {
-                    if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
+                    if (!transform.name.Contains("("))
                     {
+
                         teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
                     }
                 }
@@ -133,12 +146,10 @@ public class TriggerPortalCamera : MonoBehaviour
                 {
                     if (teleportingObjetcs.Count > 0)
                     {
-                        // Debug.Log(teleportingObjetcsClass[teleportingObjetcs.Count - 1].triggeredTransform);
                         if (!teleportingObjetcsClass[teleportingObjetcs.Count - 1].triggeredTransform.Contains("("))
                         {
                             if (transform.name.Contains("("))
                             {
-                                // Debug.Log(transform.name);
                                 PushTeleportingClone(other.gameObject);
                             }
                         }
@@ -146,8 +157,6 @@ public class TriggerPortalCamera : MonoBehaviour
                         {
                             if (!transform.name.Contains("("))
                             {
-                                Debug.Log(transform.name);
-                                Debug.Log(other.gameObject.name);
                                 PushTeleportingClone(other.gameObject);
                             }
                         }
