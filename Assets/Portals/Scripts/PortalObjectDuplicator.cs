@@ -52,7 +52,7 @@ public class PortalObjectDuplicator : MonoBehaviour
                 if (!other.name.Contains("Clone") && !other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
                 {
                     GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
-
+                    instanceOfObject.transform.name = instanceOfObject.transform.name + ": " + transform.name;
                     instanceOfObject.transform.SetParent(enterPortal.parent);
                     enterPortalObjects.Add(instanceOfObject);
 
@@ -70,6 +70,7 @@ public class PortalObjectDuplicator : MonoBehaviour
                 {
                     GameObject instanceOfObject = Instantiate(other.gameObject, other.transform.position, Quaternion.identity) as GameObject;
 
+                    instanceOfObject.transform.name = instanceOfObject.transform.name + ": " + transform.name;
                     instanceOfObject.transform.SetParent(inversePortal.parent);
                     inversePortalObjects.Add(instanceOfObject);
 
