@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799691, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8713033606754227512, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: objectMat
@@ -398,7 +398,6 @@ MonoBehaviour:
   exitPortal: {fileID: 1543517149}
   enterPoint: {fileID: 230198229}
   exitPoint: {fileID: 1783035581}
-  neg: 0
 --- !u!114 &56530628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,7 +888,6 @@ MonoBehaviour:
   exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1904189540}
   exitPoint: {fileID: 200642778}
-  neg: 0
 --- !u!114 &116474473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,7 +2141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &367763638
 Transform:
   m_ObjectHideFlags: 0
@@ -3445,7 +3443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &635195639
 Transform:
   m_ObjectHideFlags: 0
@@ -9403,7 +9401,6 @@ MonoBehaviour:
   exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1313468102}
   exitPoint: {fileID: 314471896}
-  neg: 0
 --- !u!114 &1543517152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11732,7 +11729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799691, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8713033606754227512, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: objectMat

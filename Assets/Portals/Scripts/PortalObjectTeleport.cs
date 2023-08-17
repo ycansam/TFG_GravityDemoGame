@@ -16,11 +16,6 @@ public class PortalObjectTeleport : MonoBehaviour
     [SerializeField]
     private Transform exitPoint;
 
-
-    // Booleano que inidica si esta en un lado u otro
-    [SerializeField]
-    private bool neg;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == Tags.OBJECT_MOVABLE_TAG)
