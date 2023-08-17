@@ -185,6 +185,7 @@ public class TriggerPortalCamera : MonoBehaviour
         }
         if (other.tag == Tags.PLAYER)
         {
+            EnableObjectRenders();
             playerTriggeredByTransform = transform.name;
         }
     }
@@ -195,6 +196,7 @@ public class TriggerPortalCamera : MonoBehaviour
         {
             EnableObjectRenders();
             RemoveMovableIfIncluded(other.gameObject);
+
         }
 
         foreach (Transform portalCamera in portalCameras)

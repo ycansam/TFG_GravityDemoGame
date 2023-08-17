@@ -23,7 +23,6 @@ public class PortalObjectTeleport : MonoBehaviour
             if (!other.gameObject.name.Contains("Clone"))
             {
                 bool objectHasEnteredFromBack = ObjectHasExitedFromBack(other.gameObject);
-                // Debug.Log("ENTER: " + objectHasEnteredFromBack);
                 other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack = objectHasEnteredFromBack;
             }
         }
@@ -46,7 +45,6 @@ public class PortalObjectTeleport : MonoBehaviour
                 else
                 {
                     // PASA AL PORTAL DESDE LA SALIDA :DDDDDD
-                    Debug.Log("pasa al otro lado desde la salida");
                     objectToTp.transform.position = exitPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
                 }
             }
@@ -56,16 +54,12 @@ public class PortalObjectTeleport : MonoBehaviour
                 {
                     // PASA AL PORTAL DESDE LA ENTRADA UUUU :)()
                     objectToTp.transform.position = otherPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
-                    Debug.Log("pasa al otro lado desde la entrada");
                 }
                 else
                 {
                     // NO HACE NADA SE QUEDAAAAAAAA JIJI POR DETRÁS
                 }
             }
-
-            // Debug.Log("EXIT: " + exitedFromBack);
-            // Debug.Log("OBJECT PROPERTY ENTERED:" + other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack);
         }
     }
 
