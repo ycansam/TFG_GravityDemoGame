@@ -28,6 +28,7 @@ public class PortalObjectTeleport : MonoBehaviour
             if (!other.gameObject.name.Contains("Clone"))
             {
                 bool objectHasEnteredFromBack = ObjectHasExitedFromBack(other.gameObject);
+                // Debug.Log("ENTER: " + objectHasEnteredFromBack);
                 other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack = objectHasEnteredFromBack;
             }
         }
@@ -36,19 +37,40 @@ public class PortalObjectTeleport : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         GameObject objectToTp = other.gameObject;
-        if (other.tag != Tags.PLAYER)
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
         {
-
             bool exitedFromBack = ObjectHasExitedFromBack(objectToTp);
-            Vector3 playerFromPortal = transform.position - objectToTp.transform.position;
-            if (exitedFromBack == neg)
+            Vector3 objectFromPortal = transform.position - objectToTp.transform.position;
+
+            if (!exitedFromBack)
             {
-                objectToTp.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                if (!other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
+                {
+                    // NO HACER NADA SE QUEDAAAAAAAAAAAAA! :D
+                }
+                else
+                {
+                    // PASA AL PORTAL DESDE LA SALIDA :DDDDDD
+                    Debug.Log("pasa al otro lado desde la salida");
+                    objectToTp.transform.position = exitPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
+                }
             }
             else
             {
-                objectToTp.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
+                if (!other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack)
+                {
+                    // PASA AL PORTAL DESDE LA ENTRADA UUUU :)()
+                    objectToTp.transform.position = otherPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
+                    Debug.Log("pasa al otro lado desde la entrada");
+                }
+                else
+                {
+                    // NO HACE NADA SE QUEDAAAAAAAA JIJI POR DETRÁS
+                }
             }
+
+            // Debug.Log("EXIT: " + exitedFromBack);
+            // Debug.Log("OBJECT PROPERTY ENTERED:" + other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack);
         }
     }
 

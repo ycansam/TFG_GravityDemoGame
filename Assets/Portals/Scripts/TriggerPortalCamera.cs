@@ -193,6 +193,7 @@ public class TriggerPortalCamera : MonoBehaviour
     {
         if (other.tag == Tags.OBJECT_MOVABLE_TAG)
         {
+            EnableObjectRenders();
             RemoveMovableIfIncluded(other.gameObject);
         }
 

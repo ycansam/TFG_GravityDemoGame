@@ -53,7 +53,7 @@ public class PortalTeleport : MonoBehaviour
                     {
                         if (playerFromPortalDistance < -distance)
                         {
-                            Debug.Log("a1");
+                            // Debug.Log("a1");
                             player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
@@ -61,7 +61,7 @@ public class PortalTeleport : MonoBehaviour
                     {
                         if (playerFromPortalDistance > -distance)
                         {
-                            Debug.Log("a2");
+                            // Debug.Log("a2");
                             player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
@@ -72,7 +72,7 @@ public class PortalTeleport : MonoBehaviour
                     {
                         if (playerFromPortalDistance < -distance)
                         {
-                            Debug.Log("b1");
+                            // Debug.Log("b1");
                             player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
@@ -80,7 +80,7 @@ public class PortalTeleport : MonoBehaviour
                     {
                         if (playerFromPortalDistance > -distance)
                         {
-                            Debug.Log("b2");
+                            // Debug.Log("b2");
                             player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                         }
                     }
