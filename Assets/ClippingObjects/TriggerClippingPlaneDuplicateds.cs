@@ -17,10 +17,6 @@ public class TriggerClippingPlaneDuplicateds : MonoBehaviour
     {
         if (other.tag == Tags.OBJECT_MOVABLE_TAG && other.name.Contains("Clone"))
         {
-
-            // if (transform.parent.name.Contains("Rotator"))
-            // {
-            // if (other.transform.parent.name != transform.parent.name)
             if (other.GetComponent<ObjectProperties>().isTeleporting)
             {
                 if (other.transform.name.Contains(clipOnCube))
@@ -30,9 +26,6 @@ public class TriggerClippingPlaneDuplicateds : MonoBehaviour
                 }
 
             }
-            Debug.Log(other.transform.name);
-            // }
-
         }
     }
 }
