@@ -57,7 +57,6 @@ public class PortalObjectDuplicator : MonoBehaviour
                     enterPortalObjects.Add(instanceOfObject);
 
                     Destroy(instanceOfObject.GetComponent<Gravity>());
-                    Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
                     duplicatedEnterObjects.Add(other.gameObject);
                     other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
@@ -75,7 +74,6 @@ public class PortalObjectDuplicator : MonoBehaviour
                     inversePortalObjects.Add(instanceOfObject);
 
                     Destroy(instanceOfObject.GetComponent<Gravity>());
-                    Destroy(instanceOfObject.GetComponent<ObjectInTheWay>());
                     duplicatedInverseObjects.Add(other.gameObject);
                     other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;

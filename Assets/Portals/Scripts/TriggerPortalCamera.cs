@@ -35,8 +35,9 @@ public class TriggerPortalCamera : MonoBehaviour
             TeleportItems teleportItem = new TeleportItems();
             teleportItem.item = ob;
             teleportItem.triggeredTransform = transform.name;
-            teleportingObjetcs.Add(ob);
+
             teleportingObjetcsClass.Add(teleportItem);
+            teleportingObjetcs.Add(ob);
         }
     }
 
@@ -49,8 +50,8 @@ public class TriggerPortalCamera : MonoBehaviour
             teleportItem.item = ob;
             teleportItem.triggeredTransform = transform.name;
 
-            teleportingClones.Add(ob);
             teleportingClonesClass.Add(teleportItem);
+            teleportingClones.Add(ob);
         }
     }
 
@@ -59,21 +60,26 @@ public class TriggerPortalCamera : MonoBehaviour
         if (includedObjects.Contains(ob))
         {
             int index = includedObjects.IndexOf(ob);
-            includedObjects.RemoveAt(index);
+            if (index != -1)
+                includedObjects.RemoveAt(index);
         }
         if (teleportingClones.Contains(ob))
         {
             int index = teleportingClones.IndexOf(ob);
-            teleportingClones.RemoveAt(index);
-            teleportingClonesClass.RemoveAt(index);
-
+            if (index != -1)
+            {
+                teleportingClonesClass.RemoveAt(index);
+                teleportingClones.RemoveAt(index);
+            }
         }
         if (teleportingObjetcs.Contains(ob))
         {
             int index = teleportingObjetcs.IndexOf(ob);
-            teleportingObjetcs.RemoveAt(index);
-            teleportingObjetcsClass.RemoveAt(index);
-
+            if (index != -1)
+            {
+                teleportingObjetcsClass.RemoveAt(index);
+                teleportingObjetcs.RemoveAt(index);
+            }
         }
     }
 
@@ -94,22 +100,23 @@ public class TriggerPortalCamera : MonoBehaviour
         {
             if (playerTriggeredByTransform != teleportingClonesClass[i].triggeredTransform)
             {
-                if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
-                {
-                    if (transform.name.Contains("("))
+                if (i < teleportingObjetcsClass.Count)
+                    if (!teleportingObjetcsClass[i].triggeredTransform.Contains("("))
                     {
-                        teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                        if (transform.name.Contains("("))
+                        {
+                            if (teleportingClones[i] != null)
+                                teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                        }
                     }
-                }
-
-                if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
-                {
-                    if (!transform.name.Contains("("))
+                    else if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
                     {
-
-                        teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                        if (!transform.name.Contains("("))
+                        {
+                            if (teleportingClones[i] != null)
+                                teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                        }
                     }
-                }
             }
 
         }
@@ -119,11 +126,13 @@ public class TriggerPortalCamera : MonoBehaviour
     {
         foreach (GameObject ob in includedObjects)
         {
-            ob.GetComponent<MeshRenderer>().enabled = true;
+            if (ob != null)
+                ob.GetComponent<MeshRenderer>().enabled = true;
         }
         foreach (GameObject ob in teleportingClones)
         {
-            ob.GetComponent<MeshRenderer>().enabled = true;
+            if (ob != null)
+                ob.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
