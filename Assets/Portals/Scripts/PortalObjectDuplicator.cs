@@ -78,8 +78,45 @@ public class PortalObjectDuplicator : MonoBehaviour
                     other.gameObject.GetComponent<ObjectProperties>().isTeleporting = true;
                     instanceOfObject.GetComponent<ObjectProperties>().isTeleporting = true;
                 }
+
+
+            DisableCollidersFromEachOther(other.gameObject);
+
         }
     }
+
+    private void DisableCollidersFromEachOther(GameObject ob)
+    {
+        if (duplicatedEnterObjects.Contains(ob))
+        {
+            foreach (GameObject go in duplicatedInverseObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
+            }
+        }
+        else
+        {
+            foreach (GameObject go in duplicatedInverseObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
+            }
+        }
+        if (duplicatedInverseObjects.Contains(ob))
+        {
+            foreach (GameObject go in duplicatedEnterObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
+            }
+        }
+        else
+        {
+            foreach (GameObject go in duplicatedEnterObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
+            }
+        }
+    }
+
 
     private void OnTriggerExit(Collider other)
     {

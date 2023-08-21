@@ -24,6 +24,7 @@ public class PortalObjectTeleport : MonoBehaviour
             {
                 bool objectHasEnteredFromBack = ObjectHasExitedFromBack(other.gameObject);
                 other.gameObject.GetComponent<ObjectProperties>().hasEnteredFromBack = objectHasEnteredFromBack;
+                other.gameObject.GetComponent<ObjectProperties>().portalEntered = transform.name;
             }
         }
     }

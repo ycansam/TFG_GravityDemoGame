@@ -10,5 +10,8 @@ public class ObjectProperties : MonoBehaviour
     [HideInInspector]
     public bool hasEnteredFromBack = false;
 
+    [HideInInspector]
+    public string portalEntered = "";
+
     public Material objectMat;
 }

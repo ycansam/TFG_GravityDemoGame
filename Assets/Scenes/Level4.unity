@@ -2275,6 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTeleporting: 0
   hasEnteredFromBack: 0
+  portalEntered: 
   objectMat: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
 --- !u!1 &370085732
 GameObject:
@@ -3580,6 +3581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTeleporting: 0
   hasEnteredFromBack: 0
+  portalEntered: 
   objectMat: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
 --- !u!1 &645410097
 GameObject:
@@ -5803,6 +5805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTeleporting: 0
   hasEnteredFromBack: 0
+  portalEntered: 
   objectMat: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
 --- !u!1001 &984023346
 PrefabInstance:
@@ -8888,6 +8891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTeleporting: 0
   hasEnteredFromBack: 0
+  portalEntered: 
   objectMat: {fileID: 2100000, guid: 5a72f1fbe99f14c479092a5fa6c64a26, type: 2}
 --- !u!1 &1478058822
 GameObject:
