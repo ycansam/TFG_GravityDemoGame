@@ -194,13 +194,14 @@ public class TriggerPortalCamera : MonoBehaviour
                 {
                     if (teleportingObjetcsClass[i].triggeredTransform != playerTriggeredByTransform)
                     {
-                        if (teleportingClones.Count < i)
+                        if (teleportingClonesClass.Count < i)
                         {
-                            if (teleportingClonesClass[i].triggeredTransform != playerTriggeredByTransform)
-                            {
-                                teleportingClonesClass[i].item.GetComponent<MeshRenderer>().enabled = false;
-                                teleportingObjetcsClass[i].item.GetComponent<MeshRenderer>().enabled = false;
-                            }
+                            if (teleportingClonesClass[i].item != null)
+                                if (teleportingClonesClass[i].triggeredTransform != playerTriggeredByTransform)
+                                {
+                                    teleportingClonesClass[i].item.GetComponent<MeshRenderer>().enabled = false;
+                                    teleportingObjetcsClass[i].item.GetComponent<MeshRenderer>().enabled = false;
+                                }
                         }
                     }
                 }
