@@ -18,6 +18,10 @@ public class MovableObjectsInCube : MonoBehaviour
                     colliderList.Add(other.gameObject);
                     other.gameObject.transform.parent = transform;
                 }
+
+            foreach(GameObject ob in colliderList){
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), other.GetComponent<Collider>(), false);
+            }
         }
     }
 
