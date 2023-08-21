@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -187,6 +188,24 @@ public class TriggerPortalCamera : MonoBehaviour
         {
             EnableObjectRenders();
             playerTriggeredByTransform = transform.name;
+            for (int i = 0; i < teleportingObjetcsClass.Count; i++)
+            {
+                if (teleportingObjetcsClass[i].item != null)
+                {
+                    if (teleportingObjetcsClass[i].triggeredTransform != playerTriggeredByTransform)
+                    {
+                        if (teleportingClones.Count < i)
+                        {
+                            if (teleportingClonesClass[i].triggeredTransform != playerTriggeredByTransform)
+                            {
+                                teleportingClonesClass[i].item.GetComponent<MeshRenderer>().enabled = false;
+                                teleportingObjetcsClass[i].item.GetComponent<MeshRenderer>().enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 

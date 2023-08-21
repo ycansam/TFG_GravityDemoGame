@@ -414,7 +414,6 @@ MonoBehaviour:
   exitPortal: {fileID: 1543517149}
   enterPoint: {fileID: 230198229}
   exitPoint: {fileID: 1783035581}
-  neg: 0
 --- !u!64 &56530629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -904,7 +903,6 @@ MonoBehaviour:
   exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1904189540}
   exitPoint: {fileID: 200642778}
-  neg: 0
 --- !u!64 &116474474
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1172,6 +1170,8 @@ Transform:
   - {fileID: 1844244252}
   - {fileID: 760349427}
   - {fileID: 1529125939}
+  - {fileID: 1103082010}
+  - {fileID: 167078635}
   m_Father: {fileID: 826137622}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.122, y: 0, z: 0}
@@ -1200,13 +1200,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167078634}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 0, z: -0.5}
-  m_LocalScale: {x: 11.981978, y: 25.638752, z: 24.384626}
+  m_LocalRotation: {x: 0.0010666847, y: -0, z: -0, w: 0.99999946}
+  m_LocalPosition: {x: -6.05, y: 0.025621764, z: -12.009977}
+  m_LocalScale: {x: 11.981978, y: 25.638748, z: 24.384624}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 826137622}
-  m_RootOrder: 3
+  m_Father: {fileID: 161191792}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &167078636
 MonoBehaviour:
@@ -1420,13 +1420,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171007282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.22, y: 0, z: -0.10000229}
-  m_LocalScale: {x: 11.981978, y: 25.638752, z: 24.384626}
+  m_LocalRotation: {x: 0.0010666847, y: -0, z: -0, w: 0.99999946}
+  m_LocalPosition: {x: -6.2200003, y: 0.024768408, z: -11.609975}
+  m_LocalScale: {x: 11.981978, y: 25.638748, z: 24.384624}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 396765882}
-  m_RootOrder: 3
+  m_Father: {fileID: 1901639352}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &171007284
 MonoBehaviour:
@@ -2462,8 +2462,6 @@ Transform:
   m_Children:
   - {fileID: 1901639352}
   - {fileID: 1126693690}
-  - {fileID: 523866577}
-  - {fileID: 171007283}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2971,13 +2969,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523866576}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.13, y: 0, z: -0.1}
-  m_LocalScale: {x: 11.981978, y: 25.638752, z: 24.384626}
+  m_LocalRotation: {x: 0.0010666847, y: -0, z: -0, w: 0.99999946}
+  m_LocalPosition: {x: 6.13, y: 0.024768408, z: -11.609975}
+  m_LocalScale: {x: 11.981978, y: 25.638748, z: 24.384624}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 396765882}
-  m_RootOrder: 2
+  m_Father: {fileID: 1901639352}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &523866578
 MonoBehaviour:
@@ -4621,8 +4619,6 @@ Transform:
   m_Children:
   - {fileID: 161191792}
   - {fileID: 1333097845}
-  - {fileID: 1103082010}
-  - {fileID: 167078635}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6528,13 +6524,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103082009}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.48, y: 0, z: -0.5}
-  m_LocalScale: {x: 11.981978, y: 25.638752, z: 24.384626}
+  m_LocalRotation: {x: 0.0010666847, y: -0, z: -0, w: 0.99999946}
+  m_LocalPosition: {x: 6.05, y: 0.025621764, z: -12.009977}
+  m_LocalScale: {x: 11.981978, y: 25.638748, z: 24.384624}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 826137622}
-  m_RootOrder: 2
+  m_Father: {fileID: 161191792}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1103082011
 MonoBehaviour:
@@ -9417,7 +9413,6 @@ MonoBehaviour:
   exitPortal: {fileID: 56530625}
   enterPoint: {fileID: 1313468102}
   exitPoint: {fileID: 314471896}
-  neg: 1
 --- !u!64 &1543517153
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11229,6 +11224,8 @@ Transform:
   - {fileID: 971766306}
   - {fileID: 1248861763}
   - {fileID: 512260192}
+  - {fileID: 523866577}
+  - {fileID: 171007283}
   m_Father: {fileID: 396765882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.122, y: 0, z: 0}
