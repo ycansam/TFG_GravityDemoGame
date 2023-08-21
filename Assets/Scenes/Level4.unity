@@ -275,11 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.12
+      value: -8.53
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.98
+      value: -9.59
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1224,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -1444,6 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -2997,6 +2999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -3752,6 +3755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -4461,6 +4465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}
@@ -6556,6 +6561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ebbf539bef46b7b6b47eb29f560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031971155}
   portalCameras:
   - {fileID: 1012807703}
   - {fileID: 857997781}

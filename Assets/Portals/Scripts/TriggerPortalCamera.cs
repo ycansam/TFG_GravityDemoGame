@@ -6,6 +6,8 @@ using UnityEngine;
 public class TriggerPortalCamera : MonoBehaviour
 {
     static private string playerTriggeredByTransform;
+    [SerializeField]
+    private Transform player;
 
     private class TeleportItems
     {
@@ -107,7 +109,9 @@ public class TriggerPortalCamera : MonoBehaviour
                         if (transform.name.Contains("("))
                         {
                             if (teleportingClones[i] != null)
+                            {
                                 teleportingClones[i].GetComponent<MeshRenderer>().enabled = false;
+                            }
                         }
                     }
                     else if (teleportingObjetcsClass[i].triggeredTransform.Contains("("))
@@ -202,10 +206,38 @@ public class TriggerPortalCamera : MonoBehaviour
                                 if (teleportingClonesClass[i].triggeredTransform != playerTriggeredByTransform)
                                 {
                                     teleportingClonesClass[i].item.GetComponent<MeshRenderer>().enabled = false;
+                                    Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>());
                                 }
                             }
-
                         }
+                    }
+                    else
+                    {
+                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>(), false);
+                    }
+                }
+            }
+
+            for (int i = 0; i < teleportingClonesClass.Count; i++)
+            {
+                if (teleportingClonesClass[i].item != null)
+                {
+                    if (teleportingClonesClass[i].triggeredTransform != playerTriggeredByTransform)
+                    {
+                        if (i < teleportingObjetcsClass.Count)
+                        {
+                            if (teleportingObjetcsClass[i].item != null)
+                            {
+                                if (teleportingObjetcsClass[i].triggeredTransform != playerTriggeredByTransform)
+                                {
+                                    Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>());
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>(), false);
                     }
                 }
             }
