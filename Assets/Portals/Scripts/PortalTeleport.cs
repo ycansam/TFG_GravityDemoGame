@@ -17,74 +17,44 @@ public class PortalTeleport : MonoBehaviour
     [SerializeField]
     private Transform exitPoint;
 
-    // Booleano que inidica si esta en un lado u otro
-    [SerializeField]
-    private bool neg;
     private Transform player;
-
-    private static float firstContactPoint = 0;
-    private static string portalName = "";
+    private PlayerStats playerStats;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
+        playerStats = player.GetComponent<PlayerStats>();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == Tags.PLAYER)
+        {
+            playerStats.hasEnteredFromBack = PlayerHasEnteredFromInverse();
+            playerStats.enteredPortal = transform.name;
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
 
         if (other.tag == Tags.PLAYER)
         {
-
-            float distance = 0.00001f;
             Vector3 playerFromPortal = transform.position - player.position;
             float playerFromPortalDistance = GetPlayerFromPortalDistance();
-            if (firstContactPoint == 0)
+            if (transform.name == playerStats.enteredPortal)
             {
-                firstContactPoint = playerFromPortalDistance;
-                portalName = transform.name;
-            }
-            portalName = transform.parent.parent.name;
-            if (portalName == transform.parent.parent.name)
-            {
-                if (!neg)
+                if (!playerStats.hasEnteredFromBack)
                 {
-                    if (firstContactPoint > 0.02)
+                    if (playerFromPortalDistance < 0)
                     {
-                        if (playerFromPortalDistance < -distance)
-                        {
-                            // Debug.Log("a1");
-                            player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                        }
-                    }
-                    else if (firstContactPoint < -0.02)
-                    {
-                        if (playerFromPortalDistance > -distance)
-                        {
-                            // Debug.Log("a2");
-                            player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                        }
+                        player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                     }
                 }
                 else
                 {
-                    if (firstContactPoint > 0.02)
+                    if (playerFromPortalDistance > 0)
                     {
-                        if (playerFromPortalDistance < -distance)
-                        {
-                            // Debug.Log("b1");
-                            player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                        }
+                        player.transform.position = exitPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
                     }
-                    else if (firstContactPoint < -0.02)
-                    {
-                        if (playerFromPortalDistance > -distance)
-                        {
-                            // Debug.Log("b2");
-                            player.transform.position = otherPortal.position - new Vector3(playerFromPortal.x, playerFromPortal.y, playerFromPortal.z);
-                        }
-                    }
-
                 }
             }
         }
@@ -96,16 +66,16 @@ public class PortalTeleport : MonoBehaviour
         Vector3 objectFromEntryPoint = enterPoint.position - player.transform.position;
         Vector3 objectFromExitPoint = exitPoint.position - player.transform.position;
         float distance = objectFromEntryPoint.magnitude - objectFromExitPoint.magnitude;
-        return distance;
+        return -distance;
     }
 
-    private void OnTriggerExit(Collider other)
+    private bool PlayerHasEnteredFromInverse()
     {
-        if (other.tag == Tags.PLAYER)
-        {
-            firstContactPoint = 0;
-            portalName = "";
-        }
+        Vector3 objectFromEntryPoint = enterPoint.position - player.transform.position;
+        Vector3 objectFromExitPoint = exitPoint.position - player.transform.position;
+        float direction = objectFromEntryPoint.magnitude - objectFromExitPoint.magnitude;
+        if (direction > 0)
+            return true;
+        return false;
     }
-
 }

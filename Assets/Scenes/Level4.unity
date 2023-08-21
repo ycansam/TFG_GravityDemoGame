@@ -11924,6 +11924,7 @@ GameObject:
   - component: {fileID: 2031971157}
   - component: {fileID: 2031971156}
   - component: {fileID: 2031971154}
+  - component: {fileID: 2031971160}
   m_Layer: 0
   m_Name: Astra
   m_TagString: Player
@@ -12034,6 +12035,20 @@ MonoBehaviour:
   jumpForce: 5
   gravityEnabled: 1
   ignoreLayers: 07000000
+--- !u!114 &2031971160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031971152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b405a6c339085488f83f37c9a5bf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasEnteredFromBack: 0
+  enteredPortal: 
 --- !u!1 &2045162954
 GameObject:
   m_ObjectHideFlags: 0
