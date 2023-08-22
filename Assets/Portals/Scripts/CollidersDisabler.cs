@@ -94,7 +94,6 @@ public class CollidersDisabler : MonoBehaviour
             {
                 if (!duplicatedEnterCloneObjects.Contains(other.gameObject))
                 {
-                    Debug.Log(other.name);
                     if (!ObjectHasEnteredFromBack(other.gameObject))
                     {
                         duplicatedEnterCloneObjects.Add(other.gameObject);

@@ -139,7 +139,6 @@ public class PortalObjectDuplicator : MonoBehaviour
             if (duplicatedInverseObjects.Contains(other.gameObject))
             {
                 int index = duplicatedInverseObjects.IndexOf(other.gameObject);
-                Debug.Log(index);
                 if (index != -1)
                 {
                     duplicatedInverseObjects.RemoveAt(index);
