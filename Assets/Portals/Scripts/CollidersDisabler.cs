@@ -13,29 +13,40 @@ public class CollidersDisabler : MonoBehaviour
     private List<GameObject> duplicatedEnterObjects = new List<GameObject>();
     private List<GameObject> duplicatedInverseObjects = new List<GameObject>();
 
-    private void OnTriggerStay(Collider other)
+    private List<GameObject> duplicatedEnterCloneObjects = new List<GameObject>();
+    private List<GameObject> duplicatedInverseCloneObjects = new List<GameObject>();
+
+    private void DisableCollidersFromEachOtherClones(GameObject ob)
     {
-        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        if (duplicatedEnterCloneObjects.Contains(ob))
         {
-            if (!duplicatedEnterObjects.Contains(other.gameObject))
+            foreach (GameObject go in duplicatedEnterObjects)
             {
-                if (!other.name.Contains("Clone") && !ObjectHasEnteredFromBack(other.gameObject))
-                {
-                    duplicatedEnterObjects.Add(other.gameObject);
-                }
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
             }
-
-            if (!duplicatedInverseObjects.Contains(other.gameObject))
-                if (!other.name.Contains("Clone") && ObjectHasEnteredFromBack(other.gameObject))
-                {
-                    duplicatedInverseObjects.Add(other.gameObject);
-                }
-
-            DisableCollidersFromEachOther(other.gameObject);
-
+        }
+        else
+        {
+            foreach (GameObject go in duplicatedEnterObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
+            }
+        }
+        if (duplicatedInverseCloneObjects.Contains(ob))
+        {
+            foreach (GameObject go in duplicatedInverseObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
+            }
+        }
+        else
+        {
+            foreach (GameObject go in duplicatedInverseObjects)
+            {
+                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
+            }
         }
     }
-
     private void DisableCollidersFromEachOther(GameObject ob)
     {
         if (duplicatedEnterObjects.Contains(ob))
@@ -68,6 +79,51 @@ public class CollidersDisabler : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == Tags.OBJECT_MOVABLE_TAG)
+        {
+            if (!other.name.Contains("Clone"))
+            {
+                if (!duplicatedEnterObjects.Contains(other.gameObject))
+                {
+                    if (!ObjectHasEnteredFromBack(other.gameObject))
+                    {
+                        duplicatedEnterObjects.Add(other.gameObject);
+                    }
+                }
+
+                if (!duplicatedInverseObjects.Contains(other.gameObject))
+                    if (ObjectHasEnteredFromBack(other.gameObject))
+                    {
+                        duplicatedInverseObjects.Add(other.gameObject);
+                    }
+                DisableCollidersFromEachOther(other.gameObject);
+            }
+
+            if (other.name.Contains("Clone"))
+            {
+                if (!duplicatedEnterCloneObjects.Contains(other.gameObject))
+                {
+                    if (!ObjectHasEnteredFromBack(other.gameObject))
+                    {
+                        duplicatedEnterCloneObjects.Add(other.gameObject);
+                    }
+                }
+
+                if (!duplicatedInverseCloneObjects.Contains(other.gameObject))
+                {
+                    if (ObjectHasEnteredFromBack(other.gameObject))
+                    {
+                        duplicatedInverseCloneObjects.Add(other.gameObject);
+                    }
+                }
+                DisableCollidersFromEachOtherClones(other.gameObject);
+            }
+        }
+    }
+
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -87,6 +143,22 @@ public class CollidersDisabler : MonoBehaviour
                 if (index != -1)
                 {
                     duplicatedInverseObjects.RemoveAt(index);
+                }
+            }
+            if (duplicatedEnterCloneObjects.Contains(other.gameObject))
+            {
+                int index = duplicatedEnterCloneObjects.IndexOf(other.gameObject);
+                if (index != -1)
+                {
+                    duplicatedEnterCloneObjects.RemoveAt(index);
+                }
+            }
+            if (duplicatedInverseCloneObjects.Contains(other.gameObject))
+            {
+                int index = duplicatedInverseCloneObjects.IndexOf(other.gameObject);
+                if (index != -1)
+                {
+                    duplicatedInverseCloneObjects.RemoveAt(index);
                 }
             }
         }
