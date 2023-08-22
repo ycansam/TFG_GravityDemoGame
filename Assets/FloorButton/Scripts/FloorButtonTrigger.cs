@@ -49,7 +49,7 @@ public class FloorButtonTrigger : MonoBehaviour
     private bool HasMovableObjectSameColorAsBtn(Collider other)
     {
         MovableObjectColor objectColor = other.transform.GetComponent<MovableObjectColor>();
-        return objectColor && BtnColor.color == objectColor.Color;
+        return objectColor && btnColor.color == objectColor.Color;
     }
 
     private bool isCharOrMovableObj(Collider other)

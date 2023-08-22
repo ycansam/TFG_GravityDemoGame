@@ -21,7 +21,7 @@ public class TriggerClippingPlaneDuplicateds : MonoBehaviour
             {
                 if (other.transform.name.Contains(clipOnCube))
                 {
-                    clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
+                    clippingPlane.mat.color = other.GetComponent<Renderer>().material.color;
                     other.GetComponent<Renderer>().material = clippingPlane.mat;
                 }
 

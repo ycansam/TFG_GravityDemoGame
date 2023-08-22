@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class BtnColor : MonoBehaviour
 {
-    public static int color = 0;
+    [SerializeField]
+    public int color = 0;
 }

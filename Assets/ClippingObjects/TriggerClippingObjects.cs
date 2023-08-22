@@ -20,7 +20,7 @@ public class TriggerClippingObjects : MonoBehaviour
                 {
                     if (other.GetComponent<ObjectProperties>().hasEnteredFromBack)
                     {
-                        clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
+                        clippingPlane.mat.color = other.GetComponent<Renderer>().material.color;
                         other.GetComponent<Renderer>().material = clippingPlane.mat;
                     }
                 }
@@ -28,7 +28,7 @@ public class TriggerClippingObjects : MonoBehaviour
                 {
                     if (!other.GetComponent<ObjectProperties>().hasEnteredFromBack)
                     {
-                        clippingPlane.mat.mainTexture = other.GetComponent<Renderer>().material.mainTexture;
+                        clippingPlane.mat.color = other.GetComponent<Renderer>().material.color;
                         other.GetComponent<Renderer>().material = clippingPlane.mat;
                     }
                 }

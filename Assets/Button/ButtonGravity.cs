@@ -11,7 +11,8 @@ public class ButtonGravity : MonoBehaviour
     {
         foreach (GameObject item in cubes)
         {
-            cubesGravity.Add(item.GetComponent<Gravity>());
+            if (item != null)
+                cubesGravity.Add(item.GetComponent<Gravity>());
         }
     }
 
