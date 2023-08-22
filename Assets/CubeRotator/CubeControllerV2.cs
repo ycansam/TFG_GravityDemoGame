@@ -38,9 +38,13 @@ public class CubeControllerV2 : MonoBehaviour
         {
             HorizontalMove(-1);
         }
-        if (Input.GetKeyDown(keyFront) || Input.GetKeyDown(keyBack))
+        if (Input.GetKeyDown(keyFront))
         {
-            VerticalMove();
+            VerticalMove(1);
+        }
+        if (Input.GetKeyDown(keyBack))
+        {
+            VerticalMove(-1);
         }
     }
 
@@ -78,147 +82,147 @@ public class CubeControllerV2 : MonoBehaviour
     }
 
 
-    private void VerticalMove()
+    private void VerticalMove(int direction)
     {
         if (PlayerOnHelpWall.IsOnInferiorWall())
-            PlayerOnInferiorWallConds();
+            PlayerOnInferiorWallConds(direction);
         else if (PlayerOnHelpWall.IsOnTopWall())
-            PlayerOnTopWallConds();
+            PlayerOnTopWallConds(direction);
         else if (PlayerOnHelpWall.IsOnLeftWall())
-            PlayerOnLeftWallConds();
+            PlayerOnLeftWallConds(direction);
         else if (PlayerOnHelpWall.IsOnRightWall())
-            PlayerOnRightWallConds();
+            PlayerOnRightWallConds(direction);
         else if (PlayerOnHelpWall.IsOnFrontWall())
-            PlayerOnFrontWallConds();
+            PlayerOnFrontWallConds(direction);
         else if (PlayerOnHelpWall.IsOnBackWall())
-            PlayerOnBackWallConds();
+            PlayerOnBackWallConds(direction);
     }
 
 
-    private void PlayerOnInferiorWallConds()
+    private void PlayerOnInferiorWallConds(int direction)
     {
 
         if (PlayerLookingAtHelpWall.IsLookingRightWall())
         {
-            cubeRotator.RotateSmooth(Vector3.back);
+            cubeRotator.RotateSmooth(Vector3.back * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingLeftWall())
         {
-            cubeRotator.RotateSmooth(Vector3.forward);
+            cubeRotator.RotateSmooth(Vector3.forward * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingFrontWall())
         {
-            cubeRotator.RotateSmooth(Vector3.right);
+            cubeRotator.RotateSmooth(Vector3.right * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingBackWall())
         {
-            cubeRotator.RotateSmooth(Vector3.left);
+            cubeRotator.RotateSmooth(Vector3.left * direction);
         }
     }
 
-    private void PlayerOnTopWallConds()
+    private void PlayerOnTopWallConds(int direction)
     {
 
         if (PlayerLookingAtHelpWall.IsLookingRightWall())
         {
-            cubeRotator.RotateSmooth(Vector3.forward);
+            cubeRotator.RotateSmooth(Vector3.forward * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingLeftWall())
         {
-            cubeRotator.RotateSmooth(Vector3.back);
+            cubeRotator.RotateSmooth(Vector3.back * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingFrontWall())
         {
-            cubeRotator.RotateSmooth(Vector3.left);
+            cubeRotator.RotateSmooth(Vector3.left * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingBackWall())
         {
-            cubeRotator.RotateSmooth(Vector3.right);
+            cubeRotator.RotateSmooth(Vector3.right * direction);
         }
     }
 
-    private void PlayerOnLeftWallConds()
+    private void PlayerOnLeftWallConds(int direction)
     {
 
         if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
         {
-            cubeRotator.RotateSmooth(Vector3.back);
+            cubeRotator.RotateSmooth(Vector3.back * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingTopWall())
         {
-            cubeRotator.RotateSmooth(Vector3.forward);
+            cubeRotator.RotateSmooth(Vector3.forward * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingFrontWall())
         {
-            cubeRotator.RotateSmooth(Vector3.down);
+            cubeRotator.RotateSmooth(Vector3.down * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingBackWall())
         {
-            cubeRotator.RotateSmooth(Vector3.up);
+            cubeRotator.RotateSmooth(Vector3.up * direction);
         }
     }
 
-    private void PlayerOnRightWallConds()
+    private void PlayerOnRightWallConds(int direction)
     {
 
         if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
         {
-            cubeRotator.RotateSmooth(Vector3.forward);
+            cubeRotator.RotateSmooth(Vector3.forward * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingTopWall())
         {
-            cubeRotator.RotateSmooth(Vector3.back);
+            cubeRotator.RotateSmooth(Vector3.back * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingFrontWall())
         {
-            cubeRotator.RotateSmooth(Vector3.up);
+            cubeRotator.RotateSmooth(Vector3.up * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingBackWall())
         {
-            cubeRotator.RotateSmooth(Vector3.down);
+            cubeRotator.RotateSmooth(Vector3.down * direction);
         }
     }
 
-    private void PlayerOnFrontWallConds()
+    private void PlayerOnFrontWallConds(int direction)
     {
 
         if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
         {
-            cubeRotator.RotateSmooth(Vector3.left);
+            cubeRotator.RotateSmooth(Vector3.left * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingTopWall())
         {
-            cubeRotator.RotateSmooth(Vector3.right);
+            cubeRotator.RotateSmooth(Vector3.right * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingRightWall())
         {
-            cubeRotator.RotateSmooth(Vector3.down);
+            cubeRotator.RotateSmooth(Vector3.down * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingLeftWall())
         {
-            cubeRotator.RotateSmooth(Vector3.up);
+            cubeRotator.RotateSmooth(Vector3.up * direction);
         }
     }
 
-    private void PlayerOnBackWallConds()
+    private void PlayerOnBackWallConds(int direction)
     {
 
 
         if (PlayerLookingAtHelpWall.IsLookingInferiorWall())
         {
-            cubeRotator.RotateSmooth(Vector3.right);
+            cubeRotator.RotateSmooth(Vector3.right * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingTopWall())
         {
-            cubeRotator.RotateSmooth(Vector3.left);
+            cubeRotator.RotateSmooth(Vector3.left * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingRightWall())
         {
-            cubeRotator.RotateSmooth(Vector3.up);
+            cubeRotator.RotateSmooth(Vector3.up * direction);
         }
         if (PlayerLookingAtHelpWall.IsLookingLeftWall())
         {
-            cubeRotator.RotateSmooth(Vector3.down);
+            cubeRotator.RotateSmooth(Vector3.down * direction);
         }
     }
 
