@@ -22,28 +22,17 @@ public class CollidersDisabler : MonoBehaviour
         {
             foreach (GameObject go in duplicatedEnterObjects)
             {
+
                 Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
             }
         }
-        else
-        {
-            foreach (GameObject go in duplicatedEnterObjects)
-            {
-                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
-            }
-        }
+
+
         if (duplicatedInverseCloneObjects.Contains(ob))
         {
             foreach (GameObject go in duplicatedInverseObjects)
             {
-                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), true);
-            }
-        }
-        else
-        {
-            foreach (GameObject go in duplicatedInverseObjects)
-            {
-                Physics.IgnoreCollision(ob.GetComponent<Collider>(), go.GetComponent<Collider>(), false);
+                Physics.IgnoreCollision(go.GetComponent<Collider>(), ob.GetComponent<Collider>(), true);
             }
         }
     }
@@ -105,6 +94,7 @@ public class CollidersDisabler : MonoBehaviour
             {
                 if (!duplicatedEnterCloneObjects.Contains(other.gameObject))
                 {
+                    Debug.Log(other.name);
                     if (!ObjectHasEnteredFromBack(other.gameObject))
                     {
                         duplicatedEnterCloneObjects.Add(other.gameObject);
