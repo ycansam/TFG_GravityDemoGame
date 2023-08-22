@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class MovableObjectsInCube : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> colliderList = new List<GameObject>();
+    public List<GameObject> colliderList = new List<GameObject>();
 
     private void OnTriggerStay(Collider other)
     {
@@ -19,7 +18,8 @@ public class MovableObjectsInCube : MonoBehaviour
                     other.gameObject.transform.parent = transform;
                 }
 
-            foreach(GameObject ob in colliderList){
+            foreach (GameObject ob in colliderList)
+            {
                 Physics.IgnoreCollision(ob.GetComponent<Collider>(), other.GetComponent<Collider>(), false);
             }
         }

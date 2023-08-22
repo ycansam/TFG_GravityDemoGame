@@ -37,7 +37,7 @@ public class CatchObjects : MonoBehaviour
     private void FilterObjects()
     {
         hit = playerRays.GetFirstForwardRayHit();
-        Debug.Log(hit.transform.name);
+        // Debug.Log(hit.transform.name);
         if (Input.GetKeyDown(KeyCode.C))
         {
             CatchAstraSuit(hit.transform);

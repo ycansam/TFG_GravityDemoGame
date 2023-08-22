@@ -2064,6 +2064,7 @@ GameObject:
   - component: {fileID: 8900544173432309359}
   - component: {fileID: 8053856572228593209}
   - component: {fileID: 8191702358189159053}
+  - component: {fileID: 2390409470061261634}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2105,7 +2106,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   gravityEnabled: 1
-  ignoreLayers: 07000000
+  ignoreLayers: 0700000008000000
 --- !u!114 &8900544173432309345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,6 +2251,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointMovableObject: {fileID: 7784403769330850263}
+--- !u!114 &2390409470061261634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8900544173432309338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b405a6c339085488f83f37c9a5bf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasEnteredFromBack: 0
+  enteredPortal: 
 --- !u!1 &8900544173434865947
 GameObject:
   m_ObjectHideFlags: 0
