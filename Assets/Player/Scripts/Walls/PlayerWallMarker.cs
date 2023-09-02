@@ -11,7 +11,6 @@ public class PlayerWallMarker : MonoBehaviour
 
     private GameObject marker;
     private RaycastHit hit;
-    private RaycastHit hitHelpWall;
 
     void Start()
     {
@@ -22,6 +21,10 @@ public class PlayerWallMarker : MonoBehaviour
 
     private void Update()
     {
+        if (marker == null)
+        {
+            marker = Instantiate<GameObject>(markerPrefab);
+        }
         if (PlayerSuit.HasSuit()) LookingForwardRay();
     }
 
@@ -35,31 +38,23 @@ public class PlayerWallMarker : MonoBehaviour
         // Crea el rayo y lo debugea
         Vector3 forward = playerHead.TransformDirection(Vector3.forward) * 4F;
         Debug.DrawRay(playerHead.position, forward, Color.yellow);
-
         AssignMarkerPoint(Physics.RaycastAll(playerHead.position, forward, 4.0F, 9));
     }
 
     // Asigna al marker un punto donde estar y aparecer
     private void AssignMarkerPoint(RaycastHit[] hits)
     {
-
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
-            if (hit.transform.tag != Tags.PLAYER)
-            {
-                Debug.Log(hit.transform.name);
-                if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
-                    return;
-                if (CharacterWallsInformation.IsRayHittingWall(hit))
-                    marker.transform.position = hit.point;
-            }else{
-            }
-
+            Debug.Log(hit.transform.name);
+            if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
+                return;
+            if (CharacterWallsInformation.IsRayHittingWall(hit))
+                marker.transform.position = hit.point;
         }
-
-        // Activa el marcador si tiene puntos detectados en el rayo
         Debug.Log(hits.Length);
+        // Activa el marcador si tiene puntos detectados en el rayo
         ActiveMarker(hits.Length > 0);
     }
 
@@ -68,6 +63,9 @@ public class PlayerWallMarker : MonoBehaviour
     // Activa o desactiva el marcador dependiendo de la condicion
     private void ActiveMarker(bool activationCond)
     {
+        Debug.Log(marker.activeInHierarchy);
+        Debug.Log(marker.activeSelf);
+        Debug.Log(marker.transform.position);
         if (!marker.activeSelf && activationCond)
             marker.SetActive(true);
         else if (marker.activeSelf && !activationCond)

@@ -4542,7 +4542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09060e8e90594004b94478c265aba0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1669530825}
 --- !u!4 &231208230
 Transform:
   m_ObjectHideFlags: 0
@@ -5474,9 +5473,10 @@ GameObject:
   - component: {fileID: 523866577}
   - component: {fileID: 523866579}
   - component: {fileID: 523866578}
+  - component: {fileID: 523866580}
   m_Layer: 7
   m_Name: TriggerCameraObjetcsPortal2
-  m_TagString: Untagged
+  m_TagString: ObjectMovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5526,6 +5526,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &523866580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523866576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTeleporting: 0
+  hasEnteredFromBack: 0
+  portalEntered: 
+  objectMat: {fileID: 0}
 --- !u!1 &564492602
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,7 +5929,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh62398
+  m_Name: pb_Mesh179690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10467,7 +10483,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh62618
+  m_Name: pb_Mesh179916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13638,9 +13654,10 @@ GameObject:
   - component: {fileID: 1827337346}
   - component: {fileID: 1827337345}
   - component: {fileID: 1827337344}
+  - component: {fileID: 1827337347}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: ObjectMovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13723,6 +13740,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827337342}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1827337347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827337342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b902b2f884f0149a190a390959aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTeleporting: 0
+  hasEnteredFromBack: 0
+  portalEntered: 
+  objectMat: {fileID: 0}
 --- !u!1 &1831092836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2049035265068799691, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
