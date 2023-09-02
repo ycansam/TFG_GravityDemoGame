@@ -12,6 +12,7 @@ public class LevelManager3 : LevelManager
 
     private void Update()
     {
+        CompleteLevelAdmin();
         if (floorBtn.IsActivated)
         {
             CompleteLevel();
