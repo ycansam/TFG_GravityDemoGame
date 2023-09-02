@@ -29,14 +29,14 @@ public class PortalObjectDuplicator : MonoBehaviour
             Vector3 objectFromPortal = transform.position - duplicatedEnterObjects[i].transform.position;
             enterPortalObjects[i].transform.position = enterPortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
             enterPortalObjects[i].transform.rotation = duplicatedEnterObjects[i].transform.rotation;
-            enterPortalObjects[i].transform.localScale = duplicatedEnterObjects[i].transform.localScale;
+            // enterPortalObjects[i].transform.localScale = duplicatedEnterObjects[i].transform.localScale;
         }
         for (int i = 0; i < inversePortalObjects.Count; i++)
         {
             Vector3 objectFromPortal = transform.position - duplicatedInverseObjects[i].transform.position;
             inversePortalObjects[i].transform.position = inversePortal.position - new Vector3(objectFromPortal.x, objectFromPortal.y, objectFromPortal.z);
             inversePortalObjects[i].transform.rotation = duplicatedInverseObjects[i].transform.rotation;
-            inversePortalObjects[i].transform.localScale = duplicatedInverseObjects[i].transform.localScale;
+            // inversePortalObjects[i].transform.localScale = duplicatedInverseObjects[i].transform.localScale;
 
         }
 

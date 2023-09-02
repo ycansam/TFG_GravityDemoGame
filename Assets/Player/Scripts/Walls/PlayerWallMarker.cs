@@ -47,13 +47,11 @@ public class PlayerWallMarker : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
-            Debug.Log(hit.transform.name);
             if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
                 return;
             if (CharacterWallsInformation.IsRayHittingWall(hit))
                 marker.transform.position = hit.point;
         }
-        Debug.Log(hits.Length);
         // Activa el marcador si tiene puntos detectados en el rayo
         ActiveMarker(hits.Length > 0);
     }
@@ -63,9 +61,6 @@ public class PlayerWallMarker : MonoBehaviour
     // Activa o desactiva el marcador dependiendo de la condicion
     private void ActiveMarker(bool activationCond)
     {
-        Debug.Log(marker.activeInHierarchy);
-        Debug.Log(marker.activeSelf);
-        Debug.Log(marker.transform.position);
         if (!marker.activeSelf && activationCond)
             marker.SetActive(true);
         else if (marker.activeSelf && !activationCond)
