@@ -23,6 +23,10 @@ public class TriggerPortalCamera : MonoBehaviour
     static private List<GameObject> teleportingObjetcs = new List<GameObject>();
     static private List<TeleportItems> teleportingObjetcsClass = new List<TeleportItems>();
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
+    }
 
     private void IncludeMovableIfNotIncluded(GameObject ob)
     {
@@ -208,7 +212,9 @@ public class TriggerPortalCamera : MonoBehaviour
                                     teleportingClonesClass[i].item.GetComponent<MeshRenderer>().enabled = false;
                                     if (teleportingObjetcsClass[i] != null)
                                     {
-                                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>());
+                                        if (i < teleportingClonesClass.Count)
+                                            if (teleportingObjetcsClass[i].item != null)
+                                                Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>());
                                     }
                                 }
                             }
@@ -216,7 +222,9 @@ public class TriggerPortalCamera : MonoBehaviour
                     }
                     else
                     {
-                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>(), false);
+                        if (teleportingObjetcsClass[i] != null)
+                            if (teleportingObjetcsClass[i].item != null)
+                                Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingObjetcsClass[i].item.GetComponent<Collider>(), false);
                     }
                 }
             }
@@ -240,7 +248,10 @@ public class TriggerPortalCamera : MonoBehaviour
                     }
                     else
                     {
-                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>(), false);
+                        if (i < teleportingClonesClass.Count)
+                            if (teleportingClonesClass[i] != null)
+                                if (teleportingObjetcsClass[i].item != null)
+                                    Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>(), false);
                     }
                 }
             }

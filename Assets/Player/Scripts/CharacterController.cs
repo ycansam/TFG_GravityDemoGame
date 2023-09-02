@@ -95,4 +95,9 @@ public class CharacterController : MonoBehaviour
         }
         transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
     }
+
+    public void ResetVerticalSpeed()
+    {
+        verticalSpeed = 0;
+    }
 }
