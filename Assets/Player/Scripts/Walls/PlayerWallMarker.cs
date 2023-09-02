@@ -18,6 +18,7 @@ public class PlayerWallMarker : MonoBehaviour
     {
         marker = Instantiate<GameObject>(markerPrefab);
         marker.SetActive(false);
+        playerHead = GameObject.FindGameObjectWithTag(Tags.PLAYER_HEAD).transform;
     }
 
     private void Update()

@@ -6,6 +6,11 @@ public class PlayerInCube : MonoBehaviour
     private GameObject player;
     private List<GameObject> colliderList = new List<GameObject>();
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (!colliderList.Contains(collider.gameObject))

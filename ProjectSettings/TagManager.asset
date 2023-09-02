@@ -9,6 +9,7 @@ TagManager:
   - ButtonGravity
   - ObjectCatchable
   - Camera
+  - PlayerHead
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class LevelManager2 : LevelManager
 
     private void Update()
     {
+        CompleteLevelAdmin();
         if (floorBtn.IsActivated)
         {
             CompleteLevel();

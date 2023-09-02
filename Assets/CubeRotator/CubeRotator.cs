@@ -23,6 +23,7 @@ public class CubeRotator : MonoBehaviour
     private float rotationSpeed = 1f;
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
         playerInCube = GetComponentInChildren<PlayerInCube>();
     }
 
