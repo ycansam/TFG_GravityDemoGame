@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerWallMarker : MonoBehaviour
 {
-    [SerializeField]
     private Transform playerHead;
 
     [SerializeField]
@@ -47,13 +46,20 @@ public class PlayerWallMarker : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
-            if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
-                return;
-            if (CharacterWallsInformation.IsRayHittingWall(hit))
-                marker.transform.position = hit.point;
+            if (hit.transform.tag != Tags.PLAYER)
+            {
+                Debug.Log(hit.transform.name);
+                if (CharacterWallsInformation.IsRayHittingInvalidWall(hit))
+                    return;
+                if (CharacterWallsInformation.IsRayHittingWall(hit))
+                    marker.transform.position = hit.point;
+            }else{
+            }
+
         }
 
         // Activa el marcador si tiene puntos detectados en el rayo
+        Debug.Log(hits.Length);
         ActiveMarker(hits.Length > 0);
     }
 
