@@ -78,16 +78,17 @@ public class CatchObjects : MonoBehaviour
         {
             Debug.Log("buttonpressed");
             ButtonGravity btn = item.GetComponent<ButtonGravity>();
-            if (btn.useGravity)
-            {
-                Debug.Log("buttonpressed1");
-                btn.DisableCubesGravity();
-            }
-            else
-            {
-                Debug.Log("buttonpressed2");
-                btn.EnableCubesGravity();
-            }
+            if (btn != null)
+                if (btn.useGravity)
+                {
+                    Debug.Log("buttonpressed1");
+                    btn.DisableCubesGravity();
+                }
+                else
+                {
+                    Debug.Log("buttonpressed2");
+                    btn.EnableCubesGravity();
+                }
         }
     }
 }

@@ -33,7 +33,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (gravityEnabled)
             PlayerGravity();
