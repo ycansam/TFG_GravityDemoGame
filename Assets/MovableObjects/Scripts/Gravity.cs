@@ -88,6 +88,12 @@ public class Gravity : MonoBehaviour
         {
             rb.AddForce(GetGravityDirection() * gravity * mass, ForceMode.Acceleration);
         }
+        // if (!useGravity)
+        // {
+        //     rb.velocity = Vector3.zero;
+        //     rb.constraints = RigidbodyConstraints.FreezeRotation;
+        //     rb.angularVelocity = Vector3.zero;
+        // }
     }
 
     // Detecta si el cubo esta en el suelo o no

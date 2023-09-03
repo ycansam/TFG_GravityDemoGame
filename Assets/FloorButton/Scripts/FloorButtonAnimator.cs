@@ -13,26 +13,33 @@ public class FloorButtonAnimator : MonoBehaviour
     [SerializeField]
     private Transform flootButton;
 
+    private bool activated;
+
     public void Activate()
     {
-        StartCoroutine(MoveButton(activatedPoint.position));
+        activated = true;
     }
     public void Desactivate()
     {
-        StartCoroutine(MoveButton(desactivatedPoint.position));
+        activated = false;
     }
-
-    IEnumerator MoveButton(Vector3 targetPosition)
+    private void Update()
     {
-        float timeElapsed = 0;
-        Vector3 startPosition = flootButton.position;
-        while (timeElapsed < 0.5f)
+        if (activated)
         {
-            flootButton.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed / 0.5f);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        flootButton.position = targetPosition;
-    }
+            // Calculate the new position
+            Vector3 newPosition = Vector3.Lerp(flootButton.position, activatedPoint.position, 2 * Time.deltaTime);
 
+            // Move the object to the new position
+            flootButton.position = newPosition;
+        }
+        else
+        {
+            // Calculate the new position
+            Vector3 newPosition = Vector3.Lerp(flootButton.position, desactivatedPoint.position, 2 * Time.deltaTime);
+
+            // Move the object to the new position
+            flootButton.position = newPosition;
+        }
+    }
 }
