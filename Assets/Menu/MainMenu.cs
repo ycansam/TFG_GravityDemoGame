@@ -5,6 +5,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private LoadingScreen loadingScreen;
+    [SerializeField]
+    private GameObject levels;
+    private void Start()
+    {
+        levels.SetActive(false);
+    }
     public void NewGame()
     {
         loadingScreen.LoadScreen("Level1");
@@ -14,7 +20,14 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevel()
     {
-        // Aquí puedes agregar la lógica para abrir la pantalla de selección de mapas
+        if (levels.activeSelf)
+        {
+            levels.SetActive(false);
+        }
+        else
+        {
+            levels.SetActive(true);
+        }
         Debug.Log("Abriendo mapas...");
     }
 
@@ -29,5 +42,29 @@ public class MainMenu : MonoBehaviour
         // Aquí puedes agregar la lógica para salir del juego
         Debug.Log("Saliendo del juego...");
         Application.Quit();
+    }
+    public void LoadLevel1()
+    {
+        loadingScreen.LoadScreen("Level1");
+        PlayerSuit.SetPlayerSuitOff();
+        PlayerPhone.SetPlayerPhoneOff();
+    }
+    public void LoadLevel2()
+    {
+        loadingScreen.LoadScreen("Level2");
+        PlayerSuit.SetPlayerSuitOff();
+        PlayerPhone.SetPlayerPhoneOff();
+    }
+    public void LoadLevel3()
+    {
+        loadingScreen.LoadScreen("Level3");
+        PlayerSuit.SetPlayerSuitOff();
+        PlayerPhone.SetPlayerPhoneOff();
+    }
+    public void LoadLevel4()
+    {
+        loadingScreen.LoadScreen("Level4");
+        PlayerSuit.SetPlayerSuitOff();
+        PlayerPhone.SetPlayerPhoneOff();
     }
 }

@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621362733312078518, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.33
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 4621362733312078518, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1070,11 +1070,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621362733966313808, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.776
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7168779749463339920, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.78
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491800118831618155, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582232879911902812, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed1a725effb8583419af4e7b2a3f1c16, type: 3}
@@ -1089,6 +1097,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85221abe28dfe4646bbaa32967c0a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &727295229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8104437071676989833, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
+  m_PrefabInstance: {fileID: 2437224278778531567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &809584539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 2032258185}
   floorBtn: {fileID: 645550441}
+--- !u!4 &856405663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5092104136221522117, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
+  m_PrefabInstance: {fileID: 2437224278778531567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1077610319
 Mesh:
   m_ObjectHideFlags: 0
@@ -5100,3 +5118,5 @@ MonoBehaviour:
   cubes:
   - {fileID: 1708831074}
   useGravity: 1
+  activatedPoint: {fileID: 856405663}
+  desactivatedPoint: {fileID: 727295229}
