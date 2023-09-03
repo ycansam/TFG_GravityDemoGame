@@ -62,18 +62,18 @@ public class Gravity : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.X))
         {
-            if (CharacterWallsInformation.GetCharOnWallName() != null)
-                if (PlayerOnWall.IsOnLeftWall())
+            if (CharacterWallsInformation.GetCharOnWallHelpName() != null)
+                if (PlayerOnHelpWall.IsOnLeftWall())
                     actualDirection = Vector3.right;
-                else if (PlayerOnWall.IsOnRightWall())
+                else if (PlayerOnHelpWall.IsOnRightWall())
                     actualDirection = Vector3.left;
-                else if (PlayerOnWall.IsOnFrontWall())
+                else if (PlayerOnHelpWall.IsOnFrontWall())
                     actualDirection = Vector3.back;
-                else if (PlayerOnWall.IsOnBackWall())
+                else if (PlayerOnHelpWall.IsOnBackWall())
                     actualDirection = Vector3.forward;
-                else if (PlayerOnWall.IsOnTopWall())
+                else if (PlayerOnHelpWall.IsOnTopWall())
                     actualDirection = Vector3.down;
-                else if (PlayerOnWall.IsOnInferiorWall())
+                else if (PlayerOnHelpWall.IsOnInferiorWall())
                     actualDirection = Vector3.up;
         }
     }

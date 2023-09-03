@@ -38,12 +38,9 @@ public class CubeRotator : MonoBehaviour
     {
         InitVariablesBeforeRotate();
         refCubeRotation.rotation = transform.rotation;
-        Vector3 startRotation = refCubeRotation.eulerAngles;
         refCubeRotation.Rotate(direction * 90f, Space.World);
         refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
         Vector3 endRotation = refCubeRotation.eulerAngles;
-        Debug.Log((int)transform.eulerAngles.x);
-        Debug.Log(endRotation.x);
         while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
         {
 
@@ -58,8 +55,6 @@ public class CubeRotator : MonoBehaviour
             {
                 break;
             }
-            Debug.Log((int)transform.eulerAngles.y);
-            Debug.Log(endRotation.z);
             transform.Rotate(direction * rotationSpeed, Space.World);
             yield return null;
         }
