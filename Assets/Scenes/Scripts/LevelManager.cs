@@ -8,6 +8,12 @@ public class LevelManager : MonoBehaviour
     public static bool isLevelCompletedAdmin = false;
     [SerializeField] protected DoorAnimator doorAnimator;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         if (PlayerSuit.HasSuit() && !isLevelCompleted)

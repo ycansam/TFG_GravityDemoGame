@@ -462,7 +462,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50428
+  m_Name: pb_Mesh99138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1218,7 +1218,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50140
+  m_Name: pb_Mesh98788
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4285,7 +4285,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50452
+  m_Name: pb_Mesh99162
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5233,11 +5233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219446355554605580, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -116
+      value: -114.2
       objectReference: {fileID: 0}
     - target: {fileID: 3219446355554605580, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 15.8
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219446355554605581, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
+      propertyPath: m_Text
+      value: GRAVITY
       objectReference: {fileID: 0}
     - target: {fileID: 3219446355554605581, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_Color.a
@@ -5261,7 +5265,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219446355554605581, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 42
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219446355554605581, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3219446355672618952, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5593,7 +5601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219446356887509963, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26.1
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 3219446356887509964, guid: 2dd6c151231e44147aaec9b8af4c9088, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

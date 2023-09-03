@@ -19,14 +19,20 @@ public class PortalCamera : MonoBehaviour
 
         if (!neg)
         {
-            Vector3 playerOffsetFromPrtal = player_cam.position - otherPortal.position;
-            transform.position = portal.position + playerOffsetFromPrtal;
+            if (player_cam != null)
+            {
+                Vector3 playerOffsetFromPrtal = player_cam.position - otherPortal.position;
+                transform.position = portal.position + playerOffsetFromPrtal;
+            }
+
         }
         else
         {
-            Vector3 playerOffsetFromPrtal = player_cam.position + otherPortal.position;
-            transform.position = -portal.position + playerOffsetFromPrtal;
-
+            if (player_cam != null)
+            {
+                Vector3 playerOffsetFromPrtal = player_cam.position + otherPortal.position;
+                transform.position = -portal.position + playerOffsetFromPrtal;
+            }
         }
         float angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
 
@@ -34,7 +40,8 @@ public class PortalCamera : MonoBehaviour
         // Vector3 newCamDir = player_cam.forward;
 
         // transform.rotation = Quaternion.LookRotation(newCamDir, Vector3.up);
-        transform.rotation = player_cam.rotation;
+        if (player_cam != null)
+            transform.rotation = player_cam.rotation;
 
 
         /*   Matrix4x4 m = portal.localToWorldMatrix * otherPortal.localToWorldMatrix * player_cam.localToWorldMatrix;

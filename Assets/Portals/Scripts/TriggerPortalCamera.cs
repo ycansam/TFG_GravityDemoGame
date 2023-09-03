@@ -250,8 +250,9 @@ public class TriggerPortalCamera : MonoBehaviour
                     {
                         if (i < teleportingClonesClass.Count)
                             if (teleportingClonesClass[i] != null)
-                                if (teleportingObjetcsClass[i].item != null)
-                                    Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>(), false);
+                                if (i < teleportingObjetcsClass.Count)
+                                    if (teleportingObjetcsClass[i].item != null)
+                                        Physics.IgnoreCollision(player.GetComponent<Collider>(), teleportingClonesClass[i].item.GetComponent<Collider>(), false);
                     }
                 }
             }

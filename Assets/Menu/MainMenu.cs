@@ -10,12 +10,6 @@ public class MainMenu : MonoBehaviour
         loadingScreen.LoadScreen("Level1");
     }
 
-    public void LoadGame()
-    {
-        // Aquí puedes agregar la lógica para cargar una partida guardada
-        Debug.Log("Cargando partida...");
-    }
-
     public void LoadLevel()
     {
         // Aquí puedes agregar la lógica para abrir la pantalla de selección de mapas
