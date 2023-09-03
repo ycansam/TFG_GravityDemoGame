@@ -32,19 +32,26 @@ public class CubeControllerV2 : MonoBehaviour
     {
         if (Input.GetKeyDown(keyRight))
         {
-            HorizontalMove(1);
+            if (!cubeRotator.IsRotating)
+                HorizontalMove(1);
         }
+        else
         if (Input.GetKeyDown(KeyLeft))
         {
-            HorizontalMove(-1);
+            if (!cubeRotator.IsRotating)
+                HorizontalMove(-1);
         }
+        else
         if (Input.GetKeyDown(keyFront))
         {
-            VerticalMove(1);
+            if (!cubeRotator.IsRotating)
+                VerticalMove(1);
         }
+        else
         if (Input.GetKeyDown(keyBack))
         {
-            VerticalMove(-1);
+            if (!cubeRotator.IsRotating)
+                VerticalMove(-1);
         }
     }
 

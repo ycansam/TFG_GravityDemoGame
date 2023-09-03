@@ -30,7 +30,8 @@ public class CubeRotator : MonoBehaviour
 
     public void RotateSmooth(Vector3 direction)
     {
-        StartCoroutine(RotateEase(direction));
+        if (!isRotating)
+            StartCoroutine(RotateEase(direction));
     }
 
     private IEnumerator RotateEase(Vector3 direction)
@@ -45,6 +46,20 @@ public class CubeRotator : MonoBehaviour
         Debug.Log(endRotation.x);
         while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
         {
+
+            if (
+                (int)transform.eulerAngles.y + 1 == endRotation.y
+                || (int)transform.eulerAngles.y - 1 == endRotation.y
+                || (int)transform.eulerAngles.x + 1 == endRotation.x
+                || (int)transform.eulerAngles.x - 1 == endRotation.x
+                || (int)transform.eulerAngles.z + 1 == endRotation.z
+                || (int)transform.eulerAngles.z - 1 == endRotation.z
+            )
+            {
+                break;
+            }
+            Debug.Log((int)transform.eulerAngles.y);
+            Debug.Log(endRotation.z);
             transform.Rotate(direction * rotationSpeed, Space.World);
             yield return null;
         }
