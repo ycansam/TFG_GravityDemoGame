@@ -1097,11 +1097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85221abe28dfe4646bbaa32967c0a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &727295229 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8104437071676989833, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
-  m_PrefabInstance: {fileID: 2437224278778531567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &809584539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,11 +1253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 2032258185}
   floorBtn: {fileID: 645550441}
---- !u!4 &856405663 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5092104136221522117, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
-  m_PrefabInstance: {fileID: 2437224278778531567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1077610319
 Mesh:
   m_ObjectHideFlags: 0
@@ -5042,7 +5032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2437224280336487504, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.99
+      value: 14.802
       objectReference: {fileID: 0}
     - target: {fileID: 2437224280336487504, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5086,7 +5076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2437224280336487508, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: m_TagString
-      value: ButtonGravity
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7390314149814625102, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: cubes.Array.size
@@ -5098,25 +5088,3 @@ PrefabInstance:
       objectReference: {fileID: 1708831074}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
---- !u!1 &2437224278778531568 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2437224280336487508, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
-  m_PrefabInstance: {fileID: 2437224278778531567}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2437224278778531569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2437224278778531568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2342349aeb218ca49bd0490a9dfa936e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubes:
-  - {fileID: 1708831074}
-  useGravity: 1
-  activatedPoint: {fileID: 856405663}
-  desactivatedPoint: {fileID: 727295229}
