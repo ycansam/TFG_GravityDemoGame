@@ -10,6 +10,7 @@ TagManager:
   - ObjectCatchable
   - Camera
   - PlayerHead
+  - PhonePlayer
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         loadingScreen.LoadScreen("Level1");
+        PlayerSuit.SetPlayerSuitOff();
+        PlayerPhone.SetPlayerPhoneOff();
     }
 
     public void LoadLevel()

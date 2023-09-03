@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [HideInInspector]
     public bool hasEnteredFromBack = false;
+    [HideInInspector]
     public string enteredPortal = "";
 }
