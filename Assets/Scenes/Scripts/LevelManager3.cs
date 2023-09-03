@@ -7,6 +7,7 @@ public class LevelManager3 : LevelManager
     [SerializeField] FloorButtonTrigger floorBtn;
     private void Start()
     {
+        PlayerPhone.SetPlayerPhoneOff();
         PlayerSuit.SetPlayerSuitOn();
     }
 
