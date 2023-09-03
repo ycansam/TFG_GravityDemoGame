@@ -4,7 +4,23 @@ public class PlayerInCube : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private Camera camToPhone;
+
     private List<GameObject> colliderList = new List<GameObject>();
+
+    private void Update()
+    {
+        if (camToPhone != null)
+            if (isPlayerOnCube())
+            {
+                camToPhone.depth = 1;
+            }
+            else
+            {
+                camToPhone.depth = 0;
+            }
+    }
 
     private void Start()
     {

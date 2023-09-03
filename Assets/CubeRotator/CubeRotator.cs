@@ -41,7 +41,8 @@ public class CubeRotator : MonoBehaviour
         refCubeRotation.Rotate(direction * 90f, Space.World);
         refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
         Vector3 endRotation = refCubeRotation.eulerAngles;
-
+        Debug.Log((int)transform.eulerAngles.x);
+        Debug.Log(endRotation.x);
         while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
         {
             transform.Rotate(direction * rotationSpeed, Space.World);

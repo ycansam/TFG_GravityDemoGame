@@ -5,7 +5,14 @@ using UnityEngine;
 public class ChangeWallController : MonoBehaviour
 {
     [SerializeField] PlayerWallMarker playerWallMarker;
-    
+    Transform cubeRotator;
+    private void Start()
+    {
+        GameObject pregam = GameObject.FindGameObjectWithTag(Tags.CUBE_ROTATOR);
+        if (pregam != null)
+            cubeRotator = GameObject.FindGameObjectWithTag(Tags.CUBE_ROTATOR).transform;
+    }
+
     void Update()
     {
         Controls();
@@ -15,7 +22,19 @@ public class ChangeWallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && playerWallMarker.IsMarkerActivated())
         {
-            RotatePlayer();
+            if (cubeRotator != null)
+            {
+                if (!cubeRotator.GetComponent<CubeRotator>().IsRotating)
+                {
+                    RotatePlayer();
+                }
+            }
+            else
+            {
+                RotatePlayer();
+
+            }
+
         }
     }
 

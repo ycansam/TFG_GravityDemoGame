@@ -23,7 +23,7 @@ public class PlayerSuit : MonoBehaviour
         }
         else if (hasSuit && !PlayerPhone.HasPhone())
         {
-            if (!suit.activeSelf)
+            if (suit.activeSelf)
             {
                 suit.SetActive(false);
                 head.SetActive(false);
