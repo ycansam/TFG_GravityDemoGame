@@ -9,6 +9,9 @@ public class LevelManager3 : LevelManager
     {
         PlayerPhone.SetPlayerPhoneOff();
         PlayerSuit.SetPlayerSuitOn();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

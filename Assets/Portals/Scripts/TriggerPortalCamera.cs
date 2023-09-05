@@ -188,6 +188,7 @@ public class TriggerPortalCamera : MonoBehaviour
         {
             if (other.name == portalCamera.name)
             {
+
                 DisableObjectRenders();
                 DisableObjectCloneRenders();
             }
@@ -257,6 +258,25 @@ public class TriggerPortalCamera : MonoBehaviour
                 }
             }
 
+            foreach (TeleportItems tp in teleportingClonesClass)
+            {
+                if (tp.triggeredTransform.Contains('('))
+                {
+                    if (!playerTriggeredByTransform.Contains('('))
+                    {
+                        if (tp.item != null)
+                            tp.item.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
+                if (!tp.triggeredTransform.Contains('('))
+                {
+                    if (playerTriggeredByTransform.Contains('('))
+                    {
+                        if (tp.item != null)
+                            tp.item.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
+            }
         }
     }
 

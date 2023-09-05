@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        isLevelCompletedAdmin = false;
     }
 
     private void Update()
@@ -27,7 +28,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            isLevelCompletedAdmin = true;
+            if (!isLevelCompletedAdmin)
+                isLevelCompletedAdmin = true;
         }
         if (isLevelCompletedAdmin)
         {
