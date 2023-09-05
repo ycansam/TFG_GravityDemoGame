@@ -10,6 +10,7 @@ public class MockObjectMovement : MonoBehaviour
 
     private int currentWaypoint = 0;
 
+   
     void Update()
     {
         // Check if the object has reached the current waypoint

@@ -41,20 +41,25 @@ public class CubeRotator : MonoBehaviour
         refCubeRotation.Rotate(direction * 90f, Space.World);
         refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
         Vector3 endRotation = refCubeRotation.eulerAngles;
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            transform.eulerAngles = insideGrades(transform);
+        }
         while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
         {
 
             if (
-                (int)transform.eulerAngles.y + 1 == endRotation.y
-                || (int)transform.eulerAngles.y - 1 == endRotation.y
-                || (int)transform.eulerAngles.x + 1 == endRotation.x
-                || (int)transform.eulerAngles.x - 1 == endRotation.x
-                || (int)transform.eulerAngles.z + 1 == endRotation.z
-                || (int)transform.eulerAngles.z - 1 == endRotation.z
-            )
+                            (int)transform.eulerAngles.y + 1 == endRotation.y
+                            || (int)transform.eulerAngles.y - 1 == endRotation.y
+                            || (int)transform.eulerAngles.x + 1 == endRotation.x
+                            || (int)transform.eulerAngles.x - 1 == endRotation.x
+                            || (int)transform.eulerAngles.z + 1 == endRotation.z
+                            || (int)transform.eulerAngles.z - 1 == endRotation.z
+                        )
             {
                 break;
             }
+
             transform.Rotate(direction * rotationSpeed, Space.World);
             yield return null;
         }

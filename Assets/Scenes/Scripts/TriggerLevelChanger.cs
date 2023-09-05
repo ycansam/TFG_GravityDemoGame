@@ -10,12 +10,15 @@ public class TriggerLevelChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == Tags.PLAYER)
             ChangeLevel();
     }
 
     private void ChangeLevel()
     {
+        PlayerPhone.SetPlayerPhoneOff();
+        PlayerSuit.SetPlayerSuitOff();
         loadingScreen.LoadScreen(levelName);
     }
 }
