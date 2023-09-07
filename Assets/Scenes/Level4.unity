@@ -6034,7 +6034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 217.78
+      value: 211.66
       objectReference: {fileID: 0}
     - target: {fileID: 2049035265068799690, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6757,6 +6757,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2049035265068799683, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+--- !u!1 &457476059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2049035265068799691, guid: af3f3339dad2c474d9ce2cde8d739a1e, type: 3}
+  m_PrefabInstance: {fileID: 457476058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &470070525
 GameObject:
   m_ObjectHideFlags: 0
@@ -7431,7 +7436,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36290
+  m_Name: pb_Mesh31680
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7638,6 +7643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 2120155835}
   levelName: Menu
+  deletingObjects: []
 --- !u!65 &517932150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9800,7 +9806,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36550
+  m_Name: pb_Mesh122864
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16591,12 +16597,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7390314149814625102, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: cubes.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7390314149814625102, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
       propertyPath: cubes.Array.data[0]
       value: 
       objectReference: {fileID: 1464600544}
+    - target: {fileID: 7390314149814625102, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
+      propertyPath: cubes.Array.data[1]
+      value: 
+      objectReference: {fileID: 457476059}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad20e6ca2122f34596ae1186da3beb9, type: 3}
 --- !u!4 &996856997 stripped

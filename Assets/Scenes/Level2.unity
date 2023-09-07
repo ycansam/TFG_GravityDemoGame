@@ -1402,6 +1402,7 @@ GameObject:
   - component: {fileID: 570994766}
   - component: {fileID: 570994770}
   - component: {fileID: 570994771}
+  - component: {fileID: 570994772}
   m_Layer: 0
   m_Name: Catchable
   m_TagString: ObjectCatchable
@@ -1515,6 +1516,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &570994772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570994765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d582ca0e2c84f64c9050e423f20ab82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &629600106
 Mesh:
   m_ObjectHideFlags: 0
@@ -1937,7 +1950,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94862
+  m_Name: pb_Mesh-31740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4447,7 +4460,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97862
+  m_Name: pb_Mesh49542
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6123,6 +6136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 810430308}
   levelName: Level3
+  deletingObjects:
+  - {fileID: 570994765}
 --- !u!65 &1867349561
 BoxCollider:
   m_ObjectHideFlags: 0

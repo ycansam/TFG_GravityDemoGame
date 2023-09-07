@@ -13,7 +13,7 @@ public class MovableMoverStart : MonoBehaviour
     {
         if (elapsedTime >= useDelay)
         {
-            Vector3 newPosition = Vector3.Lerp(staticMovable.position, transform.position, 2 * Time.deltaTime);
+            Vector3 newPosition = Vector3.Lerp(staticMovable.position, transform.position, 2.2f * Time.deltaTime);
 
             // Move the object to the new position
             staticMovable.position = newPosition;

@@ -21,17 +21,51 @@ public class CubeRotator : MonoBehaviour
 
     [SerializeField]
     private float rotationSpeed = 1f;
+
+    public float velocidadRotacion = 1f; // Velocidad de rotación en grados por segundo
+    private float anguloRotado = 0.0f;
+    Vector3 directionToRotate;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
         playerInCube = GetComponentInChildren<PlayerInCube>();
     }
 
+    private void Update()
+    {
+        if (isRotating)
+        {
+            if (anguloRotado < 90.0f)
+            {
+                float anguloRotacion = velocidadRotacion * 90f * Time.deltaTime;
+                transform.Rotate(directionToRotate, anguloRotacion, Space.World);
+                anguloRotado += anguloRotacion;
+            }
+            else
+            {
+                isRotating = false;
+            }
+        }
+        else
+        {
+            anguloRotado = 0;
+            transform.eulerAngles = insideGrades(transform);
+
+            ResetVariablesAfterRotate();
+        }
+
+    }
+
 
     public void RotateSmooth(Vector3 direction)
     {
+        Debug.Log("ROTANDO");
         if (!isRotating)
-            StartCoroutine(RotateEase(direction));
+        {
+            InitVariablesBeforeRotate();
+            directionToRotate = direction;
+            // StartCoroutine(RotateEase(direction));
+        }
     }
 
     private IEnumerator RotateEase(Vector3 direction)
@@ -39,33 +73,6 @@ public class CubeRotator : MonoBehaviour
         InitVariablesBeforeRotate();
         refCubeRotation.rotation = transform.rotation;
         refCubeRotation.Rotate(direction * 90f, Space.World);
-        refCubeRotation.eulerAngles = insideGrades(refCubeRotation);
-        Vector3 endRotation = refCubeRotation.eulerAngles;
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            transform.eulerAngles = insideGrades(transform);
-        }
-        while ((int)transform.eulerAngles.x != endRotation.x || (int)transform.eulerAngles.y != endRotation.y || (int)transform.eulerAngles.z != endRotation.z)
-        {
-
-            if (
-                            (int)transform.eulerAngles.y + 1 == endRotation.y
-                            || (int)transform.eulerAngles.y - 1 == endRotation.y
-                            || (int)transform.eulerAngles.x + 1 == endRotation.x
-                            || (int)transform.eulerAngles.x - 1 == endRotation.x
-                            || (int)transform.eulerAngles.z + 1 == endRotation.z
-                            || (int)transform.eulerAngles.z - 1 == endRotation.z
-                        )
-            {
-                break;
-            }
-
-            transform.Rotate(direction * rotationSpeed, Space.World);
-            yield return null;
-        }
-
-        // Corrige los grados
-        transform.eulerAngles = insideGrades(transform);
         yield return null;
         ResetVariablesAfterRotate();
     }
