@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterWallsInformation : MonoBehaviour
 {
     [SerializeField] private Transform playerHead;
+    [SerializeField] private Transform wallInfoPoint;
     private static RaycastHit charOnHelpWallHit;
     private static RaycastHit charOnWallHit;
     private static RaycastHit charLookingAtHelpWallHit;
@@ -80,8 +81,8 @@ public class CharacterWallsInformation : MonoBehaviour
         Vector3 downward = transform.TransformDirection(Vector3.down) * 50f;
         Debug.DrawRay(transform.position, downward, Color.green);
         downwardHits = Physics.RaycastAll(transform.position, downward, 50.0F);
-        AssignPlayerOnHelpWall(Physics.RaycastAll(transform.position, downward, 50.0F));
-        AssignPlayerOnWall(Physics.RaycastAll(transform.position, downward, 50.0F));
+        AssignPlayerOnHelpWall(Physics.RaycastAll(wallInfoPoint.position, downward, 50.0F));
+        AssignPlayerOnWall(Physics.RaycastAll(wallInfoPoint.position, downward, 50.0F));
     }
 
     private void AssignPlayerOnHelpWall(RaycastHit[] hits)
