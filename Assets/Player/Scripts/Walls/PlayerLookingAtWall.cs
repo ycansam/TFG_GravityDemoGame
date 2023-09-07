@@ -29,7 +29,7 @@ public class PlayerLookingAtWall : MonoBehaviour
         return GetWallName().Contains("Top");
     }
 
-    private static string GetWallName()
+    public static string GetWallName()
     {
         return CharacterWallsInformation.GetCharLookingAtWallName();
     }

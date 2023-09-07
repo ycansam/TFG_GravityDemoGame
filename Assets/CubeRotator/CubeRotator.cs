@@ -13,6 +13,7 @@ public class CubeRotator : MonoBehaviour
 
     [SerializeField]
     private bool isRotating = false;
+    public float velocidadRotacion = 1.0f;
     public bool IsRotating
     {
         get { return this.isRotating; }
@@ -21,10 +22,6 @@ public class CubeRotator : MonoBehaviour
 
     [SerializeField]
     private float rotationSpeed = 1f;
-
-    public float velocidadRotacion = 1f; // Velocidad de rotación en grados por segundo
-    private float anguloRotado = 0.0f;
-    Vector3 directionToRotate;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
@@ -33,46 +30,30 @@ public class CubeRotator : MonoBehaviour
 
     private void Update()
     {
-        if (isRotating)
-        {
-            if (anguloRotado < 90.0f)
-            {
-                float anguloRotacion = velocidadRotacion * 90f * Time.deltaTime;
-                transform.Rotate(directionToRotate, anguloRotacion, Space.World);
-                anguloRotado += anguloRotacion;
-            }
-            else
-            {
-                isRotating = false;
-            }
-        }
-        else
-        {
-            anguloRotado = 0;
-            transform.eulerAngles = insideGrades(transform);
-
-            ResetVariablesAfterRotate();
-        }
 
     }
 
 
     public void RotateSmooth(Vector3 direction)
     {
-        Debug.Log("ROTANDO");
         if (!isRotating)
-        {
-            InitVariablesBeforeRotate();
-            directionToRotate = direction;
-            // StartCoroutine(RotateEase(direction));
-        }
+            StartCoroutine(RotateEase(direction));
     }
+    float anguloRotado = 0.0f;
 
     private IEnumerator RotateEase(Vector3 direction)
     {
         InitVariablesBeforeRotate();
-        refCubeRotation.rotation = transform.rotation;
-        refCubeRotation.Rotate(direction * 90f, Space.World);
+        while (anguloRotado < 90.0f)
+        {
+            float anguloRotacion = velocidadRotacion * 90f * Time.deltaTime;
+            transform.Rotate(direction, anguloRotacion, Space.World);
+            anguloRotado += anguloRotacion;
+            yield return null;
+        }
+
+        // Corrige los grados
+        transform.eulerAngles = insideGrades(transform);
         yield return null;
         ResetVariablesAfterRotate();
     }
@@ -88,6 +69,7 @@ public class CubeRotator : MonoBehaviour
     {
         IsRotating = false;
         player.parent = null;
+        anguloRotado = 0;
     }
 
 

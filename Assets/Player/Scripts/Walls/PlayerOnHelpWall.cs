@@ -29,7 +29,7 @@ public class PlayerOnHelpWall : MonoBehaviour
         return GetWallName().Contains("Top");
     }
 
-    private static string GetWallName()
+    public static string GetWallName()
     {
         return CharacterWallsInformation.GetCharOnWallHelpName();
     }

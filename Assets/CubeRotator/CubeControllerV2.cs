@@ -26,6 +26,8 @@ public class CubeControllerV2 : MonoBehaviour
         if (PlayerPhone.HasPhone())
             if (!cubeRotator.IsRotating)
                 Controls();
+
+        PlayerLookingAtHelpWall.IsLookingRightWall();
     }
 
     private void Controls()
